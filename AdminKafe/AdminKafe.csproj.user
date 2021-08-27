@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="View\Windows\AddMenuFoodWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Windows\AddNewPassword.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Windows\AddProductParameter.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Windows\GlavWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Windows\LoginWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Windows\MessageWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Windows\PageMenu\AddFood.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Windows\PageMenu\AddIngredient.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Windows\PageMenu\AddStol.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Windows\PageMenu\AddWaiter.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="View\Windows\AddKafeName.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Windows\AddMenuFoodWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Windows\AddNewPassword.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Windows\AddProductParameter.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Windows\GlavWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Windows\LoginWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Windows\MessageWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Windows\PageMenu\AddFood.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Windows\PageMenu\AddIngredient.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Windows\PageMenu\AddProduct.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Windows\PageMenu\AddService.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Windows\PageMenu\AddStol.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Windows\PageMenu\AddWaiter.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Windows\PageMenu\AllReport.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>
