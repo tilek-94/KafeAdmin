@@ -10,7 +10,7 @@
       d:DesignHeight="600" d:DesignWidth="1300"
       Title="AddFood">
     <Grid>
-        <Grid.Resources>
+      <Grid.Resources>
             <VM:AllReportVM x:Key="mydata"/>
         </Grid.Resources>
         <Grid.DataContext>
