@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QcCnVqaiP9xFQX4vL/4zHfuxL98YCSIw+JuFJYePRO48Tq/5dRx48cTL3XQbSAnfFIotHufr9vfURmBHkcdpzg==",
+  "dgSpecHash": "jX+RJfrcdOXwz2pdx8v9iawKdwRMKaMapY6aXUeFd7YfUV4rkHX+J1HFgxFFmTBtpXhxNCBX0D0VxEjCbmNv1w==",
   "success": true,
-  "projectFilePath": "D:\\project\\Project_Kafe\\KafeAdminPanel\\AdminKafe\\AdminKafe.csproj",
+  "projectFilePath": "D:\\project\\KafeAdmin\\AdminKafe\\AdminKafe.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user\\.nuget\\packages\\fontawesome.wpf\\4.7.0.9\\fontawesome.wpf.4.7.0.9.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\materialdesigncolors\\2.0.1\\materialdesigncolors.2.0.1.nupkg.sha512",
@@ -31,7 +31,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'FontAwesome.WPF 4.7.0.9' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0-windows7.0'. This package may not be fully compatible with your project.",
+      "message": "Пакет \"FontAwesome.WPF 4.7.0.9\" был восстановлен с помощью \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\", а не целевой платформы проекта \"net5.0-windows7.0\". Этот пакет может быть не полностью совместим с вашим проектом.",
       "libraryId": "FontAwesome.WPF",
       "targetGraphs": [
         "net5.0-windows7.0"

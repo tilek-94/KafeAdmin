@@ -4,11 +4,11 @@
 winexe
 C#
 .cs
-D:\project\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\
+D:\project\KafeAdmin\AdminKafe\obj\Release\net5.0-windows\
 AdminKafe
 none
 false
-TRACE;DEBUG;NET;NET5_0;NETCOREAPP
+TRACE;RELEASE;NET;NET5_0;NETCOREAPP
 D:\project\KafeAdmin\AdminKafe\App.xaml
 15-957520648
 
