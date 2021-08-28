@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-D:\project\Project_Kafe\KafeAdminPanel\AdminKafe\obj\Debug\net5.0-windows\
+D:\Project\KK\Жаны репозторийге киргизилген\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\
 AdminKafe
 none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
-D:\project\Project_Kafe\KafeAdminPanel\AdminKafe\App.xaml
-15491842050
+D:\Project\KK\Жаны репозторийге киргизилген\KafeAdmin\AdminKafe\App.xaml
+15-957520648
 
-551464627935
-2102033290168
+551928242800
+210794553702
 View\Windows\AddKafeName.xaml;View\Windows\AddMenuFoodWindow.xaml;View\Windows\AddNewPassword.xaml;View\Windows\AddProductParameter.xaml;View\Windows\GlavWindow.xaml;View\Windows\LoginWindow.xaml;View\Windows\MessageWindow.xaml;View\Windows\MessageWindowOk.xaml;View\Windows\PageMenu\AddFood.xaml;View\Windows\PageMenu\AddIngredient.xaml;View\Windows\PageMenu\AddProduct.xaml;View\Windows\PageMenu\AddService.xaml;View\Windows\PageMenu\AddStol.xaml;View\Windows\PageMenu\AddWaiter.xaml;View\Windows\PageMenu\AllReport.xaml;
 
 True
