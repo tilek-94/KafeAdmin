@@ -20,6 +20,7 @@ namespace AdminKafe.Date
         public DbSet<Statuses> Status { get; set; }
         public DbSet<Consumption> Consumptions { get; set; }
         public DbSet<CafeName> CafeName { get; set; }
+        public DbSet<Login> login { get; set; }
 
         public ApplicationContext()
         {

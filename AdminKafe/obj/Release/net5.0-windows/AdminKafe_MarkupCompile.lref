@@ -1,4 +1,4 @@
-﻿D:\project\KafeAdmin\AdminKafe\obj\Release\net5.0-windows\GeneratedInternalTypeHelper.g.cs
+﻿
 FD:\project\KafeAdmin\AdminKafe\App.xaml;;
 FD:\project\KafeAdmin\AdminKafe\View\Windows\AddKafeName.xaml;;
 FD:\project\KafeAdmin\AdminKafe\View\Windows\AddMenuFoodWindow.xaml;;
@@ -15,4 +15,5 @@ FD:\project\KafeAdmin\AdminKafe\View\Windows\PageMenu\AddService.xaml;;
 FD:\project\KafeAdmin\AdminKafe\View\Windows\PageMenu\AddStol.xaml;;
 FD:\project\KafeAdmin\AdminKafe\View\Windows\PageMenu\AddWaiter.xaml;;
 FD:\project\KafeAdmin\AdminKafe\View\Windows\PageMenu\AllReport.xaml;;
+FD:\project\KafeAdmin\AdminKafe\View\Windows\AddNewLogin.xaml;;
 

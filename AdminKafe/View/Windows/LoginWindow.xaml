@@ -26,8 +26,8 @@
         <Grid Grid.Column="0" Background="#007bab" Grid.RowSpan="2"/>
         <Grid Height="110" Width="700" MouseDown="PackIcon_MouseDown" Background="Transparent" Margin="0,-4,-12.8,47.6" Grid.ColumnSpan="2" Grid.RowSpan="3"/>
         <Grid Grid.Column="1"  Margin="5,72.2,-5,21.4" Grid.RowSpan="3" Grid.Row="1">
-            <TextBox materialDesign:HintAssist.Hint="Введите логин" Background="White" BorderThickness="0,0,0,2" BorderBrush="#FF007BAB" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="44,31,101.2,156.4" FontSize="18" Foreground="#007bab" CaretBrush="#FF007BAB" />
-            <PasswordBox   materialDesign:HintAssist.Hint="Введите пароль" Background="White" BorderThickness="0,0,0,2"  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"  BorderBrush="#FF007BAB" Margin="44,105,101.2,81.4" FontSize="18" Foreground="#007bab" CaretBrush="#FF007BAB"/>
+            <TextBox x:Name="Name" materialDesign:HintAssist.Hint="Введите логин" Background="White" BorderThickness="0,0,0,2" BorderBrush="#FF007BAB" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="44,31,101.2,156.4" FontSize="18" Foreground="#007bab" CaretBrush="#FF007BAB" />
+            <PasswordBox x:Name="Password" materialDesign:HintAssist.Hint="Введите пароль" Background="White" BorderThickness="0,0,0,2"  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"  BorderBrush="#FF007BAB" Margin="44,105,101.2,81.4" FontSize="18" Foreground="#007bab" CaretBrush="#FF007BAB"/>
         </Grid>
         <Grid Grid.Row="2" Grid.Column="0" Grid.RowSpan="2" Margin="0,0,0,-0.6">
             <materialDesign:PackIcon Kind="AccountBox"  Width="36" Height="32" Foreground="#007bab" Margin="103,120,-39,0"/>
@@ -46,8 +46,8 @@ Background="#007bab" Height="Auto" Width="229" HorizontalAlignment="Left"
     Margin="10,110,0,41">
                 <TextBlock Text="Закрыть" Foreground="White"/>
             </Button>
-            <TextBlock Text="Создать пользователя" Height="20" Width="173" VerticalAlignment="Center" FontSize="15" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="#FF007BAB"/>
-            <TextBlock Text="Изменить пароль" Height="20" Width="130" VerticalAlignment="Center" FontSize="15" HorizontalAlignment="Right" Margin="100,0" Foreground="#FF007BAB"/>
+            <TextBlock  MouseDown="TextBlock_MouseDown" Text="Создать пользователя" Height="20" Width="173" VerticalAlignment="Center" FontSize="15" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="#FF007BAB"/>
+            <TextBlock MouseDown="TextBlock_MouseDown_2" Text="Изменить пароль" Height="20" Width="130" VerticalAlignment="Center" FontSize="15" HorizontalAlignment="Right" Margin="100,0" Foreground="#FF007BAB"/>
         </Grid>
     </Grid>
 </Window>

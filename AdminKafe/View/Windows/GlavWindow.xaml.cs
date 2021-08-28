@@ -1,4 +1,5 @@
-﻿using AdminKafe.Windows.PageMenu;
+﻿using AdminKafe.Date;
+using AdminKafe.Windows.PageMenu;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,11 +22,49 @@ namespace AdminKafe.Windows
     public partial class GlavWindow : Window
     {
         AddKafeName addKafeName;
+        public string status = "";
+        List<ListViewItem> list = new List<ListViewItem>();
+
         public GlavWindow()
         {
             InitializeComponent();
+            blurEffect.Radius = 10;
             this.MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
             this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
+        }
+
+        public void Showmain()
+        {
+            blurEffect.Radius = 0;
+            status = Show_Date(LoginWindow.stat);
+            for (int i = 0; i < list.Count; i++)
+            {
+                for (int i1 = 0; i1 < status.Length; i1++)
+                {
+                    if (status[i1].ToString() == i.ToString())
+                    {
+                        list[i].Visibility = Visibility.Visible;
+                    }
+                }
+            }
+        }
+
+        public string Show_Date(string login)
+        {
+            using (ApplicationContext connetc = new ApplicationContext())
+            {
+                string show = "Неверный Логин";
+                if (connetc.login.Where(y => y.Name == login).Count() == 0)
+                {
+                    return show;
+                }
+                else
+                {
+                    return connetc.login.Where(a => a.Name == login).Select(s => s.Status).OrderBy(i => i).FirstOrDefault();
+
+                }
+            }
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
