@@ -28,6 +28,13 @@ namespace AdminKafe.Windows
         public GlavWindow()
         {
             InitializeComponent();
+            list.Add(List1);
+            list.Add(List2);
+            list.Add(List3);
+            list.Add(List4);
+            list.Add(List5);
+            list.Add(List6);
+            list.Add(List7);
             blurEffect.Radius = 10;
             this.MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
             this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
