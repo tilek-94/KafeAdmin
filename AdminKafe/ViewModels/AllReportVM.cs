@@ -17,7 +17,7 @@ namespace AdminKafe.ViewModels
             CreateCommand = new LambdaCommand(CreateMethod, CanCloseApplicationExecat);
             DeleteCommand = new LambdaCommand(DeleteMethod, CanCloseApplicationExecat);
             ShowWindowCommand = new LambdaCommand(ShowWindowMethod, CanCloseApplicationExecat);
-           
+            LoadAllBy();
         }
         #region WaiterProperties
 
@@ -136,6 +136,17 @@ namespace AdminKafe.ViewModels
                 
             }
         }
+
+        private List<object> _OrdersPropertyReport;
+        public List<object> OrdersPropertyReport
+        {
+            get => _OrdersPropertyReport;
+            set
+            {
+                Set(ref _OrdersPropertyReport, value);
+
+            }
+        }
         #endregion WaiterProperties
 
         public void CreateMethod(object p)
@@ -162,6 +173,16 @@ namespace AdminKafe.ViewModels
         public void EditMethod(object p)
         {
             throw new NotImplementedException();
+        }
+        public  async void LoadAllBy(string name = "")
+        {
+            IsLoading = true;
+            await Task.Run(() =>
+            {
+                OrdersPropertyReport = DateWorker.GetAllByFood();
+                // AllLocation = DateWorker.GetAllLocation();
+            }).ContinueWith(t => IsLoading = false);
+
         }
 
         public override async void LoadAllDate(string name = "")

@@ -906,8 +906,28 @@ namespace AdminKafe.Models
         #endregion Consumption
 
         #region GetAllCheck
+        public static List<object> GetAllByFood()
+        {
+            
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                int CounId = 0;
+                var result = (from o in db.Orders
+                              join f in db.Foods on o.FoodId equals f.Id
+                              select new
+                              {
+                                  Id = CounId,
+                                  FoodId = o.FoodId,
+                                  Food = f.Name,
+                                  CountFood = db.Orders.Where(t => t.FoodId == f.Id).Sum(t => t.CountFood),
+                                  Sum= db.Orders.Where(t => t.FoodId == f.Id).Sum(t => t.CountFood)*f.Price
 
 
+                              }).AsEnumerable().GroupBy(t=>t.FoodId);
+              
+                return result.ToList<object>();
+            }
+        }
         public static List<object> GetAllOrder(int id, int GoustCount)
         {
             using (ApplicationContext db = new ApplicationContext())
@@ -942,11 +962,6 @@ namespace AdminKafe.Models
                 return result.ToList<object>();
             }
         }
-
-        /*private static double SumServiceMethod(double summ, int countGost)
-        {
-
-        }*/
         public static List<object> GetAllCkeck()
         {
             using (ApplicationContext db = new ApplicationContext())
