@@ -1,23 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\project\\Project_Kafe\\KafeAdminPanel\\AdminKafe\\AdminKafe.csproj": {}
+    "D:\\c# Cafe\\KafeAdmin\\AdminKafe\\AdminKafe.csproj": {}
   },
   "projects": {
-    "D:\\project\\Project_Kafe\\KafeAdminPanel\\AdminKafe\\AdminKafe.csproj": {
+    "D:\\c# Cafe\\KafeAdmin\\AdminKafe\\AdminKafe.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\project\\Project_Kafe\\KafeAdminPanel\\AdminKafe\\AdminKafe.csproj",
+        "projectUniqueName": "D:\\c# Cafe\\KafeAdmin\\AdminKafe\\AdminKafe.csproj",
         "projectName": "AdminKafe",
-        "projectPath": "D:\\project\\Project_Kafe\\KafeAdminPanel\\AdminKafe\\AdminKafe.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "D:\\project\\Project_Kafe\\KafeAdminPanel\\AdminKafe\\obj\\",
+        "projectPath": "D:\\c# Cafe\\KafeAdmin\\AdminKafe\\AdminKafe.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "D:\\c# Cafe\\KafeAdmin\\AdminKafe\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -79,7 +80,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     }
