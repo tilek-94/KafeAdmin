@@ -78,6 +78,13 @@ namespace AdminKafe.ViewModels
             set => Set(ref _AllDate, value);
         }
 
+        private List<string> _Waters;
+        public List<string> Waters
+        {
+            get => _Waters;
+            set => Set(ref _Waters, value);
+        }
+
         private List<T> _SeachAllDate;
         public List<T> SeachAllDate
         {
