@@ -179,3 +179,4 @@ D:\project\Project_Kafe\KafeAdminPanel\AdminKafe\bin\Debug\net5.0-windows\FontAw
 D:\project\Project_Kafe\KafeAdminPanel\AdminKafe\obj\Debug\net5.0-windows\AdminKafe.csprojAssemblyReference.cache
 D:\project\Project_Kafe\KafeAdminPanel\AdminKafe\obj\Debug\net5.0-windows\View\Windows\AddProductParameter.g.cs
 D:\project\Project_Kafe\KafeAdminPanel\AdminKafe\obj\Debug\net5.0-windows\View\Windows\AddProductParameter.baml
+D:\project\Project_Kafe\KafeAdminPanel\AdminKafe\bin\Debug\net5.0-windows\LazZiya.ImageResize.dll
