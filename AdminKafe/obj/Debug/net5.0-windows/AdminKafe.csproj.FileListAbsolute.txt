@@ -252,3 +252,5 @@ D:\project\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\AdminKafe.csproj.CopyCom
 D:\project\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\AdminKafe.genruntimeconfig.cache
 D:\project\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\View\Windows\AddNewLogin.g.cs
 D:\project\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\View\Windows\AddNewLogin.baml
+D:\project\Project_Kafe\KafeAdminPanel\AdminKafe\obj\Debug\net5.0-windows\View\Windows\AddNewLogin.g.cs
+D:\project\Project_Kafe\KafeAdminPanel\AdminKafe\obj\Debug\net5.0-windows\View\Windows\AddNewLogin.baml
