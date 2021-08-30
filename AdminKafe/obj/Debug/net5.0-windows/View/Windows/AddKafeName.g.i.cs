@@ -57,7 +57,7 @@ namespace AdminKafe.Windows {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/AdminKafe;component/view/windows/addkafename.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/AdminKafe;V1.0.0.0;component/view/windows/addkafename.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\View\Windows\AddKafeName.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

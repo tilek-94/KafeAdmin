@@ -29,17 +29,17 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <Canvas Grid.Row="0" Grid.ColumnSpan="2" Background="White">
-                        <RadioButton x:Name="RadioDay"  Content="1 День"  Style="{StaticResource MaterialDesignRadioButton}" Canvas.Left="10" Canvas.Top="28" Foreground="#FF007BAB" FontSize="16" Width="78"/>
-                        <DatePicker  Width="91" FontSize="14" IsEnabled="{Binding ElementName=RadioDay,Path=IsChecked}"  materialDesign:HintAssist.Hint="Дата"  Style="{StaticResource MaterialDesignFloatingHintDatePicker}" BorderBrush="#FF007BAB" Height="43" Canvas.Left="97" Canvas.Top="11"  />
-                        <RadioButton x:Name="RadioDays"  Content="Много дней"  Style="{StaticResource MaterialDesignRadioButton}" Canvas.Left="243" Canvas.Top="28" Foreground="#FF007BAB" FontSize="16" Width="114"/>
-                        <DatePicker  Width="91" FontSize="14" IsEnabled="{Binding ElementName=RadioDays,Path=IsChecked}"  materialDesign:HintAssist.Hint="Начало"  Style="{StaticResource MaterialDesignFloatingHintDatePicker}" BorderBrush="#FF007BAB" Height="43" Canvas.Left="362" Canvas.Top="11"  />
-                        <DatePicker  Width="91" FontSize="14" IsEnabled="{Binding ElementName=RadioDays,Path=IsChecked}"  materialDesign:HintAssist.Hint="Конец"  Style="{StaticResource MaterialDesignFloatingHintDatePicker}" BorderBrush="#FF007BAB" Height="43" Canvas.Left="472" Canvas.Top="11"  />
-                        <ComboBox BorderThickness="0,0,0,1" IsEnabled="{Binding ElementName=CheckOfissiant,Path=IsChecked}"  materialDesign:HintAssist.Hint="Найти" IsEditable="True" Width="200" Canvas.Left="734" Canvas.Top="27" Height="29" FontSize="15" BorderBrush="#FF007BAB">
-                            <ComboBoxItem Content="Максатбек Абдулхаят уулу" />
-                        </ComboBox>
-                        <CheckBox x:Name="CheckOfissiant"  IsChecked="False"  Content="Официант"  Style="{StaticResource MaterialDesignDarkCheckBox}" Canvas.Left="619" Canvas.Top="29" />
-                        <CheckBox x:Name="CheckStatus"  IsChecked="False"  Content="Поиск по статус"  Style="{StaticResource MaterialDesignDarkCheckBox}" Canvas.Left="10" Canvas.Top="80" Width="159" />
-                        <Button Padding="0" Background="#FF007BAB" Margin="0,0,35,0" Width="169" Height="35" Canvas.Left="799" Canvas.Top="115">
+                        <RadioButton Cursor="Hand" x:Name="RadioDay" Click="RadioDay_Click" Content="1 День"  Style="{StaticResource MaterialDesignRadioButton}" Canvas.Left="10" Canvas.Top="28" Foreground="#FF007BAB" FontSize="16" Width="78"/>
+                        <DatePicker ToolTip="" Cursor="Hand" x:Name="OneDate" SelectedDate="{Binding DateTimeForOneDay, UpdateSourceTrigger=PropertyChanged}" Width="91" FontSize="14" IsEnabled="{Binding ElementName=RadioDay,Path=IsChecked}"  materialDesign:HintAssist.Hint="Дата"  Style="{StaticResource MaterialDesignFloatingHintDatePicker}" BorderBrush="#FF007BAB" Height="43" Canvas.Left="97" Canvas.Top="11"  />
+                        <RadioButton Cursor="Hand" x:Name="RadioDays" Click="RadioDays_Click" Content="Много дней"  Style="{StaticResource MaterialDesignRadioButton}" Canvas.Left="243" Canvas.Top="28" Foreground="#FF007BAB" FontSize="16" Width="114"/>
+                        <DatePicker Cursor="Hand" x:Name="StartDate" SelectedDate="{Binding DateTimeForStartDay}" Width="91" FontSize="14" IsEnabled="{Binding ElementName=RadioDays,Path=IsChecked}"  materialDesign:HintAssist.Hint="Начало"  Style="{StaticResource MaterialDesignFloatingHintDatePicker}" BorderBrush="#FF007BAB" Height="43" Canvas.Left="362" Canvas.Top="11"  />
+                        <DatePicker Cursor="Hand" x:Name="SecondDate" SelectedDate="{Binding DateTimeForEndDay}" Width="91" FontSize="14" IsEnabled="{Binding ElementName=RadioDays,Path=IsChecked}"  materialDesign:HintAssist.Hint="Конец"  Style="{StaticResource MaterialDesignFloatingHintDatePicker}" BorderBrush="#FF007BAB" Height="43" Canvas.Left="472" Canvas.Top="11"  />
+
+                        <ComboBox Cursor="Hand" x:Name="weiterselekt" ItemsSource="{Binding Waters,UpdateSourceTrigger=PropertyChanged}" Text="{Binding WaiterProperties, UpdateSourceTrigger=PropertyChanged}" BorderThickness="0,0,0,1" IsEnabled="{Binding ElementName=CheckOfissiant,Path=IsChecked}"  materialDesign:HintAssist.Hint="Найти" IsEditable="True" Width="200" Canvas.Left="734" Canvas.Top="27" Height="29" FontSize="15" BorderBrush="#FF007BAB"/>
+
+                        <CheckBox Cursor="Hand" x:Name="CheckOfissiant"  IsChecked="False"  Content="Официант"  Style="{StaticResource MaterialDesignDarkCheckBox}" Canvas.Left="619" Canvas.Top="29" Checked="CheckOfissiant_Checked" />
+                        <CheckBox Cursor="Hand" Click="CheckStatus_Click" x:Name="CheckStatus"  IsChecked="False"  Content="Поиск по статусy"  Style="{StaticResource MaterialDesignDarkCheckBox}" Canvas.Left="10" Canvas.Top="80" Width="159" />
+                        <Button Padding="0" Background="#FF007BAB" Margin="0,0,35,0" Width="166" Height="40" Canvas.Left="587" Canvas.Top="110">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="ArchiveSearchOutline" Foreground="White" FontWeight="Bold" Width="20" Height="20" Margin="-2,0,0,0" VerticalAlignment="Center"/>
                                 <TextBlock Text="Покозать результат" Foreground="White" VerticalAlignment="Center" Margin="5,0,0,0"/>
@@ -47,10 +47,9 @@
                         </Button>
                         <Border IsEnabled="{Binding ElementName=CheckStatus,Path=IsChecked}" Canvas.Left="10" Canvas.Top="110" Height="45" BorderThickness="1" CornerRadius="2" BorderBrush="#FF007BAB">
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Canvas.Left="10" Canvas.Top="80">
-                                <RadioButton GroupName="status"  Content="Аннилированные чеки"  Style="{StaticResource MaterialDesignRadioButton}" Foreground="#FF007BAB" FontSize="16" Width="200" Margin="10,0"/>
-                                <RadioButton GroupName="status" Content="Гость ушел"  Style="{StaticResource MaterialDesignRadioButton}" Foreground="#FF007BAB" FontSize="16" Width="130" Margin="10,0"/>
-                                <RadioButton GroupName="status" Content="За счет заведания"  Style="{StaticResource MaterialDesignRadioButton}" Foreground="#FF007BAB" FontSize="16" Width="180" Margin="5,0"/>
-                                <RadioButton GroupName="status" Content="Ошибка официанта"  Style="{StaticResource MaterialDesignRadioButton}" Foreground="#FF007BAB" FontSize="16" Width="180" Margin="10,0"/>
+                                <RadioButton Click="RadioButton_Click" GroupName="status" Content="Гость ушел"  Style="{StaticResource MaterialDesignRadioButton}" Foreground="#FF007BAB" FontSize="16" Width="130" Margin="10,0"/>
+                                <RadioButton Click="RadioButton_Click_1" GroupName="status" Content="За счет заведания"  Style="{StaticResource MaterialDesignRadioButton}" Foreground="#FF007BAB" FontSize="16" Width="180" Margin="5,0"/>
+                                <RadioButton Click="RadioButton_Click_2" GroupName="status" Content="Ошибка официанта"  Style="{StaticResource MaterialDesignRadioButton}" Foreground="#FF007BAB" FontSize="16" Width="180" Margin="10,0"/>
                             </StackPanel>
                         </Border>
                     </Canvas>
@@ -115,6 +114,9 @@
                                     <DataGridTextColumn 
                                         Binding="{Binding Path=WaiterName }"
                                         Header="Официант"/>
+                                    <DataGridTextColumn 
+                                        Binding="{Binding Path=CheckSumm}"
+                                        Header="Сумма"/>
                                     <DataGridTextColumn 
                                         Binding="{Binding Path=Status }"
                                         Header="Статус"/>

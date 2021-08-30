@@ -1,4 +1,5 @@
 ﻿using AdminKafe.Date;
+using AdminKafe.Windows.PageMenu;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -962,7 +963,9 @@ namespace AdminKafe.Models
                 return result.ToList<object>();
             }
         }
-        public static List<object> GetAllCkeck()
+
+       
+        public static List<object> GetAll()
         {
             using (ApplicationContext db = new ApplicationContext())
             {
@@ -986,6 +989,151 @@ namespace AdminKafe.Models
                 return result.ToList<object>();
             }
         }
+
+
+        public static double countReturn(int id)
+        {
+            double returndouble = 0.0;
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                var result = db.Orders.Where(i => i.CheckId == id);
+                foreach (var item in result)
+                {
+                    returndouble += item.CountFood * countReturnfoof(item.FoodId); //
+                }
+                return returndouble;
+            }
+        }
+
+        public static double countReturnfoof(int FoodId)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                return db.Foods.Where(i => i.Id == FoodId).Select(i => i.Price).OrderBy(i => i).LastOrDefault();
+            }
+        }
+
+
+        public static List<object> GetAllCkeck(DateTime DateTimeForOneDay, DateTime DateTimeForTwoDay, DateTime DateTimeForTreeDay, string WaiterName = "")
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                var result = from check in db.Checks
+                             join table in db.Tables on check.TableId equals table.Id
+                             join waiter in db.Waiters on check.WaiterId equals waiter.Id
+                             join status in db.Status on check.Status equals status.Id
+                             /*where check.DateTimeCheck.Date == DateTimeForOneDay.Date*/
+                             select new
+                             {
+                                 Id = check.Id,
+                                 CheckCount = check.CheckCount,
+                                 CheckDate = check.DateTimeCheck,
+                                 TableName = table.Name,
+                                 WaiterName = waiter.Name,
+                                 GuestCount = check.GuestsCount,
+                                 Status = status.Name,
+                                 StatusID = status.Id,
+                                 CheckSumm = countReturn(check.Id) + (waiter.SalaryType.Equals("Service") ? check.GuestsCount * waiter.Salary : waiter.SalaryType.Equals("Percent") ? SummByProduct * waiter.Salary / 100 : 0),
+                             };
+
+                if (AllReport.StatusTrue == 0)
+                {
+                    if (AllReport.RadioCheck == 0)
+                    {
+                        if (AllReport.ComboChek == 0)
+                            return result.ToList<object>();
+                        if (AllReport.ComboChek == 1)
+                            return result.Where(i => i.WaiterName == WaiterName).ToList<object>();
+                    }
+                    if (AllReport.RadioCheck == 1)
+                    {
+                        if (AllReport.ComboChek == 0)
+                            return result.Where(i => i.CheckDate.Date == DateTimeForOneDay.Date).ToList<object>();
+                        if (AllReport.ComboChek == 1)
+                            return result.Where(i => i.CheckDate.Date == DateTimeForOneDay.Date && i.WaiterName == WaiterName).ToList<object>();
+                    }
+                    if (AllReport.RadioCheck == 2)
+                    {
+                        if (AllReport.ComboChek == 0)
+                        {
+                            return result.Where(i => i.CheckDate.Date >= DateTimeForTwoDay.Date && i.CheckDate.Date <= DateTimeForTreeDay.Date).ToList<object>();
+                        }
+                        if (AllReport.ComboChek == 1)
+                        {
+                            return result.Where(i => i.CheckDate.Date >= DateTimeForTwoDay.Date && i.CheckDate.Date <= DateTimeForTreeDay.Date && i.WaiterName == WaiterName).ToList<object>();
+                        }
+                    }
+                }
+                if (AllReport.StatusTrue == 1)
+                {
+                    if (AllReport.RadioCheck == 0)
+                    {
+                        if (AllReport.ComboChek == 0)
+                        {
+                            if (AllReport.RadioCheckStatus == 0)
+                                return result.ToList<object>();
+                            else
+                                return result.Where(i => i.StatusID == AllReport.RadioCheckStatus).ToList<object>();
+                        }
+                        if (AllReport.ComboChek == 1)
+                        {
+                            if (AllReport.RadioCheckStatus == 0)
+                                return result.Where(i => i.WaiterName == WaiterName).ToList<object>();
+                            else
+                                return result.Where(i => i.WaiterName == WaiterName && i.StatusID == AllReport.RadioCheckStatus).ToList<object>();
+                        }
+                    }
+                    if (AllReport.RadioCheck == 1)
+                    {
+                        if (AllReport.ComboChek == 0)
+                        {
+                            if (AllReport.RadioCheckStatus == 0)
+                                return result.Where(i => i.CheckDate.Date == DateTimeForOneDay.Date).ToList<object>();
+                            else
+                                return result.Where(i => i.CheckDate.Date == DateTimeForOneDay.Date && i.StatusID == AllReport.RadioCheckStatus).ToList<object>();
+                        }
+                        if (AllReport.ComboChek == 1)
+                        {
+                            if (AllReport.RadioCheckStatus == 0)
+                                return result.Where(i => i.CheckDate.Date == DateTimeForOneDay.Date && i.WaiterName == WaiterName).ToList<object>();
+                            else
+                                return result.Where(i => i.CheckDate.Date == DateTimeForOneDay.Date && i.WaiterName == WaiterName && i.StatusID == AllReport.RadioCheckStatus).ToList<object>();
+                        }
+                    }
+                    if (AllReport.RadioCheck == 2)
+                    {
+                        if (AllReport.ComboChek == 0)
+                        {
+                            if (AllReport.RadioCheckStatus == 0)
+                                return result.Where(i => i.CheckDate.Date >= DateTimeForTwoDay.Date && i.CheckDate.Date <= DateTimeForTreeDay.Date).ToList<object>();
+                            else
+                                return result.Where(i => i.CheckDate.Date >= DateTimeForTwoDay.Date && i.CheckDate.Date <= DateTimeForTreeDay.Date && i.StatusID == AllReport.RadioCheckStatus).ToList<object>();
+                        }
+                        if (AllReport.ComboChek == 1)
+                        {
+                            if (AllReport.RadioCheckStatus == 0)
+                                return result.Where(i => i.CheckDate.Date >= DateTimeForTwoDay.Date && i.CheckDate.Date <= DateTimeForTreeDay.Date).ToList<object>();
+                            else
+                                return result.Where(i => i.CheckDate.Date >= DateTimeForTwoDay.Date && i.CheckDate.Date <= DateTimeForTreeDay.Date && i.WaiterName == WaiterName && i.StatusID == AllReport.RadioCheckStatus).ToList<object>();
+                        }
+                    }
+                }
+                return result.ToList<object>();
+
+            }
+        }
+
+        public static List<string> GetAllWaiters()
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+
+                var result = db.Waiters.Select(w => w.Name);
+                return result.ToList<string>();
+
+            }
+        }
+
         /*ublic static Location GetLocationById(int id)
         {
             using (ApplicationContext db = new ApplicationContext())
