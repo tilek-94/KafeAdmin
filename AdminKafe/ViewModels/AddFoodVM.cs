@@ -143,13 +143,7 @@ namespace AdminKafe.ViewModels
                 AllDate = DateWorker.GetAllFood();
                 AllFoodMenu = DateWorker.GetAllFoodMenu();
             }).ContinueWith(t => IsLoading = false); 
-
-        }
-
-        
-       
-
-
+        }               
     }
 }
 
