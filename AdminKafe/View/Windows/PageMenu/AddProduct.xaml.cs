@@ -44,5 +44,11 @@ namespace AdminKafe.Windows.PageMenu
             Element4.Text = (DataGrid1.SelectedCells[4].Column.GetCellContent(item) as TextBlock).Text;
             Element5.Text = (DataGrid1.SelectedCells[5].Column.GetCellContent(item) as TextBlock).Text;
         }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            object item = DataGrid1.SelectedItem; //probably you find this object
+            DateWorker.AllId = Convert.ToInt32((DataGrid1.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text);
+        }
     }
 }

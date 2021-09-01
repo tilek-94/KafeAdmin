@@ -21,7 +21,7 @@
         </Grid.Effect>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="120"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
@@ -33,29 +33,34 @@
                 CommandParameter="{Binding ElementName=AddMenu}" >
             <materialDesign:PackIcon Kind="Close" Width="30" Height="30"  Foreground="White"/>
         </Button>
-        <StackPanel Margin="50,0,0,0" Grid.Row="1" Orientation="Horizontal"  >
-            <TextBox materialDesign:HintAssist.Hint="Введите названия менью" Background="White" 
+        <StackPanel Margin="50,20,0,0" Grid.Row="1" Orientation="Vertical"  >
+            <TextBox materialDesign:HintAssist.Hint="Введите названия менью" Background="White" HorizontalAlignment="Left"
                      BorderThickness="0,0,0,2" 
                     Height="40" Width="250"
                      Text="{Binding Name}"
                      BorderBrush="#FF007BAB" 
-                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"
                       FontSize="14" Foreground="#007bab" CaretBrush="#FF007BAB" />
-
-
-
-            <Button Command="{Binding MenuFoodCommand}"  Height="35" Margin="20,20,0,0" Style="{StaticResource MaterialDesignRaisedLightButton}"
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,20,0" VerticalAlignment="Center">
+                <Button Command="{Binding EditCommand}"  Height="35" Margin="5,20,0,0" Style="{StaticResource MaterialDesignRaisedLightButton}"
 Background="#007bab" Width="100" HorizontalAlignment="Left"
     materialDesign:ButtonAssist.CornerRadius="5" >
 
-                <TextBlock Text="Добавить" Foreground="White"/>
-            </Button>
+                    <TextBlock Text="Изменить" Foreground="White"/>
+                </Button>
+                <Button Command="{Binding MenuFoodCommand}"  Height="35" Margin="5,20,0,0" Style="{StaticResource MaterialDesignRaisedLightButton}"
+Background="#007bab" Width="100" HorizontalAlignment="Left"
+    materialDesign:ButtonAssist.CornerRadius="5" >
+
+                    <TextBlock Text="Добавить" Foreground="White"/>
+                </Button>
+            </StackPanel>
         </StackPanel>
 
         <DataGrid  x:Name="dbGrid"
                     Grid.Row="2"
                    FontSize="13"
-                   ItemsSource="{Binding AllFoodMenu, UpdateSourceTrigger=PropertyChanged}"
+                   ItemsSource="{Binding AllFoodMenu, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedFood1,UpdateSourceTrigger=PropertyChanged}"
                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{DynamicResource grid_xml}" IsReadOnly="True"  Margin="0,8,0,0"  CanUserAddRows="False" ColumnHeaderStyle="{DynamicResource hederstyle}"  VerticalScrollBarVisibility="Auto"  HeadersVisibility="Column"
                    AutoGenerateColumns="False" >
             <DataGrid.Columns>
@@ -79,7 +84,7 @@ Background="#007bab" Width="100" HorizontalAlignment="Left"
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button
-                                       Command="{Binding Path=DataContext.DeleteTableCommand,       
+                                       Command="{Binding Path=DataContext.FoodDeleteCommand,       
  RelativeSource= {RelativeSource FindAncestor,
   AncestorType={x:Type DataGrid}}}"
                                         Background="{x:Null}" Width="100"  BorderThickness="0,0,0,0" Cursor="Hand">

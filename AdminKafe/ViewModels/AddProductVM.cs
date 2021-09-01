@@ -13,9 +13,12 @@ namespace AdminKafe.ViewModels
 {
     public class AddProductVM : AbstractClass<Product>, ICommandMethod
     {
-        
+        public ICommand DeleteSklad { get; set; }
+        public ICommand EditPR { get; set; }
         public AddProductVM()
         {
+            DeleteSklad=new LambdaCommand(DeleteMethodSklad, CanCloseApplicationExecat);
+            EditPR=new LambdaCommand(EditProduct, CanCloseApplicationExecat);
             CreateCommand = new LambdaCommand(CreateMethod, CanCloseApplicationExecat);
             DeleteCommand = new LambdaCommand(DeleteMethod, CanCloseApplicationExecat);
             CreatMenuCommand = new LambdaCommand(AddMenuMethod, CanCloseApplicationExecat);
@@ -114,7 +117,14 @@ namespace AdminKafe.ViewModels
             set => Set(ref allProductSkladItog, value);
         }
 
-        private DateTime allProductSkladDateDo = DateTime.Now.AddDays(-7);
+        private double allProcessedItog;
+        public double AllProcessedItog
+        {
+            get => allProcessedItog;
+            set => Set(ref allProcessedItog, value);
+        }
+
+        private DateTime allProductSkladDateDo = DateTime.Now.AddDays(-1);
         public DateTime AllProductSkladDateDo
         {
             get => allProductSkladDateDo;
@@ -137,6 +147,18 @@ namespace AdminKafe.ViewModels
                 Set(ref allProductSearchText, value);
                 AllProductSklad = DateWorker.GetAllProductSclad2(AllProductSkladDateDo, AllProductSkladDatePosle, AllProductSearchText);
                 AllProductSkladItog = DateWorker.SummByProduct;
+            }
+        }
+
+        private string allProcessedFoods;
+        public string AllProcessedFoods
+        {
+            get => allProcessedFoods;
+            set
+            {
+                Set(ref allProcessedFoods, value);
+                ProductList = DateWorker.GetAllProductRecipes(AllProductSkladDateDo, AllProductSkladDatePosle, AllProcessedFoods);
+                allProcessedItog = DateWorker.SummServices;
             }
         }
 
@@ -164,6 +186,22 @@ namespace AdminKafe.ViewModels
                     default:
                         AllProductSkladDateDo = DateTime.Now;
                         break;
+                }
+            }
+        }
+
+        private Product _SelectedDateSklad;
+        public Product SelectedDateSklad
+        {
+            get => _SelectedDateSklad;
+            set
+            {
+                Set(ref _SelectedDateSklad, value);
+                if (_SelectedDateSklad!=null)
+                {
+                    Name = _SelectedDateSklad.Name;
+                    SelectedComboboxText = _SelectedDateSklad.Type;
+                    Note = _SelectedDateSklad.Note;
                 }
             }
         }
@@ -206,6 +244,7 @@ namespace AdminKafe.ViewModels
                 result = DateWorker.CreateReceiptGoods(DateTimeReceiptGoods, Count, Price, SelectedProduct);
                 Count = 0;
                 Price = 0;
+                SelectedProduct = null;
                 LoadAllDate();
             }
             LoadAllDate();
@@ -214,11 +253,11 @@ namespace AdminKafe.ViewModels
         }
         public void AddMenuMethod(object p)
         {
-            result = "Запольните поля ";
+            result = "Запольните поля: ";
 
             if (Name == null || Name.Replace(" ", "").Length == 0)
             {
-                result += "Ф.И.О, ";
+                result += "продукт ";
             }
             else if (SelectedComboboxText == null || SelectedComboboxText.Replace(" ", "").Length == 0)
             {
@@ -227,7 +266,8 @@ namespace AdminKafe.ViewModels
             else
             {
                 result = DateWorker.CreateProduct(Name, SelectedComboboxText,Note);
-                Name = string.Empty;               
+                Name = string.Empty;
+                SelectedComboboxText = "";
                 Note = 0;               
             }
             LoadAllDateMenu();
@@ -243,6 +283,21 @@ namespace AdminKafe.ViewModels
                 if (x == 1)
                 {
                     result = DateWorker.DeleteProduct(SelectedDate);
+                    LoadAllDateMenu();
+                    LoadAllDate();
+                }
+            };
+            mv.ShowDialog();
+        }
+        public void DeleteMethodSklad(object p)
+        {
+            result = "";
+            MessageWindow mv = new MessageWindow("Вы уеронно хотите удалить?");
+            mv._mess += x =>
+            {
+                if (x == 1)
+                {
+                    result = DateWorker.DeleteProductSklad();
                     LoadAllDate();
                 }
             };
@@ -277,7 +332,8 @@ namespace AdminKafe.ViewModels
         {
             await Task.Run(() =>
             {
-                ProductList = DateWorker.GetAllProductRecipes();
+                ProductList = DateWorker.GetAllProductRecipes(AllProductSkladDateDo, AllProductSkladDatePosle);
+                AllProcessedItog = DateWorker.SummServices;
             });
 
         }
@@ -308,6 +364,16 @@ namespace AdminKafe.ViewModels
                 
             });
         }        
-        
+        private void AllProcessedItogMetod(object o)
+        {
+            LoadAllDateProduct();
+        }
+        private void EditProduct(object o)
+        {
+            result = DateWorker.EditProduct(Name, SelectedComboboxText,Note);
+            OpenOkMethod(result + "!");
+            LoadAllDate();
+            LoadAllDateMenu();
+        }
     }
 }

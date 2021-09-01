@@ -16,12 +16,15 @@ namespace AdminKafe.ViewModels
     public class AddFoodVM : AbstractClass<Food>, ICommandMethod
     {
         public ICommand MenuFoodCommand { get; set; }
+        public ICommand FoodDeleteCommand { get; set; }
         public AddFoodVM()
         {
             CreateCommand = new LambdaCommand(CreateMethod, CanCloseApplicationExecat);
+            EditCommand = new LambdaCommand(EditMethod, CanCloseApplicationExecat);
             DeleteCommand = new LambdaCommand(DeleteMethod, CanCloseApplicationExecat);
            ImgSourceCommand = new LambdaCommand(ImgSourceMethod, CanCloseApplicationExecat);
             MenuFoodCommand = new LambdaCommand(AddMenuFoodMethod, CanCloseApplicationExecat);
+            FoodDeleteCommand = new LambdaCommand(DeleteFoodCategori, CanCloseApplicationExecat);
             //Task.WhenAll(LoadAllDate1()).ContinueWith(t => IsLoading = false);
         }
         #region Reciep
@@ -46,6 +49,20 @@ namespace AdminKafe.ViewModels
         {
             get => _SelectedFood;
             set => Set(ref _SelectedFood, value);
+        }
+
+        private Food _SelectedFood1;
+        public Food SelectedFood1
+        {
+            get => _SelectedFood1;
+            set
+            {
+                Set(ref _SelectedFood1, value);
+                if (SelectedFood1!=null)
+                {
+                    Name = SelectedFood1.Name;
+                }
+            }
         }
 
         private Product _SelectedProduct;
@@ -131,7 +148,11 @@ namespace AdminKafe.ViewModels
 
         public void EditMethod(object p)
         {
-            throw new NotImplementedException();
+            result = DateWorker.EditCategoriName(SelectedFood1,Name);
+            MessageWindowOk f = new MessageWindowOk(result);
+            f.ShowDialog();
+            Name = "";
+            LoadAllDate();
         }
 
      
@@ -143,13 +164,22 @@ namespace AdminKafe.ViewModels
                 AllDate = DateWorker.GetAllFood();
                 AllFoodMenu = DateWorker.GetAllFoodMenu();
             }).ContinueWith(t => IsLoading = false); 
-
-        }
-
+        }   
         
-       
-
-
+        private void DeleteFoodCategori(object o)
+        {
+            MessageWindow mv = new MessageWindow("Вы уеронно хотите удалить?");
+            mv._mess += x =>
+            {
+                if (x == 1)
+                {
+                    result = DateWorker.DeleteCategoriName(SelectedFood1);
+                    Name = "";
+                    LoadAllDate();
+                }
+            };
+            mv.ShowDialog();
+        }
     }
 }
 
