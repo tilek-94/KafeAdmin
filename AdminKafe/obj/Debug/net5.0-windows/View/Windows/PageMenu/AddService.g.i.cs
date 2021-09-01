@@ -83,7 +83,7 @@ namespace AdminKafe.Windows.PageMenu {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/AdminKafe;V1.0.0.0;component/view/windows/pagemenu/addservice.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/AdminKafe;component/view/windows/pagemenu/addservice.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\..\View\Windows\PageMenu\AddService.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
