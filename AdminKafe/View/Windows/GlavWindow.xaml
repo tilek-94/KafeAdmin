@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:AdminKafe.Windows"
         xmlns:VM="clr-namespace:AdminKafe.ViewModels"
         mc:Ignorable="d"
-    Title="GlavWindow" Height="700" Width="1350" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen" Background="{x:Null}">
+    Title="GlavWindow" Height="700" Width="1350" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen" WindowState="Maximized" Background="{x:Null}">
     <Window.DataContext>
         <VM:AdminClassVM/>
     </Window.DataContext>

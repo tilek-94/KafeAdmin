@@ -16,7 +16,20 @@ namespace AdminKafe.Models
         public static int AllId = 0;
 
         #region  AddProduct and ByProduct
-
+        public static string EditProduct(string name, string type, double note)
+        {
+            string result;
+            using (ApplicationContext db = new ApplicationContext())
+            {    
+                Product pr = db.Products.FirstOrDefault(d => d.Id == AllId);
+                pr.Name = name;
+                pr.Type = type;
+                pr.Note = note;
+                db.SaveChanges();
+                result = $"Сделанно изменение!!";
+            }
+            return result;
+        }
         public static int GetCountReceiptgoods(string name)
         {
             using (ApplicationContext db = new ApplicationContext())
@@ -220,6 +233,24 @@ namespace AdminKafe.Models
                 return " ";
             }
         }
+        public static string DeleteProductSklad()
+        {
+            try
+            {
+                string result = "Такого комната не существует!";
+                using (ApplicationContext db = new ApplicationContext())
+                {
+                    ReceiptGoods rec = db.ReceiptGoods.FirstOrDefault(u => u.Id == AllId);
+                    db.ReceiptGoods.Remove(rec);
+                    db.SaveChanges();
+                }
+                return result;
+            }
+            catch
+            {
+                return " ";
+            }
+        }
         public static string EditProduct(DateTime date, string massa, int count, double prise)
         {
             string result = "Такого отдел не существует!!";
@@ -234,10 +265,10 @@ namespace AdminKafe.Models
             }
             return result;
         }
-        public static List<object> GetAllProductRecipes()
+        public static List<object> GetAllProductRecipes(DateTime dateDo, DateTime datePosle, string name = "")
         {
             using (ApplicationContext db = new ApplicationContext())
-            {                  
+            {
                 var result = (from recipe in db.Recipes
                               join product in db.Products on recipe.ProductId equals product.Id
                               join repgods in db.ReceiptGoods on recipe.ProductId equals repgods.ProductId
@@ -247,13 +278,26 @@ namespace AdminKafe.Models
                               {
                                   Id = product.Id,
                                   ProductName = product.Name,
-                                  CheckDate=check.DateTimeCheck.Date,
-                                  ProductUnit= product.Type,
-                                  ProductPrice=repgods.Price,
-                                  ProductCount = /*(db.Orders.Where(i => i.FoodId == recipe.FoodId).Sum(i => i.CountFood) * *//*recipe.CountPoduct*//* db.Recipes.Where(i => i.ProductId == product.Id).Sum(i => i.CountPoduct)) +" "+ recipe.Unit,*/  recipe.CountPoduct*orders.CountFood,
-                                  ProductSumm = repgods.Price * recipe.CountPoduct * orders.CountFood  
-                              })/*.AsEnumerable().GroupBy(i=>i.ProductName)*/;        
-                return result.ToList<object>();
+                                  CheckDate = check.DateTimeCheck.Date,
+                                  ProductUnit = product.Type,
+                                  ProductPrice = repgods.Price,
+                                  ProductCount = recipe.CountPoduct * orders.CountFood,
+                                  ProductSumm = repgods.Price * recipe.CountPoduct * orders.CountFood
+                              });
+
+                var result2 = (from s in result
+                              group s by new { s.Id, s.ProductName, s.CheckDate, s.ProductUnit, s.ProductPrice } into g
+                              select new
+                              {
+                                  Id = g.Key.Id,
+                                  CheckDate = g.Key.CheckDate,
+                                  ProductPrice = g.Key.ProductPrice,
+                                  ProductName = g.Key.ProductName,
+                                  ProductCount = g.Sum(i => i.ProductCount) + " " + g.Key.ProductUnit,
+                                  ProductSumm = g.Sum(i => i.ProductCount) * g.Key.ProductPrice
+                              }).Where(u =>/* u.CheckDate <= datePosle.Date && u.CheckDate >= dateDo.Date && */u.ProductName.Contains(name));
+                SummServices = result2.Sum(u => u.ProductSumm);
+                return result2.ToList<object>();
             }
         }
         #endregion  AddProduct and ByProduct
@@ -702,6 +746,37 @@ namespace AdminKafe.Models
             {
                 return " ";
             }
+        }
+        public static string EditCategoriName(Food food, string name)
+        {
+            string result = "Выбери в первую очередь!";
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                if (food != null)
+                {
+                Food food1 = db.Foods.FirstOrDefault(d => d.Id == food.Id);
+                food1.Name = name;
+                db.SaveChanges();
+                result = $"Сделанно изменение!!";
+                }
+            }
+            return result;
+        }
+
+        public static string DeleteCategoriName(Food food)
+        {
+            string result = "  ";
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                if (food != null)
+                {
+                    Food f = db.Foods.FirstOrDefault(u=>u.Id==food.Id);
+                    db.Foods.Remove(f);
+                    db.SaveChanges();
+                    result = $"Сделанно изменение!!";
+                }
+            }
+            return result;
         }
 
         /*
