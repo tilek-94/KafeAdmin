@@ -250,7 +250,6 @@ D:\Project\KK\Жаны репозторийге киргизилген\KafeAdmin
 D:\Project\KK\Жаны репозторийге киргизилген\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\ref\AdminKafe.dll
 D:\Project\KK\Жаны репозторийге киргизилген\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\AdminKafe.pdb
 D:\Project\KK\Жаны репозторийге киргизилген\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\AdminKafe.genruntimeconfig.cache
-D:\Project\KK\New\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\AdminKafe.csproj.AssemblyReference.cache
 D:\Project\KK\New\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\View\Windows\AddKafeName.g.cs
 D:\Project\KK\New\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\View\Windows\AddMenuFoodWindow.g.cs
 D:\Project\KK\New\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\View\Windows\AddNewLogin.g.cs
