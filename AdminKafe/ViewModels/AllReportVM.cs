@@ -17,7 +17,9 @@ namespace AdminKafe.ViewModels
             CreateCommand = new LambdaCommand(CreateMethod, CanCloseApplicationExecat);
             DeleteCommand = new LambdaCommand(DeleteMethod, CanCloseApplicationExecat);
             ShowWindowCommand = new LambdaCommand(ShowWindowMethod, CanCloseApplicationExecat);
-           
+            AllObjectDate = DateWorker.GetAll();
+            LoadAllWaters();
+            LoadAllBy();
         }
         #region WaiterProperties
 
@@ -74,6 +76,7 @@ namespace AdminKafe.ViewModels
             set
             {
                 Set(ref _WaiterProperties, value);
+                LoadAllDateWithDate();
             }
         }
 
@@ -84,6 +87,42 @@ namespace AdminKafe.ViewModels
             set
             {
                 Set(ref _DateTimeProperties, value);
+            }
+        }
+
+        private DateTime _DateTimeForOneDay = DateTime.Now;
+        public DateTime DateTimeForOneDay
+        {
+            get => _DateTimeForOneDay;
+            set
+            {
+                Set(ref _DateTimeForOneDay, value);
+                LoadAllDateWithDate();
+
+            }
+        }
+
+        private DateTime _DateTimeForStartDay = DateTime.Now.Date;
+        public DateTime DateTimeForStartDay
+        {
+            get => _DateTimeForStartDay;
+            set
+            {
+                Set(ref _DateTimeForStartDay, value);
+                LoadAllDateWithDate();
+
+            }
+        }
+
+        private DateTime _DateTimeForEndDay = DateTime.Now.Date;
+        public DateTime DateTimeForEndDay
+        {
+            get => _DateTimeForEndDay;
+            set
+            {
+                Set(ref _DateTimeForEndDay, value);
+                LoadAllDateWithDate();
+
             }
         }
 
@@ -136,6 +175,17 @@ namespace AdminKafe.ViewModels
                 
             }
         }
+
+        private List<object> _OrdersPropertyReport;
+        public List<object> OrdersPropertyReport
+        {
+            get => _OrdersPropertyReport;
+            set
+            {
+                Set(ref _OrdersPropertyReport, value);
+
+            }
+        }
         #endregion WaiterProperties
 
         public void CreateMethod(object p)
@@ -163,13 +213,23 @@ namespace AdminKafe.ViewModels
         {
             throw new NotImplementedException();
         }
+        public  async void LoadAllBy(string name = "")
+        {
+            IsLoading = true;
+            await Task.Run(() =>
+            {
+                OrdersPropertyReport = DateWorker.GetAllByFood();
+                // AllLocation = DateWorker.GetAllLocation();
+            }).ContinueWith(t => IsLoading = false);
+
+        }
 
         public override async void LoadAllDate(string name = "")
         {
             IsLoading = true;
             await Task.Run(() =>
             {
-                AllObjectDate = DateWorker.GetAllCkeck();
+                AllObjectDate = DateWorker.GetAll();
                // AllLocation = DateWorker.GetAllLocation();
             }).ContinueWith(t => IsLoading = false);
 
@@ -189,6 +249,25 @@ namespace AdminKafe.ViewModels
                 SumCheck = DateWorker.SummByProduct;
                 SummService = DateWorker.SummServices;
             });
+        }
+
+
+        public async void LoadAllDateWithDate()
+        {
+            await Task.Run(() =>
+            {
+                AllObjectDate = DateWorker.GetAllCkeck(DateTimeForOneDay, DateTimeForStartDay, DateTimeForEndDay, WaiterProperties);
+            });
+
+        }
+        public async void LoadAllWaters()
+        {
+            await Task.Run(() =>
+            {
+                Waters = DateWorker.GetAllWaiters();
+                // AllLocation = DateWorker.GetAllLocation();
+            });
+
         }
     }
 }

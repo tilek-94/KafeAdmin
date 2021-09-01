@@ -192,7 +192,7 @@ namespace AdminKafe.ViewModels
             }
             else 
             {
-                result = DateWorker.CreateMenuFood(NameMenuFood);
+                result = DateWorker.CreateMenuFood(NameMenuFood, ImgSourse);
                 NameMenuFood = string.Empty;
                 LoadFoodAsync();
             }

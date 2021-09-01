@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using System.IO;
 using System.Drawing;
+using Image = System.Windows.Controls.Image;
 
 namespace AdminKafe.ViewModels
 {
@@ -76,6 +77,13 @@ namespace AdminKafe.ViewModels
         {
             get => _AllDate;
             set => Set(ref _AllDate, value);
+        }
+
+        private List<string> _Waters;
+        public List<string> Waters
+        {
+            get => _Waters;
+            set => Set(ref _Waters, value);
         }
 
         private List<T> _SeachAllDate;
