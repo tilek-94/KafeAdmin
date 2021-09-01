@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Us/kAcsOq9CilMP4cp7Nkiw48g3nWxIYtMc+G1NrnmcLvMKGRb1vfpljjsOb82g6e+PKaKb/GtLnWwrxqA71pg==",
+  "dgSpecHash": "NmfTUmRA3QAef6Pv3jA+ElLNqLWOwNTGCHcTwthX2Ipsb6b4j1a8whMKJ+xQHbPFM4aJz/uVMSFc+RdIkCQM8w==",
   "success": true,
-  "projectFilePath": "D:\\Project\\KK\\Жаны репозторийге киргизилген\\KafeAdmin\\AdminKafe\\AdminKafe.csproj",
+  "projectFilePath": "D:\\Project\\KK\\New\\KafeAdmin\\AdminKafe\\AdminKafe.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\fontawesome.wpf\\4.7.0.9\\fontawesome.wpf.4.7.0.9.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\materialdesigncolors\\2.0.1\\materialdesigncolors.2.0.1.nupkg.sha512",

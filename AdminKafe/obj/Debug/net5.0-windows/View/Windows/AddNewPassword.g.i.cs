@@ -56,7 +56,7 @@ namespace AdminKafe.View.Windows {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/AdminKafe;component/view/windows/addnewpassword.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/AdminKafe;V1.0.0.0;component/view/windows/addnewpassword.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\View\Windows\AddNewPassword.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
