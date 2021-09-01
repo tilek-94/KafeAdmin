@@ -59,7 +59,7 @@ namespace AdminKafe.ViewModels
         }
 
 
-        private string _SelectedText;
+        private string _SelectedText="123";
         public string SelectedText
         {
             get => _SelectedText;
@@ -213,7 +213,8 @@ namespace AdminKafe.ViewModels
         public ICommand BackPage { get; set; }
         public ICommand ImgSourceCommand { get; set; }
         public ICommand ShowOtchet { get; set; }
-
+        public ICommand SelectedEditCommand { get; set; }
+        public ICommand SelectedEdit { get; set; }
         public bool CanCloseApplicationExecat(object p) => true;
         public void OpenOkCancelMethod(string s)
         {

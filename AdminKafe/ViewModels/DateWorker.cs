@@ -763,6 +763,22 @@ namespace AdminKafe.Models
             return result;
         }
 
+        public static string Edit(int IdFood, string Name, double Price, Food foody, int cook, byte[] img)
+        {
+            string result = "";
+            using (ApplicationContext connetc = new ApplicationContext())
+            {
+
+                Food us = connetc.Foods.FirstOrDefault(t => t.Id == IdFood);
+                us.Name = Name;
+                us.Price = Price;
+                us.ParentCategoryId = foody.Id;
+                us.Image = img;
+                us.isCook = cook;
+                connetc.SaveChanges();
+                return result;
+            }
+        }
         public static string DeleteCategoriName(Food food)
         {
             string result = "  ";
@@ -913,6 +929,32 @@ namespace AdminKafe.Models
 
                     result = "Сделанно!!";
                 }
+                return result;
+            }
+        }
+        public static string EditRecieps(int ID, string SelectedTextFood, string SelectedTextProduct, string SelectedTextGram, double CountRecept)
+        {
+            string result = "";
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                var res = db.Recipes.Where(t => t.Id == ID).Select(t => new
+                {
+                    Id = t.Id,
+                    FoodId = db.Foods.Where(f => f.Name == SelectedTextFood).Select(f => f.Id).FirstOrDefault(),
+                    ProductId = db.Products.Where(f => f.Name == SelectedTextProduct).Select(f => f.Id).FirstOrDefault(),
+                    /* Unit = SelectedTextGram,
+                     CountPoduct = CountRecept*/
+                }).ToList();
+
+                Reciep us = db.Recipes.FirstOrDefault(t => t.Id == ID);
+                us.FoodId = res.Select(t => t.FoodId).FirstOrDefault();
+                us.ProductId = res.Select(t => t.ProductId).FirstOrDefault();
+                us.Unit = SelectedTextGram;
+                us.CountPoduct = CountRecept;
+
+                /*us.Unit = res.Select(t => t.Unit).FirstOrDefault();
+                us.CountPoduct = res.Select(t => t.CountPoduct).FirstOrDefault();*/
+                db.SaveChanges();
                 return result;
             }
         }
