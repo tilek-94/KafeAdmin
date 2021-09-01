@@ -1,7 +1,9 @@
-﻿using AdminKafe.Models;
+﻿using AdminKafe.Date;
+using AdminKafe.Models;
 using AdminKafe.View.Windows;
 using CV19.Infrastructure.Commands;
 using System;
+using System.Windows;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -25,11 +27,19 @@ namespace AdminKafe.ViewModels
            ImgSourceCommand = new LambdaCommand(ImgSourceMethod, CanCloseApplicationExecat);
             MenuFoodCommand = new LambdaCommand(AddMenuFoodMethod, CanCloseApplicationExecat);
             FoodDeleteCommand = new LambdaCommand(DeleteFoodCategori, CanCloseApplicationExecat);
+            SelectedEdit = new LambdaCommand(EditMethodselect, CanCloseApplicationExecat);
+            SelectedEditCommand = new LambdaCommand(SelectedEditMethod, CanCloseApplicationExecat);
             //Task.WhenAll(LoadAllDate1()).ContinueWith(t => IsLoading = false);
         }
         #region Reciep
 
-       
+        private string _SelectedIsCook;
+        public string SelectedIsCook
+        {
+            get { return _SelectedIsCook; }
+            set => Set(ref _SelectedIsCook, value);
+        }
+
         private string _Unit;
         public string Unit
         {
@@ -73,7 +83,7 @@ namespace AdminKafe.ViewModels
             {
                 Set(ref _SelectedProduct, value);
                 if (_SelectedProduct != null)
-                    SelectedText = _SelectedProduct.Type;
+                   SelectedText = _SelectedProduct.Type;
             }
         }
         private List<Food> _AllFoodMenu;
@@ -83,7 +93,14 @@ namespace AdminKafe.ViewModels
             get => _AllFoodMenu;
             set => Set(ref _AllFoodMenu, value);
         }
-        
+
+        private string _IsCok;
+
+        public string IsCok
+        {
+            get { return _IsCok; }
+            set => Set( ref _IsCok, value );
+        }
 
         #endregion Reciept
 
@@ -155,8 +172,67 @@ namespace AdminKafe.ViewModels
             Name = "";
             LoadAllDate();
         }
+        public void SelectedEditMethod(object p)
+        {
+            PropertyInfo property = SelectedDateObject.GetType().GetProperty("Id");
+            int Id = (int)(property.GetValue(SelectedDateObject, null));
+            SelectedEditM(Id);
+        }
+        int Id = 0;
+        public async void SelectedEditM(int tableId)
+        {
+            await Task.Run(() => {
+                try
+                {
+                    Id = 0;
+                    using (ApplicationContext db = new ApplicationContext())
+                    {
+                        var tab = db.Foods.Where(t => t.Id == tableId).Select(t => new {
+                            Id = t.Id,
+                            Name = t.Name,
+                            Price = t.Price,
+                            Image = t.Image,
+                            ParentCotegory = db.Foods.Where(f => f.Id == t.ParentCategoryId).Select(f => f.Name).FirstOrDefault(),
+                            IsCook = t.isCook
+                        }).ToList();
+                        Id = tab.Select(t => t.Id).FirstOrDefault();
+                        Name = tab.Select(t => t.Name).FirstOrDefault();
+                        Price = tab.Select(t => t.Price).FirstOrDefault();
+                        ImgSourse = tab.Select(t => t.Image).FirstOrDefault();
+                        SelectedText = tab.Select(t => t.ParentCotegory).FirstOrDefault();
+                        if (tab.Select(t => t.IsCook).FirstOrDefault() == 0)
+                            IsCok = "Делается";
+                        else if(tab.Select(t => t.IsCook).FirstOrDefault() == 2)
+                            IsCok = "Грамм";
+                        else
+                            IsCok = "Не делается";
+                    }
 
-     
+                }
+                catch
+                {
+
+                }
+
+            });
+
+        }
+
+        public void EditMethodselect(object p)
+        {
+            if (SelectedIsCook == "Делается")
+                result = DateWorker.Edit(Id, Name, Price, SelectedFood, 0, ImgSourse);
+            else if (SelectedIsCook == "Грамм")
+                result = DateWorker.Edit(Id, Name, Price, SelectedFood, 2, ImgSourse);
+            else
+                result = DateWorker.Edit(Id, Name, Price, SelectedFood, 1, ImgSourse);
+            Name = string.Empty;
+            Price = 0.0;
+            ImgSourse = null;
+
+            LoadAllDate();
+        }
+
         public override async void LoadAllDate(string name = "")
         {
             IsLoading = true;

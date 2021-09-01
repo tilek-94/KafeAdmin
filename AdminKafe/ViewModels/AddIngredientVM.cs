@@ -1,9 +1,11 @@
-﻿using AdminKafe.Models;
+﻿using AdminKafe.Date;
+using AdminKafe.Models;
 using AdminKafe.View.Windows;
 using CV19.Infrastructure.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,6 +17,8 @@ namespace AdminKafe.ViewModels
         {
             CreateCommand = new LambdaCommand(CreateMethod, CanCloseApplicationExecat);
             DeleteCommand = new LambdaCommand(DeleteMethod, CanCloseApplicationExecat);
+            EditCommand = new LambdaCommand(EditMethod, CanCloseApplicationExecat);
+            SelectedEditCommand = new LambdaCommand(SelectedEditMethod, CanCloseApplicationExecat);
             LoadAllFood(); LoadAllProduct();
         }
         #region Reciep
@@ -70,6 +74,27 @@ namespace AdminKafe.ViewModels
         }
 
 
+        private string _SelectedTextFood;
+        public string SelectedTextFood
+        {
+            get { return _SelectedTextFood; }
+            set => Set(ref _SelectedTextFood, value);
+
+        }
+
+        private string _SelectedTextProduct;
+        public string SelectedTextProduct
+        {
+            get { return _SelectedTextProduct; }
+            set => Set(ref _SelectedTextProduct, value);
+        }
+
+        private string _SelectedTextGram;
+        public string SelectedTextGram
+        {
+            get { return _SelectedTextGram; }
+            set => Set(ref _SelectedTextGram, value);
+        }
         #endregion Reciept
 
         public void CreateMethod(object p)
@@ -106,7 +131,47 @@ namespace AdminKafe.ViewModels
 
         public void EditMethod(object p)
         {
-            throw new NotImplementedException();
+            result = DateWorker.EditRecieps(Id, SelectedTextFood, SelectedTextProduct, SelectedTextGram, CountRecept);
+
+            LoadAllDate();
+        }
+
+        public void SelectedEditMethod(object p)
+        {
+            PropertyInfo property = SelectedDateObject.GetType().GetProperty("Id");
+            int Id = (int)(property.GetValue(SelectedDateObject, null));
+            SelectedEdit(Id);
+        }
+        int Id = 0;
+        public async void SelectedEdit(int tableId)
+        {
+            await Task.Run(() =>
+            {
+                try
+                {
+                    Id = 0;
+                    using (ApplicationContext db = new ApplicationContext())
+                    {
+                        var result = db.Recipes.Where(t => t.Id == tableId).Select(t => new {
+                            Id = t.Id,
+                            FoodId = db.Foods.Where(f => f.Id == t.FoodId).Select(f => f.Name).FirstOrDefault(),
+                            ProductId = db.Products.Where(f => f.Id == t.ProductId).Select(f => f.Name).FirstOrDefault(),
+                            Unit = t.Unit,
+                            CountPoduct = t.CountPoduct
+                        }).ToList();
+                        Id = result.Select(t => t.Id).FirstOrDefault();
+                        SelectedTextFood = result.Select(t => t.FoodId).FirstOrDefault();
+                        SelectedTextProduct = result.Select(t => t.ProductId).FirstOrDefault();
+                        SelectedTextGram = result.Select(t => t.Unit).FirstOrDefault();
+                        CountRecept = result.Select(t => t.CountPoduct).FirstOrDefault();
+                    }
+                }
+                catch
+                {
+
+                }
+            });
+
         }
 
         public override async void LoadAllDate(string name = "")
