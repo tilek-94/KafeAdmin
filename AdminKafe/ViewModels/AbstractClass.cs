@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using System.IO;
 using System.Drawing;
+using Image = System.Windows.Controls.Image;
 
 namespace AdminKafe.ViewModels
 {

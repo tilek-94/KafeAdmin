@@ -65,10 +65,6 @@
                         Width="193" 
                          Height="129" Source="{Binding ImgSourse,UpdateSourceTrigger=PropertyChanged,TargetNullValue={StaticResource DefoultImage1}}" Canvas.Left="41" Canvas.Top="29" Stretch="Fill"/>
 
-                    <Image x:Name="imgBox2"
-                        
-                        Width="193" Height="129" Source="{Binding ImgSourse, UpdateSourceTrigger=PropertyChanged}" Canvas.Left="641" Canvas.Top="29" Stretch="Fill"/>
-
                     <materialDesign:PackIcon Kind="Menu" Canvas.Left="279" Canvas.Top="46" Height="24" Width="30" Foreground="{DynamicResource IconColor}" />
                     <TextBox  Text="{Binding Price, UpdateSourceTrigger=PropertyChanged}"
                         materialDesign:HintAssist.Hint="Цена блюда"  materialDesign:TextFieldAssist.HasClearButton="True" Width="260" BorderBrush="#FF007BAB" Style="{StaticResource MaterialDesignFloatingHintTextBox}" CaretBrush="#FF007BAB" Canvas.Left="317" Canvas.Top="106" FontSize="14"/>

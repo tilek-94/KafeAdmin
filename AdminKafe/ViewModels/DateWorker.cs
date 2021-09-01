@@ -651,7 +651,7 @@ namespace AdminKafe.Models
                 return result;
             }
         }
-        public static string CreateMenuFood(string name)
+        public static string CreateMenuFood(string name, byte[] img)
         {
             string result = "Такого блюда уже существует!!";
             using (ApplicationContext db = new ApplicationContext())
@@ -663,6 +663,7 @@ namespace AdminKafe.Models
                     {
                         Name = name,
                         Price = 0,
+                        Image=img,
                         ParentCategoryId = 0,
                         isCook = 0
                     };

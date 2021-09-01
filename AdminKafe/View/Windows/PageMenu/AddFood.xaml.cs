@@ -1,5 +1,7 @@
 ﻿using AdminKafe.View.Windows;
+using LazZiya.ImageResize;
 using System;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -31,20 +33,24 @@ namespace AdminKafe.Windows.PageMenu
                 bitmap.BeginInit();
                 bitmap.UriSource = new Uri(FileName);
                 bitmap.EndInit();
-                imgBox.Source = bitmap;
+                //imgBox.Source = bitmap;
 
-                byte[] image;
+                var im = System.Drawing.Image.FromFile(FileName);
+                var img = ImageResize.Scale(im, 300, 300);
 
-                JpegBitmapEncoder encoder = new JpegBitmapEncoder();
-                encoder.QualityLevel = 100;
 
-                using (MemoryStream ms = new MemoryStream())
+                using (var ms = new MemoryStream())
                 {
-                    encoder.Frames.Add(BitmapFrame.Create((BitmapSource)imgBox.Source));
-                    encoder.Save(ms);
-                    image = ms.ToArray();
+                    img.Save(ms, ImageFormat.Bmp);
+                    ms.Seek(0, SeekOrigin.Begin);
+
+                    var bitmapImage = new BitmapImage();
+                    bitmapImage.BeginInit();
+                    bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                    bitmapImage.StreamSource = ms;
+                    bitmapImage.EndInit();
+                    imgBox.Source = bitmapImage;
                 }
-                encoder = null;
             }
         }
 
