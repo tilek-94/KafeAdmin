@@ -22,7 +22,7 @@ namespace AdminKafe.ViewModels
             CreateCommand = new LambdaCommand(CreateMethod, CanCloseApplicationExecat);
             EditCommand = new LambdaCommand(EditMethod, CanCloseApplicationExecat);
             DeleteCommand = new LambdaCommand(DeleteMethod, CanCloseApplicationExecat);
-           ImgSourceCommand = new LambdaCommand(ImgSourceMethod, CanCloseApplicationExecat);
+            ImgSourceCommand = new LambdaCommand(ImgSourceMethod, CanCloseApplicationExecat);
             MenuFoodCommand = new LambdaCommand(AddMenuFoodMethod, CanCloseApplicationExecat);
             FoodDeleteCommand = new LambdaCommand(DeleteFoodCategori, CanCloseApplicationExecat);
             //Task.WhenAll(LoadAllDate1()).ContinueWith(t => IsLoading = false);
