@@ -8,7 +8,10 @@
         xmlns:VM="clr-namespace:AdminKafe.ViewModels"
         mc:Ignorable="d"
         x:Name="AddMenu"
-        Title="Login" Height="550" Width="500" Background="{x:Null}"  WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen">
+        Title="Login" Height="550" Width="700" Background="{x:Null}"  WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <BitmapImage x:Key="DefoultImage1" UriSource="../../Images/Food2.png"/>
+    </Window.Resources>
     <Grid Background="White" Margin="3,5,10,10">
         <Grid.Resources>
             <VM:AddFoodVM x:Key="mydata"/>
@@ -21,7 +24,7 @@
         </Grid.Effect>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
-            <RowDefinition Height="120"/>
+            <RowDefinition Height="210"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
@@ -33,28 +36,56 @@
                 CommandParameter="{Binding ElementName=AddMenu}" >
             <materialDesign:PackIcon Kind="Close" Width="30" Height="30"  Foreground="White"/>
         </Button>
-        <StackPanel Margin="50,20,0,0" Grid.Row="1" Orientation="Vertical"  >
-            <TextBox materialDesign:HintAssist.Hint="Введите названия менью" Background="White" HorizontalAlignment="Left"
-                     BorderThickness="0,0,0,2" 
-                    Height="40" Width="250"
-                     Text="{Binding Name}"
-                     BorderBrush="#FF007BAB" 
-                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"
-                      FontSize="14" Foreground="#007bab" CaretBrush="#FF007BAB" />
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,20,0" VerticalAlignment="Center">
-                <Button Command="{Binding EditCommand}"  Height="35" Margin="5,20,0,0" Style="{StaticResource MaterialDesignRaisedLightButton}"
-Background="#007bab" Width="100" HorizontalAlignment="Left"
-    materialDesign:ButtonAssist.CornerRadius="5" >
+        <StackPanel Margin="20,20,0,0" Grid.Row="1" Orientation="Horizontal"  >
+            <StackPanel Margin="0">
 
-                    <TextBlock Text="Изменить" Foreground="White"/>
+                <Image x:Name="imgBox"
+                        Width="193" 
+                        Height="129" Source="{Binding ImgSourse,UpdateSourceTrigger=PropertyChanged,TargetNullValue={StaticResource DefoultImage1}}" Canvas.Left="41" Canvas.Top="29" Stretch="Fill"/>
+                <Button 
+                        Click="Button_Click1"
+                        Command="{Binding ImgSourceCommand}"
+                        CommandParameter="{Binding ElementName=imgBox}"
+                        Padding="0" Background="#FF007BAB" Canvas.Left="41" Canvas.Top="163" Width="193" Height="26">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="ImagePlus" Foreground="White" FontWeight="Bold" Width="20" Height="20" Margin="-2,0,0,0" VerticalAlignment="Center"/>
+                        <TextBlock Text="Добвить фото" Foreground="White" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="13"/>
+                    </StackPanel>
                 </Button>
-                <Button Command="{Binding MenuFoodCommand}"  Height="35" Margin="5,20,0,0" Style="{StaticResource MaterialDesignRaisedLightButton}"
-Background="#007bab" Width="100" HorizontalAlignment="Left"
-    materialDesign:ButtonAssist.CornerRadius="5" >
-
-                    <TextBlock Text="Добавить" Foreground="White"/>
+                <Button  Margin="0,5,0,0"
+                       Command="{Binding Test}"
+                        Padding="0" Background="#FF007BAB" Canvas.Left="41" Canvas.Top="194" Width="193" Height="26">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Delete" Foreground="#FFD63333" FontWeight="Bold" Width="20" Height="20" Margin="-2,0,0,0" VerticalAlignment="Center"/>
+                        <TextBlock Text="Удалить фото" Foreground="White" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="13"/>
+                    </StackPanel>
                 </Button>
             </StackPanel>
+            <StackPanel VerticalAlignment="Center" Margin="30,0,0,0">
+                <TextBox materialDesign:HintAssist.Hint="Введите названия менью" Background="White" HorizontalAlignment="Left"
+                     BorderThickness="0,0,0,2" 
+                    Height="40" Width="357"
+                     Text="{Binding Name}"
+                     BorderBrush="#FF007BAB" 
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                      FontSize="14" Foreground="#007bab" CaretBrush="#FF007BAB" />
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="150,0,0,0" VerticalAlignment="Center" Width="400">
+                    <Button Command="{Binding EditCommand}"  Height="35" Margin="5,20,0,0" Style="{StaticResource MaterialDesignRaisedLightButton}"
+Background="#007bab" Width="100" HorizontalAlignment="Left"
+    materialDesign:ButtonAssist.CornerRadius="5" >
+
+                        <TextBlock Text="Изменить" Foreground="White"/>
+                    </Button>
+                    <Button Command="{Binding MenuFoodCommand}"  Height="35" Margin="5,20,0,0" Style="{StaticResource MaterialDesignRaisedLightButton}"
+Background="#007bab" Width="100" HorizontalAlignment="Left"
+    materialDesign:ButtonAssist.CornerRadius="5" >
+
+                        <TextBlock Text="Добавить" Foreground="White"/>
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+
+
         </StackPanel>
 
         <DataGrid  x:Name="dbGrid"
@@ -62,11 +93,20 @@ Background="#007bab" Width="100" HorizontalAlignment="Left"
                    FontSize="13"
                    ItemsSource="{Binding AllFoodMenu, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedFood1,UpdateSourceTrigger=PropertyChanged}"
                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{DynamicResource grid_xml}" IsReadOnly="True"  Margin="0,8,0,0"  CanUserAddRows="False" ColumnHeaderStyle="{DynamicResource hederstyle}"  VerticalScrollBarVisibility="Auto"  HeadersVisibility="Column"
-                   AutoGenerateColumns="False" >
+                   AutoGenerateColumns="False" RowHeight="60">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="№" Binding="{Binding Path=Id}" Width="50" />
                 <DataGridTextColumn Binding="{Binding Path=Name}" Header="Название категория" />
-                
+                <DataGridTemplateColumn Header="Картинка блюда" Width="100" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image   Height="120" Source="{Binding Image, TargetNullValue={StaticResource DefoultImage1}}" >
+
+                            </Image>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
                 <DataGridTemplateColumn Header="Изменить" Width="100" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -88,7 +128,7 @@ Background="#007bab" Width="100" HorizontalAlignment="Left"
  RelativeSource= {RelativeSource FindAncestor,
   AncestorType={x:Type DataGrid}}}"
                                         Background="{x:Null}" Width="100"  BorderThickness="0,0,0,0" Cursor="Hand">
-                                <materialDesign:PackIcon Kind="Delete" Margin="0,-18,0,0" Width="20" Foreground="#FF007BAB"/>
+                                <materialDesign:PackIcon Kind="Delete" Margin="0,-18,0,0" Width="20" Foreground="#FF007BAB" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

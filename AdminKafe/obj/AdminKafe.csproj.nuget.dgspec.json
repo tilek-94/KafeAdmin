@@ -44,6 +44,10 @@
               "target": "Package",
               "version": "[4.7.0.9, )"
             },
+            "LazZiya.ImageResize": {
+              "target": "Package",
+              "version": "[4.1.0, )"
+            },
             "MaterialDesignColors": {
               "target": "Package",
               "version": "[2.0.1, )"

@@ -45,6 +45,9 @@
     <Page Update="View\Windows\AddMenuFoodWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="View\Windows\AddNewLogin.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\Windows\AddNewPassword.xaml">
       <SubType>Designer</SubType>
     </Page>

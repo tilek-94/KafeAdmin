@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using AdminKafe.Date;
+using AdminKafe.Windows;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using AdminKafe.Models;
 
 namespace AdminKafe.View.Windows
 {
@@ -22,6 +14,35 @@ namespace AdminKafe.View.Windows
         public AddNewPassword()
         {
             InitializeComponent();
+        }
+
+        private void Saves(object sender, RoutedEventArgs e)
+        {
+            EditMethod();
+        }
+        private void EditMethod()
+        {
+            string result = EditDate(Name.Text, Password.Text, Password2.Text);
+        }
+
+        public static string EditDate(string Name, string Password, string Password2)
+        {
+            using (ApplicationContext connetc = new ApplicationContext())
+            {
+                Login us = connetc.login.FirstOrDefault(t => t.Name == Name);
+                us.Name = Name;
+                us.Password = Password;
+                connetc.SaveChanges();
+                return "Успешно Добавлено";
+            }
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            LoginWindow log = new LoginWindow();
+            log.Show();
+            this.Close();
         }
     }
 }
