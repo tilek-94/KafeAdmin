@@ -939,11 +939,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Project\\KK\\Жаны репозторийге киргизилген\\KafeAdmin\\AdminKafe\\AdminKafe.csproj",
+      "projectUniqueName": "D:\\Project\\KK\\New\\KafeAdmin\\AdminKafe\\AdminKafe.csproj",
       "projectName": "AdminKafe",
-      "projectPath": "D:\\Project\\KK\\Жаны репозторийге киргизилген\\KafeAdmin\\AdminKafe\\AdminKafe.csproj",
+      "projectPath": "D:\\Project\\KK\\New\\KafeAdmin\\AdminKafe\\AdminKafe.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "D:\\Project\\KK\\Жаны репозторийге киргизилген\\KafeAdmin\\AdminKafe\\obj\\",
+      "outputPath": "D:\\Project\\KK\\New\\KafeAdmin\\AdminKafe\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1016,12 +1016,6 @@
     }
   },
   "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Ошибка чтения файла кэша D:\\Project\\KK\\Жаны репозторийге киргизилген\\KafeAdmin\\AdminKafe\\obj\\project.nuget.cache: Invalid property identifier character: <. Path 'version', line 3, position 0."
-    },
     {
       "code": "NU1701",
       "level": "Warning",

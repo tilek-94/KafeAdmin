@@ -29,11 +29,11 @@ namespace AdminKafe.Date
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseMySql("server=192.168.0.108;user=kafe;password=1;database=BasaKafe;",
-            //     new MySqlServerVersion(new Version(5, 7, 29))
-            // );
-            optionsBuilder.UseMySql("server=localhost;user=kafe;password=1;database=BasaKafe;", 
-                new MySqlServerVersion(new Version(5, 7, 30)));
+            optionsBuilder.UseMySql("server=192.168.0.108;user=kafe;password=1;database=BasaKafe;",
+                 new MySqlServerVersion(new Version(5, 7, 29))
+             );
+            //optionsBuilder.UseMySql("server=localhost;user=kafe;password=1;database=BasaKafe;", 
+            //    new MySqlServerVersion(new Version(5, 7, 30)));
         }
     }
 }

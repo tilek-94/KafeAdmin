@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Project\\KK\\Жаны репозторийге киргизилген\\KafeAdmin\\AdminKafe\\AdminKafe.csproj": {}
+    "D:\\Project\\KK\\New\\KafeAdmin\\AdminKafe\\AdminKafe.csproj": {}
   },
   "projects": {
-    "D:\\Project\\KK\\Жаны репозторийге киргизилген\\KafeAdmin\\AdminKafe\\AdminKafe.csproj": {
+    "D:\\Project\\KK\\New\\KafeAdmin\\AdminKafe\\AdminKafe.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Project\\KK\\Жаны репозторийге киргизилген\\KafeAdmin\\AdminKafe\\AdminKafe.csproj",
+        "projectUniqueName": "D:\\Project\\KK\\New\\KafeAdmin\\AdminKafe\\AdminKafe.csproj",
         "projectName": "AdminKafe",
-        "projectPath": "D:\\Project\\KK\\Жаны репозторийге киргизилген\\KafeAdmin\\AdminKafe\\AdminKafe.csproj",
+        "projectPath": "D:\\Project\\KK\\New\\KafeAdmin\\AdminKafe\\AdminKafe.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\Project\\KK\\Жаны репозторийге киргизилген\\KafeAdmin\\AdminKafe\\obj\\",
+        "outputPath": "D:\\Project\\KK\\New\\KafeAdmin\\AdminKafe\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
