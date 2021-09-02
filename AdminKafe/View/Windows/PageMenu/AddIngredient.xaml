@@ -78,8 +78,8 @@
             </Grid>
             <Grid Grid.Row="1" Background="#4C949494" >
                 <TextBox 
-                    Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}"
-                    Style="{DynamicResource stylePass}" Height="30" Width="250" FontSize="15" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="0,0,10,0" Tag="Искать" Background="White"/>
+                    Text="{Binding SearcheIngridient, UpdateSourceTrigger=PropertyChanged}"
+                    Style="{DynamicResource stylePass}" Height="30" Width="250" FontSize="15" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="0,0,10,0" Tag="Искать" Background="White" Cursor="IBeam"/>
             </Grid>
             <Grid Grid.Row="2" Panel.ZIndex="1">
                 <Grid.Style>
@@ -110,7 +110,7 @@
             <Grid Grid.Row="2">
                 <DataGrid 
                     SelectedItem="{Binding SelectedDateObject, UpdateSourceTrigger=PropertyChanged}"
-                    ItemsSource="{Binding AllObjectDate , UpdateSourceTrigger=PropertyChanged}"
+                    ItemsSource="{Binding AllObjectRecep , UpdateSourceTrigger=PropertyChanged}"
                     HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{DynamicResource grid_xml}" IsReadOnly="True" FontSize="14" Margin="0,8,0,0"  CanUserAddRows="False" ColumnHeaderStyle="{DynamicResource hederstyle}"  VerticalScrollBarVisibility="Auto"  HeadersVisibility="Column"
                    AutoGenerateColumns="False" >
                     <DataGrid.Columns>
@@ -118,7 +118,7 @@
                         <DataGridTextColumn Binding="{Binding Path=FoodName}" Header="Название ингредиента" />
                         <DataGridTextColumn Binding="{Binding Path=ProductName }" Header="Продукта"/>
                         <DataGridTextColumn Binding="{Binding Path=Unit}" Header="Продукта"/>
-                        <DataGridTextColumn Binding="{Binding Path=CountProduct}" Header="Добавленный размер"/>
+                        <DataGridTextColumn Binding="{Binding Path=ProductCount}" Header="Добавленный размер"/>
                         <DataGridTemplateColumn Header="Изменить" Width="100" >
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>

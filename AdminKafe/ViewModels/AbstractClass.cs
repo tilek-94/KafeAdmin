@@ -9,6 +9,7 @@ using System.Windows.Media.Imaging;
 using System.IO;
 using System.Drawing;
 using Image = System.Windows.Controls.Image;
+using AdminKafe.Models;
 
 namespace AdminKafe.ViewModels
 {
@@ -40,6 +41,7 @@ namespace AdminKafe.ViewModels
             set
             {
                 Set(ref _Search, value);
+
                 SeachAllDate = AllDate;
                 LoadAllDate(_Search);
             }
@@ -59,7 +61,7 @@ namespace AdminKafe.ViewModels
         }
 
 
-        private string _SelectedText="123";
+        private string _SelectedText;
         public string SelectedText
         {
             get => _SelectedText;
@@ -98,6 +100,13 @@ namespace AdminKafe.ViewModels
         {
             get => _AllObjectDate;
             set => Set(ref _AllObjectDate, value);
+        }
+
+        private List<IngridParams> _AllObjectRecep;
+        public List<IngridParams> AllObjectRecep
+        {
+            get => _AllObjectRecep;
+            set => Set(ref _AllObjectRecep, value);
         }
 
         private object _ObjectDate;
@@ -202,7 +211,8 @@ namespace AdminKafe.ViewModels
             }
             encoder = null;
         }
-            
+
+        public ICommand ClearCommand { get; set; }
         public ICommand CreateCommand{ get; set; }
         public ICommand EditCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
