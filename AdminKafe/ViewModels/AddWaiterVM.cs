@@ -13,15 +13,18 @@ namespace AdminKafe.ViewModels
     public class AddWaiterVM : AbstractClass<Waiter>, ICommandMethod
     {
         public ICommand ViewReportButtom { get; set; }
+        public ICommand ClearWaiterCommand { get; set; } 
+        public ICommand EditWaiterCommand { get; set; }
         public AddWaiterVM()
         {
+            EditWaiterCommand = new LambdaCommand(EditWaiterMetod, CanCloseApplicationExecat);
+            ClearWaiterCommand = new LambdaCommand(ClearMetod, CanCloseApplicationExecat);
             ViewReportButtom = new LambdaCommand(GetAllWaiterSalary, CanCloseApplicationExecat);
             CreateCommand = new LambdaCommand(CreateMethod, CanCloseApplicationExecat);
             DeleteCommand = new LambdaCommand(DeleteMethod, CanCloseApplicationExecat);
-           
+            EditCommand = new LambdaCommand(EditMethod, CanCloseApplicationExecat);           
         }
-        #region WaiterProperties
-       
+        #region WaiterProperties       
         private double _SalaryType;
         public double SalaryType
         {
@@ -33,6 +36,12 @@ namespace AdminKafe.ViewModels
         {
             get => _SalaryType1;
             set => Set(ref _SalaryType1, value);
+        }
+        private string _SalaryTypeI;
+        public string SalaryTypeI
+        {
+            get => _SalaryTypeI;
+            set => Set(ref _SalaryTypeI, value);
         }
         private double _SalaryType2;
         public double SalaryType2
@@ -74,14 +83,24 @@ namespace AdminKafe.ViewModels
             get => _Tel;
             set => Set(ref _Tel, value);
         }
-
+        private string _Tel1;
+        public string Tel1
+        {
+            get => _Tel1;
+            set => Set(ref _Tel1, value);
+        }
         private string _Adress;
         public string Adress
         {
             get => _Adress;
             set => Set(ref _Adress, value);
         }
-
+        private string _Adress1;
+        public string Adress1
+        {
+            get => _Adress1;
+            set => Set(ref _Adress1, value);
+        }
         private int Waiterid;
         public int WaiterID
         {
@@ -107,7 +126,7 @@ namespace AdminKafe.ViewModels
             }
         }
 
-        private DateTime dateDo = DateTime.Now;
+        private DateTime dateDo = DateTime.Now.AddDays(-7);
         public DateTime DateDo
         {
             get => dateDo;
@@ -131,10 +150,10 @@ namespace AdminKafe.ViewModels
                 if (selected!=null)
                 {
                     WaiterID = selected.Id;
-                    Name = selected.Name;
-                    Adress = selected.address;
-                    Tel = selected.Tel;
-                    SalaryType1 = selected.SalaryType;
+                    Name1 = selected.Name;
+                    Adress1 = selected.address;
+                    Tel1 = selected.Tel;
+                    SalaryTypeI = selected.SalaryType;
                     AllObjectDate = DateWorker.GetAllWaiterSalary(selected.Id, DateDo, DatePosle);
                     SalaryItog = DateWorker.SummServices;
                     //MessageBox.Show(SalaryItog.ToString());
@@ -178,6 +197,9 @@ namespace AdminKafe.ViewModels
                 Tel = string.Empty;
                 Adress = string.Empty;
                 AliasName = string.Empty;
+                SalaryType = 0;
+                SalaryType2 = 0;
+                SalaryType3 = 0;
                 LoadAllDate();
             }
             OpenOkMethod(result + "!");
@@ -193,6 +215,16 @@ namespace AdminKafe.ViewModels
                 {
                     result = DateWorker.DeleteWaiter(SelectedDate);
                     LoadAllDate();
+                    Name = String.Empty;
+                    Adress = String.Empty;
+                    Tel = String.Empty;
+                    SalaryType1 = String.Empty;
+                    AliasName = String.Empty;
+                    Pass = String.Empty;
+                    SalaryItog = 0;
+                    SalaryType = 0;
+                    SalaryType3 = 0;
+                    SalaryType2 = 0;
                 }
             };
             mv.ShowDialog();
@@ -200,7 +232,32 @@ namespace AdminKafe.ViewModels
 
         public void EditMethod(object p)
         {
-            throw new NotImplementedException();
+            if (SelectedDate != null)
+            {
+                Name = SelectedDate.Name;
+                Adress = SelectedDate.address;
+                Tel = SelectedDate.Tel;
+                AliasName = SelectedDate.AliasName;
+                Pass = SelectedDate.Pass;
+                if (SelectedDate.SalaryType == "Услуга")
+                {
+                    SalaryType = SelectedDate.Salary;
+                    SalaryType2 = 0;
+                    SalaryType3 = 0;
+                }
+                else if (SelectedDate.SalaryType == "Процент")
+                {
+                    SalaryType2 = SelectedDate.Salary;
+                    SalaryType = 0;
+                    SalaryType3 = 0;
+                }
+                else if (SelectedDate.SalaryType == "Зарплата")
+                {
+                    SalaryType3 = SelectedDate.Salary;
+                    SalaryType = 0;
+                    SalaryType2 = 0;
+                }
+            }
         }
 
         public override async void LoadAllDate(string name="")
@@ -234,5 +291,34 @@ namespace AdminKafe.ViewModels
                 AllObjectDate = DateWorker.GetAllWaiterSalary("");
             });
         }*/
+
+        private void ClearMetod(object o)
+        {
+            Clear();
+        }
+        private void Clear()
+        {
+            Name = String.Empty;
+            Adress = String.Empty;
+            Tel = String.Empty;
+            SalaryType1 = String.Empty;
+            AliasName = String.Empty;
+            Pass = String.Empty;
+            SalaryItog = 0;
+            SalaryType = 0;
+            SalaryType3 = 0;
+            SalaryType2 = 0;
+        }
+        private void EditWaiterMetod(object o)
+        {
+            if (SelectedDate!=null)
+            {
+                result = DateWorker.EditWaiter(SelectedDate,Name,Pass,Tel,Adress,AliasName,SalaryType,SalaryType2,SalaryType3);
+                MessageWindowOk mw = new MessageWindowOk(result);
+                mw.ShowDialog();
+                Clear();
+                LoadAllDate();
+            }
+        }
     }
 }
