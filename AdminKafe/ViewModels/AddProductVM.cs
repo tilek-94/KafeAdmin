@@ -305,9 +305,12 @@ namespace AdminKafe.ViewModels
         }
         public void EditMethod(object p)
         {
-            result = DateWorker.EditProduct(DateTimeReceiptGoods, SelectedText, Count, Price);
-            OpenOkMethod(result + "!");
-            LoadAllDate();
+            if (SelectedProduct!=null && SelectedText != "" && Count!=0 && Price!=0)
+            {
+                result = DateWorker.EditProduct(DateTimeReceiptGoods, SelectedText, Count, Price);
+                OpenOkMethod(result + "!");
+                LoadAllDate();
+            }
         }
         public override async void LoadAllDate(string name = "")
         {

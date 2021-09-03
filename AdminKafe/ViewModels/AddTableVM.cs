@@ -202,7 +202,7 @@ namespace AdminKafe.ViewModels
         }
         private void EditTableMetod(object o)
         {
-            if (SelectedLocation == null && TableName == String.Empty)
+            if (TableName != String.Empty)
             {
             //    MessageWindowOk wm = new MessageWindowOk("Запольните поля");
             //    wm.ShowDialog();
