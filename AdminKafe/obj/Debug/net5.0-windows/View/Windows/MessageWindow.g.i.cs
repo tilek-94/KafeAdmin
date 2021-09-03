@@ -9,7 +9,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using AdminKafe;
 using AdminKafe.View.Windows;
+using AdminKafe.View.Windows.PageMenu;
+using AdminKafe.ViewModels;
+using AdminKafe.Windows;
 using System;
 using System.Diagnostics;
 using System.Windows;
@@ -61,7 +65,7 @@ namespace AdminKafe.View.Windows {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/AdminKafe;component/view/windows/messagewindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/AdminKafe;V1.0.0.0;component/view/windows/messagewindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\View\Windows\MessageWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
