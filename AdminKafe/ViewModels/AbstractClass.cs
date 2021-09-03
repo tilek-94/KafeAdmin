@@ -53,6 +53,12 @@ namespace AdminKafe.ViewModels
             get => _Name;
             set => Set(ref _Name, value);
         }
+        private string _Name1;
+        public string Name1
+        {
+            get => _Name1;
+            set => Set(ref _Name1, value);
+        }
         private int _Count;
         public int Count
         {

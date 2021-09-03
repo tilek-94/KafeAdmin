@@ -16,6 +16,9 @@
     <Compile Update="View\Windows\AddProductParameter.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\Windows\AddTableCategory.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\Windows\GlavWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -52,6 +55,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Windows\AddProductParameter.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Windows\AddTableCategory.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Windows\GlavWindow.xaml">
