@@ -34,7 +34,7 @@ namespace AdminKafe.Date
             //optionsBuilder.UseMySql("server=192.168.0.108;user=kafe;password=1;database=BasaKafe;",
             //     new MySqlServerVersion(new Version(5, 7, 29))
             // );
-            optionsBuilder.UseMySql("server=localhost;user=kafe;password=1;database=BasaKafe;", 
+            optionsBuilder.UseMySql("server=192.168.0.105;user=kafe;password=1;database=BasaKafe;", 
                 new MySqlServerVersion(new Version(5, 7, 30)));
         }
     }
