@@ -15,13 +15,13 @@ namespace AdminKafe.ViewModels
 {
     public abstract class AbstractClass<T> : ViewModel
     {
-      
+
         public AbstractClass()
         {
             LoadAllDate();
         }
         public abstract void LoadAllDate(string name = "");
-        
+
         public int SkipCount = 0;
         public int TakeCount = 50;
 
@@ -41,12 +41,11 @@ namespace AdminKafe.ViewModels
             set
             {
                 Set(ref _Search, value);
-
                 SeachAllDate = AllDate;
                 LoadAllDate(_Search);
             }
         }
-        
+
         private string _Name;
         public string Name
         {
@@ -198,7 +197,7 @@ namespace AdminKafe.ViewModels
             SkipCount = Convert.ToInt32(CountPage * SelectedCountPage);
             TakeCount = Convert.ToInt32(SelectedCountPage);
             AllCoutPage = Convert.ToInt32(Count1 / SelectedCountPage);
-            if (Count1 % 2 != 0) AllCoutPage = AllCoutPage + 1;
+            if (Count1 % 2 != 0) AllCoutPage += 1;
             TextPage = $"{CountPage + 1} до {AllCoutPage} ";
             LoadAllDate(Search);
         }
@@ -207,7 +206,7 @@ namespace AdminKafe.ViewModels
         public void ImgSourceMethod(object p)
         {
             Image te = p as Image;
-           JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+            JpegBitmapEncoder encoder = new JpegBitmapEncoder();
             encoder.QualityLevel = 100;
             using (MemoryStream ms = new MemoryStream())
             {
@@ -215,7 +214,6 @@ namespace AdminKafe.ViewModels
                 encoder.Save(ms);
                 ImgSourse = ms.ToArray();
             }
-            encoder = null;
         }
 
         public ICommand ClearCommand { get; set; }
@@ -224,6 +222,7 @@ namespace AdminKafe.ViewModels
         public ICommand DeleteCommand { get; set; }
         public ICommand CloseCommand { get; set; }
         public ICommand ShowWindowCommand { get; set; }
+        public ICommand ShowResultCommand { get; set; }
         public ICommand CreatMenuCommand { get; set; }
         public ICommand NextPage { get; set; }
         public ICommand BackPage { get; set; }
@@ -239,7 +238,7 @@ namespace AdminKafe.ViewModels
         }
         public void OpenOkMethod(string s)
         {
-            s = s.Substring(0, s.Length - 2);
+            s = s[0..^2];
             MessageWindowOk wn = new MessageWindowOk(s);
             wn.ShowDialog();
         }

@@ -2,6 +2,7 @@
 using AdminKafe.Windows.PageMenu;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -79,7 +80,6 @@ namespace AdminKafe.Models
             string result = "Имя или Пароль уже существует!!";
             using (ApplicationContext db = new ApplicationContext())
             {
-
                 ReceiptGoods receiptGoods = new ReceiptGoods
                 {
                     DateTimeReceiptGoods = dateTimeReceiptGoods,
@@ -95,6 +95,7 @@ namespace AdminKafe.Models
 
                 return result;
             }
+            return result;
         }
         public static string DeleteProduct(int id)
         {
@@ -278,26 +279,13 @@ namespace AdminKafe.Models
                               {
                                   Id = product.Id,
                                   ProductName = product.Name,
-                                  CheckDate = check.DateTimeCheck.Date,
-                                  ProductUnit = product.Type,
-                                  ProductPrice = repgods.Price,
-                                  ProductCount = recipe.CountPoduct * orders.CountFood,
-                                  ProductSumm = repgods.Price * recipe.CountPoduct * orders.CountFood
-                              });
-
-                var result2 = (from s in result
-                              group s by new { s.Id, s.ProductName, s.CheckDate, s.ProductUnit, s.ProductPrice } into g
-                              select new
-                              {
-                                  Id = g.Key.Id,
-                                  CheckDate = g.Key.CheckDate,
-                                  ProductPrice = g.Key.ProductPrice,
-                                  ProductName = g.Key.ProductName,
-                                  ProductCount = g.Sum(i => i.ProductCount) + " " + g.Key.ProductUnit,
-                                  ProductSumm = g.Sum(i => i.ProductCount) * g.Key.ProductPrice
-                              }).Where(u =>/* u.CheckDate <= datePosle.Date && u.CheckDate >= dateDo.Date && */u.ProductName.Contains(name));
-                SummServices = result2.Sum(u => u.ProductSumm);
-                return result2.ToList<object>();
+                                  CheckDate=check.DateTimeCheck.Date,
+                                  ProductUnit= product.Type,
+                                  ProductPrice=repgods.Price,
+                                  ProductCount = /*(db.Orders.Where(i => i.FoodId == recipe.FoodId).Sum(i => i.CountFood) * *//*recipe.CountPoduct*//* db.Recipes.Where(i => i.ProductId == product.Id).Sum(i => i.CountPoduct)) +" "+ recipe.Unit,*/  recipe.CountPoduct*orders.CountFood,
+                                  ProductSumm = repgods.Price * recipe.CountPoduct * orders.CountFood  
+                              })/*.AsEnumerable().GroupBy(i=>i.ProductName)*/;        
+                return result.ToList<object>();
             }
         }
         #endregion  AddProduct and ByProduct
@@ -689,7 +677,7 @@ namespace AdminKafe.Models
                 return result;
             }
         }
-        public static  List<Food> GetAllFood()
+        public static List<Food> GetAllFood()
         {
             using (ApplicationContext db = new ApplicationContext())
             {
@@ -966,7 +954,7 @@ namespace AdminKafe.Models
                 {
                     if (unit == "грамм")
                     {
-                        count = count / 1000;
+                        count /= 1000;
                     }
 
                     Reciep recipe = new Reciep
@@ -1090,7 +1078,7 @@ namespace AdminKafe.Models
         #region GetAllCheck
         public static List<object> GetAllByFood()
         {
-            
+
             using (ApplicationContext db = new ApplicationContext())
             {
                 int CounId = 0;
@@ -1102,11 +1090,11 @@ namespace AdminKafe.Models
                                   FoodId = o.FoodId,
                                   Food = f.Name,
                                   CountFood = db.Orders.Where(t => t.FoodId == f.Id).Sum(t => t.CountFood),
-                                  Sum= db.Orders.Where(t => t.FoodId == f.Id).Sum(t => t.CountFood)*f.Price
+                                  Sum = db.Orders.Where(t => t.FoodId == f.Id).Sum(t => t.CountFood) * f.Price
 
 
-                              }).AsEnumerable().GroupBy(t=>t.FoodId);
-              
+                              }).AsEnumerable().GroupBy(t => t.FoodId);
+
                 return result.ToList<object>();
             }
         }
@@ -1145,7 +1133,7 @@ namespace AdminKafe.Models
             }
         }
 
-       
+
         public static List<object> GetAll()
         {
             using (ApplicationContext db = new ApplicationContext())
@@ -1312,6 +1300,34 @@ namespace AdminKafe.Models
                 var result = db.Waiters.Select(w => w.Name);
                 return result.ToList<string>();
 
+            }
+        }
+
+        public static ObservableCollection<object> GetAllWastedFood(DateTime second, DateTime first)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                var checks = db.HistoryChecks.Where(i => i.CheckDate <= first && i.CheckDate >= second).Join(db.HistoryFoods,
+                    hc => hc.Id,
+                    hf => hf.CheckId,
+                    (hc, hf) => new
+                    {
+                       hf.FoodName,
+                       hf.FoodCount,
+                       hf.FoodPrice,
+                       hf.Gram
+                    });
+
+                var result = from g in checks
+                             group g by new { g.FoodName, g.Gram,g.FoodPrice } into res
+                             select new
+                             {
+                                FoodName = res.Key.FoodName,
+                                FoodCount = res.Sum(i=>i.FoodCount),
+                                FoodPrice = (res.Sum(i=>i.FoodCount)*res.Key.FoodPrice)
+                             };
+
+                return new ObservableCollection<object>(result);
             }
         }
 

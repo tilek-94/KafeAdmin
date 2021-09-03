@@ -9,6 +9,8 @@ namespace AdminKafe.Date
     {
         public DbSet<Food> Foods { get; set; }
         public DbSet<Waiter> Waiters { get; set; }
+        public DbSet<HistoryFood> HistoryFoods { get; set; }
+        public DbSet<HistoryCheck> HistoryChecks { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<Table> Tables { get; set; }
         public DbSet<Product> Products { get; set; }
