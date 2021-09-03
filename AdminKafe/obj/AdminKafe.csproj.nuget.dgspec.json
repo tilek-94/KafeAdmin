@@ -1,26 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "D:\\c# Cafe\\KafeAdmin\\AdminKafe\\AdminKafe.csproj": {}
+    "D:\\Project\\KK\\New\\KafeAdmin\\AdminKafe\\AdminKafe.csproj": {}
   },
   "projects": {
-    "D:\\c# Cafe\\KafeAdmin\\AdminKafe\\AdminKafe.csproj": {
+    "D:\\Project\\KK\\New\\KafeAdmin\\AdminKafe\\AdminKafe.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\c# Cafe\\KafeAdmin\\AdminKafe\\AdminKafe.csproj",
+        "projectUniqueName": "D:\\Project\\KK\\New\\KafeAdmin\\AdminKafe\\AdminKafe.csproj",
         "projectName": "AdminKafe",
-        "projectPath": "D:\\c# Cafe\\KafeAdmin\\AdminKafe\\AdminKafe.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "D:\\c# Cafe\\KafeAdmin\\AdminKafe\\obj\\",
+        "projectPath": "D:\\Project\\KK\\New\\KafeAdmin\\AdminKafe\\AdminKafe.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "D:\\Project\\KK\\New\\KafeAdmin\\AdminKafe\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0-windows7.0"
@@ -84,7 +79,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     }
