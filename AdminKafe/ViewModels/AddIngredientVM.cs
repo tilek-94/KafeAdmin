@@ -8,6 +8,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace AdminKafe.ViewModels
 {
@@ -19,10 +20,13 @@ namespace AdminKafe.ViewModels
             DeleteCommand = new LambdaCommand(DeleteMethod, CanCloseApplicationExecat);
             EditCommand = new LambdaCommand(EditMethod, CanCloseApplicationExecat);
             SelectedEditCommand = new LambdaCommand(SelectedEditMethod, CanCloseApplicationExecat);
+            ClearCommand = new LambdaCommand(ClearMethod, CanCloseApplicationExecat);
             LoadAllFood(); LoadAllProduct();
         }
+
+       
         #region Reciep
-        
+
         private string _Unit;
         public string Unit
         {
@@ -55,6 +59,7 @@ namespace AdminKafe.ViewModels
                     SelectedText = _SelectedProduct.Type;
             }
         }
+
         private List<Food> _AllFood;
         public List<Food> AllFood
         {
@@ -73,6 +78,17 @@ namespace AdminKafe.ViewModels
 
         }
 
+        private string _SearcheIngridient;
+
+        public string SearcheIngridient
+        {
+            get { return _SearcheIngridient; }
+            set
+            {
+                Set(ref _SearcheIngridient, value);
+                GetAllDateMethod(_SearcheIngridient);
+            }
+        }
 
         private string _SelectedTextFood;
         public string SelectedTextFood
@@ -97,6 +113,27 @@ namespace AdminKafe.ViewModels
         }
         #endregion Reciept
 
+        public async void GetAllDateMethod(string name = "")
+        {
+            await Task.Run(() => {
+                using (ApplicationContext db = new ApplicationContext())
+                {
+                    AllObjectRecep = DateWorker.GetAllRecipe();
+                    AllObjectRecep = AllObjectRecep.Where(t => t.FoodName.Contains(name)).ToList();
+
+                }
+                //AllObjectDate = DateWorker.SearchAllIngridient(result);
+                
+            });
+        }
+        private void ClearMethod(object obj)
+        {
+            SelectedTextFood = null;
+            SelectedTextProduct = null;
+            SelectedTextGram = null;
+            CountRecept = 0;
+            SearcheIngridient = null;
+        }
         public void CreateMethod(object p)
         {
             result = "Запольните поля ";
@@ -179,7 +216,8 @@ namespace AdminKafe.ViewModels
             IsLoading = true;
             await Task.Run(() =>
             {
-                AllObjectDate = DateWorker.GetAllResiep(name);
+                //AllObjectDate = DateWorker.GetAllResiep(name);
+                AllObjectRecep = DateWorker.GetAllRecipe();
             }).ContinueWith(t => IsLoading = false); 
 
         }

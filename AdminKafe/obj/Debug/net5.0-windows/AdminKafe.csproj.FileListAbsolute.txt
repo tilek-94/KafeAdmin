@@ -396,3 +396,4 @@ D:\project\Новая папка\1\AdminKafe\obj\Debug\net5.0-windows\AdminKafe.
 D:\project\Новая папка\1\AdminKafe\obj\Debug\net5.0-windows\AdminKafe.csproj.CoreCompileInputs.cache
 D:\project\Новая папка\1\AdminKafe\obj\Debug\net5.0-windows\AdminKafe.csproj.CopyComplete
 D:\project\Новая папка\1\AdminKafe\obj\Debug\net5.0-windows\AdminKafe.genruntimeconfig.cache
+D:\project\Новая папка\1\AdminKafe\obj\Debug\net5.0-windows\AdminKafe.csproj.AssemblyReference.cache

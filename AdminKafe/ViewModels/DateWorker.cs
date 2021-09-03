@@ -795,6 +795,15 @@ namespace AdminKafe.Models
             return result;
         }
 
+        public static List<Food> SearchAllFood(string Name)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                var result = db.Foods.Where(t => t.Name.Contains(Name)).ToList();
+                return result;
+            }
+        }
+
         /*
                 public static string DeleteLocation(Location location)
                 {
@@ -901,6 +910,26 @@ namespace AdminKafe.Models
                 return result.ToList<object>();
             }
         }
+        public static List<IngridParams> GetAllRecipe()
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                var result = from reciep in db.Recipes
+                             join food in db.Foods
+                             on reciep.FoodId equals food.Id
+                             join product in db.Products
+                             on reciep.ProductId equals product.Id
+                             select new IngridParams
+                             {
+                                 Id = reciep.Id,
+                                 FoodName = food.Name,
+                                 ProductName = product.Name,
+                                 Unit = reciep.Unit,
+                                 ProductCount = reciep.Unit == "грамм" ? reciep.CountPoduct * 1000 : reciep.CountPoduct
+                             };
+                return result.ToList<IngridParams>();
+            }
+        }
         public static string CreateRecieps(Food food, Product product, double count, string unit)
         {
             string result = "Такого блюда уже существует!!";
@@ -959,7 +988,15 @@ namespace AdminKafe.Models
             }
         }
 
+        /*public static List<IngridParams> SearchAllIngridient(string Name)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                var result = Where(t => t.Name.Contains(Name)).ToList();
 
+                return result.ToList<IngridParams>(); ;
+            }
+        }*/
         #endregion
 
         #region Consumption

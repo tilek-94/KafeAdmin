@@ -21,16 +21,20 @@ namespace AdminKafe.ViewModels
         public ICommand FoodDeleteCommand { get; set; }
         public AddFoodVM()
         {
+            ClearCommand = new LambdaCommand(ClearMethod, CanCloseApplicationExecat);
             CreateCommand = new LambdaCommand(CreateMethod, CanCloseApplicationExecat);
             EditCommand = new LambdaCommand(EditMethod, CanCloseApplicationExecat);
             DeleteCommand = new LambdaCommand(DeleteMethod, CanCloseApplicationExecat);
-           ImgSourceCommand = new LambdaCommand(ImgSourceMethod, CanCloseApplicationExecat);
+            ImgSourceCommand = new LambdaCommand(ImgSourceMethod, CanCloseApplicationExecat);
             MenuFoodCommand = new LambdaCommand(AddMenuFoodMethod, CanCloseApplicationExecat);
             FoodDeleteCommand = new LambdaCommand(DeleteFoodCategori, CanCloseApplicationExecat);
             SelectedEdit = new LambdaCommand(EditMethodselect, CanCloseApplicationExecat);
             SelectedEditCommand = new LambdaCommand(SelectedEditMethod, CanCloseApplicationExecat);
             //Task.WhenAll(LoadAllDate1()).ContinueWith(t => IsLoading = false);
+
         }
+
+       
         #region Reciep
 
         private string _SelectedIsCook;
@@ -39,6 +43,19 @@ namespace AdminKafe.ViewModels
             get { return _SelectedIsCook; }
             set => Set(ref _SelectedIsCook, value);
         }
+
+        private string _SearcheFood;
+
+        public string SearcheFood
+        {
+            get { return _SearcheFood; }
+            set
+            {
+                 Set(ref _SearcheFood, value);
+                GetAllDateMethod(SearcheFood);
+            }
+        }
+
 
         private string _Unit;
         public string Unit
@@ -103,6 +120,14 @@ namespace AdminKafe.ViewModels
         }
 
         #endregion Reciept
+
+        public async void GetAllDateMethod(string name = "")
+        {
+            await Task.Run(() => {
+                AllDate = DateWorker.SearchAllFood(name);
+
+            });
+        }
 
         public  void CreateMethod(object p)
         {
@@ -232,7 +257,14 @@ namespace AdminKafe.ViewModels
 
             LoadAllDate();
         }
-
+        private void ClearMethod(object obj)
+        {
+            SelectedText = null;
+            Name = string.Empty;
+            Price = 0.0;
+            ImgSourse = null;
+            IsCok = null;
+        }
         public override async void LoadAllDate(string name = "")
         {
             IsLoading = true;
