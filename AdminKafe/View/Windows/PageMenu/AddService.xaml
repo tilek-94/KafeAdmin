@@ -35,7 +35,7 @@
                             <TextBlock Text="Очистит" Foreground="White" VerticalAlignment="Center" Margin="1,0,0,0"/>
                         </StackPanel>
                     </Button>
-                    <Button Command="{Binding EditConsumptionCommand}" Padding="0" Background="#FF007BAB" Canvas.Left="759" Canvas.Top="135" Width="152" Height="35">
+                    <Button Command="{Binding EditCommand}" Padding="0" Background="#FF007BAB" Canvas.Left="759" Canvas.Top="135" Width="152" Height="35" Cursor="Hand">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="LeadPencil" Foreground="White" FontWeight="Bold" Width="20" Height="20" Margin="-2,0,0,0" VerticalAlignment="Center"/>
                             <TextBlock Text="Изменит" Foreground="White" VerticalAlignment="Center" Margin="1,0,0,0"/>

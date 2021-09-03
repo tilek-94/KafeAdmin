@@ -42,7 +42,7 @@
                         <ComboBoxItem Content="литр" />
                         <ComboBoxItem Content="штук" />
                     </ComboBox>
-                    <Button Padding="0" Background="#FF007BAB" Canvas.Left="918" Canvas.Top="216" Width="152" Height="35">
+                    <Button Command="{Binding ClearCommand}" Padding="0" Background="#FF007BAB" Canvas.Left="918" Canvas.Top="216" Width="152" Height="35">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Delete" Foreground="White" FontWeight="Bold" Width="20" Height="20" Margin="-2,0,0,0" VerticalAlignment="Center"/>
                             <TextBlock Text="Очистит" Foreground="White" VerticalAlignment="Center" Margin="1,0,0,0"/>

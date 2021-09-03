@@ -20,10 +20,13 @@ namespace AdminKafe.ViewModels
             DeleteCommand = new LambdaCommand(DeleteMethod, CanCloseApplicationExecat);
             EditCommand = new LambdaCommand(EditMethod, CanCloseApplicationExecat);
             SelectedEditCommand = new LambdaCommand(SelectedEditMethod, CanCloseApplicationExecat);
+            ClearCommand = new LambdaCommand(ClearMethod, CanCloseApplicationExecat);
             LoadAllFood(); LoadAllProduct();
         }
+
+       
         #region Reciep
-        
+
         private string _Unit;
         public string Unit
         {
@@ -123,7 +126,14 @@ namespace AdminKafe.ViewModels
                 
             });
         }
-
+        private void ClearMethod(object obj)
+        {
+            SelectedTextFood = null;
+            SelectedTextProduct = null;
+            SelectedTextGram = null;
+            CountRecept = 0;
+            SearcheIngridient = null;
+        }
         public void CreateMethod(object p)
         {
             result = "Запольните поля ";
