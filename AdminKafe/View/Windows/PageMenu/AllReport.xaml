@@ -214,7 +214,7 @@
                         <Button Padding="0" Background="#FF007BAB" Width="170" Height="35" Canvas.Left="648" Canvas.Top="19">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="ArchiveSearchOutline" Foreground="White" FontWeight="Bold" Width="20" Height="20" Margin="-2,0,0,0" VerticalAlignment="Center"/>
-                                <TextBlock Text="Покозать результат" Foreground="White" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                                <TextBlock Text="Показать результат" Foreground="White" VerticalAlignment="Center" Margin="5,0,0,0"/>
                             </StackPanel>
                         </Button>
                     </Canvas>
@@ -300,8 +300,6 @@
                     </Grid>
                 </Grid>
             </TabItem>
-
-
         </TabControl>
     </Grid>
 </Page>
