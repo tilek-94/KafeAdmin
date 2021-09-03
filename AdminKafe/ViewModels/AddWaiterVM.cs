@@ -313,11 +313,14 @@ namespace AdminKafe.ViewModels
         {
             if (SelectedDate!=null)
             {
-                result = DateWorker.EditWaiter(SelectedDate,Name,Pass,Tel,Adress,AliasName,SalaryType,SalaryType2,SalaryType3);
-                MessageWindowOk mw = new MessageWindowOk(result);
-                mw.ShowDialog();
-                Clear();
-                LoadAllDate();
+                if (Name!="" && Adress!="" &&  Tel !="" &&  AliasName !="" &&  Pass !="")
+                {
+                    result = DateWorker.EditWaiter(SelectedDate, Name, Pass, Tel, Adress, AliasName, SalaryType, SalaryType2, SalaryType3);
+                    MessageWindowOk mw = new MessageWindowOk(result);
+                    mw.ShowDialog();
+                    Clear();
+                    LoadAllDate();
+                }
             }
         }
     }

@@ -3,6 +3,7 @@ using AdminKafe.View.Windows;
 using CV19.Infrastructure.Commands;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -15,14 +16,30 @@ namespace AdminKafe.ViewModels
         public AllReportVM()
         {
             CreateCommand = new LambdaCommand(CreateMethod, CanCloseApplicationExecat);
+            ShowResultCommand = new LambdaCommand(ShowResult, CanShowResult);
             DeleteCommand = new LambdaCommand(DeleteMethod, CanCloseApplicationExecat);
             ShowWindowCommand = new LambdaCommand(ShowWindowMethod, CanCloseApplicationExecat);
             AllObjectDate = DateWorker.GetAll();
+            LoadWastedFood();
             LoadAllWaters();
             LoadAllBy();
         }
+
         #region WaiterProperties
 
+        private DateTime _FirstDate = DateTime.Now.Date;
+        public DateTime FirstDate
+        {
+            get { return _FirstDate; }
+            set { Set(ref _FirstDate, value); }
+        }
+
+        private DateTime _SecondDate = DateTime.Now.Date;
+        public DateTime SecondDate
+        {
+            get { return _SecondDate; }
+            set { Set(ref _SecondDate, value); }
+        }
 
         private List<Location> allLocation;
         public List<Location> AllLocation
@@ -31,7 +48,8 @@ namespace AdminKafe.ViewModels
             set => Set(ref allLocation, value);
         }
         private object _SelectedProperties;
-        public object SelectedProperties {
+        public object SelectedProperties
+        {
             get => _SelectedProperties;
             set
             {
@@ -47,15 +65,15 @@ namespace AdminKafe.ViewModels
 
                 PropertyInfo WaiterName = SelectedProperties.GetType().GetProperty("WaiterName");
                 WaiterProperties = (string)(WaiterName.GetValue(SelectedProperties, null));
-                
+
                 PropertyInfo Status = SelectedProperties.GetType().GetProperty("Status");
                 StatusProperties = (string)(Status.GetValue(SelectedProperties, null));
-                
+
                 PropertyInfo TableName = SelectedProperties.GetType().GetProperty("TableName");
                 TableProperties = (string)(TableName.GetValue(SelectedProperties, null));
 
                 PropertyInfo GuestCount = SelectedProperties.GetType().GetProperty("GuestCount");
-              int  GuestCount1 = (int)(GuestCount.GetValue(SelectedProperties, null));
+                int GuestCount1 = (int)(GuestCount.GetValue(SelectedProperties, null));
                 ShowOreders(Id, GuestCount1);
             }
         }
@@ -172,27 +190,36 @@ namespace AdminKafe.ViewModels
             set
             {
                 Set(ref _OrdersProperty, value);
-                
+
             }
         }
 
-        private List<object> _OrdersPropertyReport;
-        public List<object> OrdersPropertyReport
+        private ObservableCollection<object> _OrdersPropertyReport;
+        public ObservableCollection<object> OrdersPropertyReport
         {
             get => _OrdersPropertyReport;
             set
             {
                 Set(ref _OrdersPropertyReport, value);
-
             }
         }
         #endregion WaiterProperties
 
+        #region ShowResultRegion
+        public void ShowResult(object p)
+        {
+            LoadWastedFood(FirstDate, SecondDate);
+        }
+        public bool CanShowResult(object p)
+        {
+            return true;
+        }
+        #endregion
+
         public void CreateMethod(object p)
         {
-            
-        }
 
+        }
         public void DeleteMethod(object p)
         {
             PropertyInfo property = SelectedDateObject.GetType().GetProperty("Id");
@@ -208,39 +235,34 @@ namespace AdminKafe.ViewModels
             };
             mv.ShowDialog();
         }
-
         public void EditMethod(object p)
         {
             throw new NotImplementedException();
         }
-        public  async void LoadAllBy(string name = "")
+        public async void LoadAllBy(string name = "")
         {
             IsLoading = true;
             await Task.Run(() =>
             {
-                OrdersPropertyReport = DateWorker.GetAllByFood();
                 // AllLocation = DateWorker.GetAllLocation();
             }).ContinueWith(t => IsLoading = false);
 
         }
-
         public override async void LoadAllDate(string name = "")
         {
             IsLoading = true;
             await Task.Run(() =>
             {
                 AllObjectDate = DateWorker.GetAll();
-               // AllLocation = DateWorker.GetAllLocation();
+                // AllLocation = DateWorker.GetAllLocation();
             }).ContinueWith(t => IsLoading = false);
 
         }
-
         public void ShowWindowMethod(object p)
         {
             AddMenuFoodWindow mf = new AddMenuFoodWindow();
             mf.ShowDialog();
         }
-
         private async void ShowOreders(int Id, int goustCount)
         {
             await Task.Run(() =>
@@ -250,8 +272,6 @@ namespace AdminKafe.ViewModels
                 SummService = DateWorker.SummServices;
             });
         }
-
-
         public async void LoadAllDateWithDate()
         {
             await Task.Run(() =>
@@ -267,7 +287,24 @@ namespace AdminKafe.ViewModels
                 Waters = DateWorker.GetAllWaiters();
                 // AllLocation = DateWorker.GetAllLocation();
             });
-
+        }
+        public async void LoadWastedFood(DateTime first, DateTime second)
+        {
+            await Task.Run(() =>
+            {
+                _OrdersPropertyReport = new ObservableCollection<object>();
+                OrdersPropertyReport = DateWorker.GetAllWastedFood(first, second);
+                // AllLocation = DateWorker.GetAllLocation();
+            });
+        }
+        public async void LoadWastedFood()
+        {
+            await Task.Run(() =>
+            {
+                _OrdersPropertyReport = new ObservableCollection<object>();
+                OrdersPropertyReport = DateWorker.GetAllWastedFood(DateTime.Now.AddDays(-1), DateTime.Now);
+                // AllLocation = DateWorker.GetAllLocation();
+            });
         }
     }
 }

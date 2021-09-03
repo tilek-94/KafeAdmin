@@ -69,18 +69,31 @@
                     <TextBox  Text="{Binding Price, UpdateSourceTrigger=PropertyChanged}"
                         materialDesign:HintAssist.Hint="Цена блюда"  materialDesign:TextFieldAssist.HasClearButton="True" Width="260" BorderBrush="#FF007BAB" Style="{StaticResource MaterialDesignFloatingHintTextBox}" CaretBrush="#FF007BAB" Canvas.Left="317" Canvas.Top="106" FontSize="14"/>
                     <materialDesign:PackIcon Kind="Numeric10BoxMultiple" Canvas.Left="280" Canvas.Top="122" Height="26" Width="30" Foreground="{DynamicResource IconColor}" />
-                    <ComboBox  ItemsSource="{Binding  AllFoodMenu,UpdateSourceTrigger=PropertyChanged}"
+                    <ComboBox Text="{Binding SelectedText,UpdateSourceTrigger=PropertyChanged}"
+                        SelectedValuePath="{Binding FoodSelected}"
+                        ItemsSource="{Binding  AllFoodMenu,UpdateSourceTrigger=PropertyChanged}"
                          DisplayMemberPath="Name" SelectedItem="{Binding SelectedFood}"
                         IsEnabled="{Binding Path=IsChecked, ElementName=RadioTarif}" materialDesign:HintAssist.Hint="Тарифи"  IsEditable="True" Canvas.Left="316" Canvas.Top="44" FontSize="14" Width="260" BorderBrush="#FF007BAB" Background="White" Foreground="Black" Style="{x:Null}" BorderThickness="0,0,0,2" Height="28">
 
                     </ComboBox>
-                    <Button Padding="0" Background="#FF007BAB" Canvas.Left="918" Canvas.Top="186" Width="152" Height="34">
+                    <ComboBox 
+                         Text="{Binding IsCok,UpdateSourceTrigger=PropertyChanged}"
+                        SelectedValuePath="{Binding IsCookSelected}"
+                              materialDesign:HintAssist.Hint="Тарифи"  IsEditable="True" Canvas.Left="316" 
+                              Canvas.Top="168" FontSize="14" Width="260" BorderBrush="#FF007BAB" Background="White" Foreground="Black" 
+                              Style="{x:Null}" BorderThickness="0,0,0,2" Height="28">
+                        <ComboBoxItem Content="Делается"/>
+                        <ComboBoxItem Content="Не делается"/>
+                        <ComboBoxItem Content="Грамм"/>
+                    </ComboBox>
+
+                    <Button Command="{Binding ClearCommand}" Padding="0" Background="#FF007BAB" Canvas.Left="918" Canvas.Top="186" Width="152" Height="34">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Delete" Foreground="White" FontWeight="Bold" Width="20" Height="20" Margin="-2,0,0,0" VerticalAlignment="Center"/>
                             <TextBlock Text="Очистит" Foreground="White" VerticalAlignment="Center" Margin="1,0,0,0"/>
                         </StackPanel>
                     </Button>
-                    <Button Padding="0" Background="#FF007BAB" Canvas.Left="761" Canvas.Top="186" Width="152" Height="34">
+                    <Button  Command="{Binding EditMethodselect}"  Padding="0" Background="#FF007BAB" Canvas.Left="761" Canvas.Top="186" Width="152" Height="34">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="LeadPencil" Foreground="White" FontWeight="Bold" Width="20" Height="20" Margin="-2,0,0,0" VerticalAlignment="Center"/>
                             <TextBlock Text="Изменит" Foreground="White" VerticalAlignment="Center" Margin="1,0,0,0"/>
@@ -124,9 +137,9 @@
                 </Canvas>
             </Grid>
             <Grid Grid.Row="1" Background="#4C949494" >
-                <TextBox 
-                    Text="{Binding SearchFood,UpdateSourceTrigger=PropertyChanged}"
-                    Style="{DynamicResource stylePass}" Height="30" Width="250" FontSize="15" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="0,0,10,0" Tag="Искать" Background="White"/>
+                <TextBox
+                    Text="{Binding SearcheFood,UpdateSourceTrigger=PropertyChanged}"
+                    Style="{DynamicResource stylePass}" Height="30" Width="250" FontSize="15" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="0,0,10,0" Tag="Искать" Background="White" Cursor="IBeam"/>
             </Grid>
             <Grid Grid.Row="2">
                 <DataGrid 
@@ -176,10 +189,13 @@
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
 
+
                         <DataGridTemplateColumn Header="Изменить" Width="100" >
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Background="{x:Null}"  BorderThickness="0,0,0,0" Cursor="Hand">
+                                    <Button Command="{Binding Path=DataContext.SelectedEditCommand,       
+                 RelativeSource= {RelativeSource FindAncestor,
+                 AncestorType={x:Type DataGrid}}}" Background="{x:Null}"  BorderThickness="0,0,0,0" Cursor="Hand">
                                         <materialDesign:PackIcon 
                                             Kind="LeadPencil" 
                                             Height="25"

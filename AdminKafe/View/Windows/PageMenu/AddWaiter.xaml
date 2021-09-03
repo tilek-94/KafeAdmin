@@ -56,7 +56,7 @@
                                     <TextBlock Text="Очистит" Foreground="White" VerticalAlignment="Center" Margin="1,0,0,0"/>
                                 </StackPanel>
                             </Button>
-                            <Button Padding="0" Command="{ Binding EditWaiterCommand}"
+                            <Button Padding="0" Command="{ Binding EditWaiterCommand,UpdateSourceTrigger=PropertyChanged}"
                             Background="#FF007BAB" Canvas.Left="760" Canvas.Top="215" Width="152" Height="35">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="LeadPencil" Foreground="White" FontWeight="Bold" Width="20" Height="20" Margin="-2,0,0,0" VerticalAlignment="Center"/>
