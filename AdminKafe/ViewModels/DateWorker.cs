@@ -424,24 +424,23 @@ namespace AdminKafe.Models
                 double Salary = 0;
                 if (salaryType > 0)
                 {
-                    SalaryType = "Service";
+                    SalaryType = "Услуга";
                     Salary = salaryType;
                 }
                 else if (salaryType2 > 0)
                 {
-                    SalaryType = "Percent";
+                    SalaryType = "Процент";
                     Salary = salaryType2;
                 }
                 else if (salaryType3 > 0)
                 {
-                    SalaryType = "Salary";
+                    SalaryType = "Зарплата";
                     Salary = salaryType3;
                 }
 
                 bool checkIsExit = db.Waiters.Any(el => el.Pass == pass || el.Name == name);
                 if (!checkIsExit)
                 {
-
                     Waiter waiter = new Waiter
                     {
                         Name = name,
@@ -451,7 +450,6 @@ namespace AdminKafe.Models
                         AliasName = aliasName,
                         SalaryType = SalaryType,
                         Salary = Salary
-
                     };
                     db.Waiters.Add(waiter);
                     db.SaveChanges();
@@ -490,17 +488,17 @@ namespace AdminKafe.Models
                 double Salary = 0;
                 if (salaryType > 0)
                 {
-                    SalaryType = "Service";
+                    SalaryType = "Услуга";
                     Salary = salaryType;
                 }
                 else if (salaryType2 > 0)
                 {
-                    SalaryType = "Percent";
+                    SalaryType = "Процент";
                     Salary = salaryType2;
                 }
                 else if (salaryType3 > 0)
                 {
-                    SalaryType = "Salary";
+                    SalaryType = "Зарплата";
                     Salary = salaryType3;
                 }
 
@@ -541,6 +539,22 @@ namespace AdminKafe.Models
                                  CatName = location.Name,
                                  TableName = table.Name
                              };
+                return result.ToList<object>();
+            }
+        }
+        public static List<object> GetAllTablesSearch(string searchtext = "")
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                var result = (from table in db.Tables
+                              join location in db.Locations on table.LocationId equals location.Id
+                              orderby location.Name
+                              select new
+                              {
+                                  Id = table.Id,
+                                  CatName = location.Name,
+                                  TableName = table.Name
+                              }).Where(u => u.TableName.Contains(searchtext) || u.CatName.Contains(searchtext)).Select(u=>u).ToList();
                 return result.ToList<object>();
             }
         }
@@ -646,6 +660,18 @@ namespace AdminKafe.Models
                 Table table = db.Tables.FirstOrDefault(d => d.Id == IdOldTable);
                 table.Name = name;
                 table.LocationId = location.Id;
+                db.SaveChanges();
+                result = $"Сделанно изменение!!";
+            }
+            return result;
+        }
+        public static string EditLocation(Location location,string name)
+        {
+            string result = "Такого категория не существует!!";
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                Location table = db.Locations.FirstOrDefault(d => d.Id == location.Id);
+                table.Name = name;
                 db.SaveChanges();
                 result = $"Сделанно изменение!!";
             }

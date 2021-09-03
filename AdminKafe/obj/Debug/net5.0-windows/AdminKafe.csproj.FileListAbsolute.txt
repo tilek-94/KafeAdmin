@@ -324,3 +324,5 @@ D:\Project\KK\New\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\AdminKafe.Assembl
 D:\Project\KK\New\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\AdminKafe.csproj.CoreCompileInputs.cache
 D:\Project\KK\New\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\AdminKafe.csproj.CopyComplete
 D:\Project\KK\New\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\AdminKafe.genruntimeconfig.cache
+D:\Project\KK\New\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\View\Windows\AddTableCategory.g.cs
+D:\Project\KK\New\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\View\Windows\AddTableCategory.baml
