@@ -15,7 +15,7 @@ namespace AdminKafe.ViewModels
         {
             CreateCommand = new LambdaCommand(CreateMethod, CanCloseApplicationExecat);
             DeleteCommand = new LambdaCommand(DeleteMethod, CanCloseApplicationExecat);
-
+            EditCommand = new LambdaCommand(EditMethod, CanCloseApplicationExecat);
         }
         #region WaiterProperties
 
@@ -66,7 +66,8 @@ namespace AdminKafe.ViewModels
 
         public void EditMethod(object p)
         {
-            throw new NotImplementedException();
+            DateWorker.EditConsumption(SelectedDate.Id, Name, Summ);
+            LoadAllDate();
         }
 
         public override async void LoadAllDate(string name = "")

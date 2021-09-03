@@ -32,10 +32,10 @@
             <materialDesign:PackIcon Kind="Close" Width="30" Height="30"  Foreground="White"/>
         </Button>
         <Canvas Grid.Row="1" Background="White">
-            <TextBox Text="{Binding Name}" 
+            <TextBox x:Name="Element1" Text="{Binding Name}" 
                 materialDesign:HintAssist.Hint="Введите название продукта"  materialDesign:TextFieldAssist.HasClearButton="True" Width="384" BorderBrush="#FF007BAB" Style="{StaticResource MaterialDesignFloatingHintTextBox}" CaretBrush="#FF007BAB" Canvas.Left="118" Canvas.Top="17" FontSize="14"/>
             <materialDesign:PackIcon Kind="ContentSave" Canvas.Left="80" Canvas.Top="33" Height="25" Width="30" Foreground="{DynamicResource IconColor}" />
-            <Button Command="{Binding Path=DataContext.ChangeWiaterCommand,RelativeSource= {RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}"
+            <Button Command="{Binding CreatMenuCommand,UpdateSourceTrigger=PropertyChanged}"
                 Padding="0" Background="#FF007BAB" Canvas.Left="510" Canvas.Top="155" Width="152" Height="35">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="ContentSaveSettings" Foreground="White" FontWeight="Bold" Width="20" Height="20" Margin="-2,0,0,0" VerticalAlignment="Center"/>
@@ -43,23 +43,28 @@
                 </StackPanel>
             </Button>
             <materialDesign:PackIcon Kind="WeightKilogram" Canvas.Left="79" Canvas.Top="75" Height="25" Width="30" Foreground="{DynamicResource IconColor}" />
-            <ComboBox  Text="{Binding SelectedComboboxText, UpdateSourceTrigger=PropertyChanged}"
+            <ComboBox x:Name="Element2" Text="{Binding SelectedComboboxText, UpdateSourceTrigger=PropertyChanged}"
                 BorderThickness="0,0,0,1" materialDesign:HintAssist.Hint="Найти" IsEditable="True" Width="380" Canvas.Left="117" Canvas.Top="73" Height="29" FontSize="15" BorderBrush="#FF007BAB">
                 <ComboBoxItem Content="кг." />
                 <ComboBoxItem Content="л." />
                 <ComboBoxItem Content="шт." />
 
             </ComboBox>
-            <TextBox Text="{Binding Note,UpdateSourceTrigger=PropertyChanged}" 
+            <TextBox x:Name="Element3" Text="{Binding Note,UpdateSourceTrigger=PropertyChanged}" 
                 materialDesign:HintAssist.Hint="Минимальный размер предупреждения"  materialDesign:TextFieldAssist.HasClearButton="True" Width="384" BorderBrush="#FF007BAB" Style="{StaticResource MaterialDesignFloatingHintTextBox}" CaretBrush="#FF007BAB" Canvas.Left="117" Canvas.Top="99" FontSize="14"/>
             <materialDesign:PackIcon Kind="BasketRemove" Canvas.Left="79" Canvas.Top="115" Height="25" Width="30" Foreground="{DynamicResource IconColor}" />
+            <Button Padding="0"  Command="{Binding EditPR}" Background="#FF007BAB" Canvas.Left="349" Canvas.Top="155" Width="152" Height="35">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="LeadPencil" Foreground="White" FontWeight="Bold" Width="20" Height="20" Margin="-2,0,0,0" VerticalAlignment="Center"/>
+                    <TextBlock Text="Изменит" Foreground="White" VerticalAlignment="Center" Margin="1,0,0,0"/>
+                </StackPanel>
+            </Button>
 
         </Canvas>
         <DataGrid  x:Name="dbGrid"
                     Grid.Row="2"
                    FontSize="13"
-                   ItemsSource="{Binding AllDate, UpdateSourceTrigger=PropertyChanged}"
-                   HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{DynamicResource grid_xml}" IsReadOnly="True"  Margin="0,8,0,0"  CanUserAddRows="False" ColumnHeaderStyle="{DynamicResource hederstyle}"  VerticalScrollBarVisibility="Auto"  HeadersVisibility="Column"
+                   ItemsSource="{Binding AllDate, UpdateSourceTrigger=PropertyChanged}"  SelectedItem="{Binding SelectedDate,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{DynamicResource grid_xml}" IsReadOnly="True"  Margin="0,8,0,0"  CanUserAddRows="False" ColumnHeaderStyle="{DynamicResource hederstyle}"  VerticalScrollBarVisibility="Auto"  HeadersVisibility="Column"
                    AutoGenerateColumns="False" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="№" Binding="{Binding Path=Id}" Width="50" />
@@ -71,9 +76,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button 
-                                            Command="{Binding Path=DataContext.ChangeTableCommand,       
- RelativeSource= {RelativeSource FindAncestor,
-  AncestorType={x:Type DataGrid}}}"
+                                           Click="Button_Click_1"
                                         Background="{x:Null}"  BorderThickness="0,0,0,0" Cursor="Hand">
                                 <materialDesign:PackIcon Kind="LeadPencil" Width="20" Margin="0,-18,0,0" Foreground="#FF007BAB"/>
                             </Button>
@@ -84,7 +87,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button
-                                       Command="{Binding Path=DataContext.DeleteTableCommand,       
+                                       Command="{Binding Path=DataContext.DeleteCommand,       
  RelativeSource= {RelativeSource FindAncestor,
   AncestorType={x:Type DataGrid}}}"
                                         Background="{x:Null}" Width="100"  BorderThickness="0,0,0,0" Cursor="Hand">

@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-D:\project\KafeAdmin\AdminKafe\obj\Release\net5.0-windows\
+D:\project\Новая папка\1\AdminKafe\obj\Release\net5.0-windows\
 AdminKafe
 none
 false
 TRACE;RELEASE;NET;NET5_0;NETCOREAPP
-D:\project\KafeAdmin\AdminKafe\App.xaml
+D:\project\Новая папка\1\AdminKafe\App.xaml
 16588642907
 
-55-1994532504
-2101505138155
+561837652988
+212-2006275776
 View\Windows\AddKafeName.xaml;View\Windows\AddMenuFoodWindow.xaml;View\Windows\AddNewLogin.xaml;View\Windows\AddNewPassword.xaml;View\Windows\AddProductParameter.xaml;View\Windows\GlavWindow.xaml;View\Windows\LoginWindow.xaml;View\Windows\MessageWindow.xaml;View\Windows\MessageWindowOk.xaml;View\Windows\PageMenu\AddFood.xaml;View\Windows\PageMenu\AddIngredient.xaml;View\Windows\PageMenu\AddProduct.xaml;View\Windows\PageMenu\AddService.xaml;View\Windows\PageMenu\AddStol.xaml;View\Windows\PageMenu\AddWaiter.xaml;View\Windows\PageMenu\AllReport.xaml;
 
 True

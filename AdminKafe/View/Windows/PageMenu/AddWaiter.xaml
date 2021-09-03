@@ -35,17 +35,17 @@
                              Width="260" BorderBrush="#FF007BAB" 
                              Style="{StaticResource MaterialDesignFloatingHintTextBox}" CaretBrush="#FF007BAB" Canvas.Left="318" Canvas.Top="16" FontSize="14"/>
                             <TextBox
-                                Text="{Binding AliasName}"
+                                Text="{Binding AliasName,UpdateSourceTrigger=PropertyChanged}"
                                 materialDesign:HintAssist.Hint="Псевдоним"  materialDesign:TextFieldAssist.HasClearButton="True" Width="260" BorderBrush="#FF007BAB" Style="{StaticResource MaterialDesignFloatingHintTextBox}" CaretBrush="#FF007BAB" Canvas.Left="317" Canvas.Top="58" FontSize="14"/>
                             <materialDesign:PackIcon Kind="AccountAlert" Canvas.Left="281" Canvas.Top="74" Height="29" Width="30" Foreground="{DynamicResource IconColor}" />
 
 
                             <materialDesign:PackIcon Kind="Account" Canvas.Left="280" Canvas.Top="32" Height="29" Width="30" Foreground="{DynamicResource IconColor}" />
-                            <TextBox  Text="{Binding Adress}" 
+                            <TextBox  Text="{Binding Adress,UpdateSourceTrigger=PropertyChanged}" 
                         materialDesign:HintAssist.Hint="Адрес места проживания"  materialDesign:TextFieldAssist.HasClearButton="True" Width="260" 
                               BorderBrush="#FF007BAB" Style="{StaticResource MaterialDesignFloatingHintTextBox}" CaretBrush="#FF007BAB" Canvas.Left="318" Canvas.Top="103" FontSize="14"/>
                             <materialDesign:PackIcon Kind="MapMarker" Canvas.Left="278" Canvas.Top="119" Height="25" Width="30" Foreground="{DynamicResource IconColor}" />
-                            <TextBox  Text="{Binding Tel}" 
+                            <TextBox  Text="{Binding Tel,UpdateSourceTrigger=PropertyChanged}" 
                         materialDesign:HintAssist.Hint="Телефонный номер"  materialDesign:TextFieldAssist.HasClearButton="True" Width="260" BorderBrush="#FF007BAB" Style="{StaticResource MaterialDesignFloatingHintTextBox}" CaretBrush="#FF007BAB" Canvas.Left="318" Canvas.Top="148" FontSize="14"/>
                             <materialDesign:PackIcon Kind="Telephone" Canvas.Left="281" Canvas.Top="164" Height="25" Width="30" Foreground="{DynamicResource IconColor}" />
                             <Button Padding="0" Background="#FF007BAB"
@@ -56,7 +56,7 @@
                                     <TextBlock Text="Очистит" Foreground="White" VerticalAlignment="Center" Margin="1,0,0,0"/>
                                 </StackPanel>
                             </Button>
-                            <Button Padding="0" Command="{ Binding EditWaiterCommand}"
+                            <Button Padding="0" Command="{ Binding EditWaiterCommand,UpdateSourceTrigger=PropertyChanged}"
                             Background="#FF007BAB" Canvas.Left="760" Canvas.Top="215" Width="152" Height="35">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="LeadPencil" Foreground="White" FontWeight="Bold" Width="20" Height="20" Margin="-2,0,0,0" VerticalAlignment="Center"/>
@@ -70,7 +70,7 @@
                                     <TextBlock Text="Сохранить" Foreground="White" VerticalAlignment="Center" Margin="1,0,0,0"/>
                                 </StackPanel>
                             </Button>
-                            <TextBox  Text="{Binding Pass}"
+                            <TextBox  Text="{Binding Pass,UpdateSourceTrigger=PropertyChanged}"
                         materialDesign:HintAssist.Hint="Пароль"  materialDesign:TextFieldAssist.HasClearButton="True" Width="260" BorderBrush="#FF007BAB" Style="{StaticResource MaterialDesignFloatingHintTextBox}" CaretBrush="#FF007BAB" Canvas.Left="318" Canvas.Top="192" FontSize="14"/>
                             <materialDesign:PackIcon Kind="Lock" Canvas.Left="281" Canvas.Top="208" Height="25" Width="30" Foreground="{DynamicResource IconColor}" />
                             <TextBox Text="{Binding SalaryType,UpdateSourceTrigger=PropertyChanged}"
@@ -122,7 +122,7 @@
 
                     <Grid Grid.Row="2">
                         <DataGrid x:Name="DataGrid1"
-                    SelectedItem="{Binding SelectedDate}"
+                    SelectedItem="{Binding SelectedDate, UpdateSourceTrigger=PropertyChanged}"
                     ItemsSource="{Binding AllDate, UpdateSourceTrigger=PropertyChanged}"
                     HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                                   Style="{DynamicResource grid_xml}"
@@ -150,7 +150,7 @@
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <Button Background="{x:Null}" 
-Command="{Binding Path=DataContext.ChangeWiaterCommand,       
+Command="{Binding Path=DataContext.EditCommand,       
  RelativeSource= {RelativeSource FindAncestor,
   AncestorType={x:Type DataGrid}}}"
                                             BorderThickness="0,0,0,0" Cursor="Hand">
@@ -188,13 +188,13 @@ Command="{Binding Path=DataContext.ChangeWiaterCommand,
                         <Grid Grid.Row="0">
                             <Canvas>
                                 <Image Width="128" Height="162" Source="/Images/Person.JPG" Canvas.Left="70" Canvas.Top="44" OpacityMask="Black"/>
-                                <TextBox Text="{Binding Name,UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Ф.И.О"  materialDesign:TextFieldAssist.HasClearButton="True" Width="260" BorderBrush="#FF007BAB" Style="{StaticResource MaterialDesignFloatingHintTextBox}" CaretBrush="#FF007BAB" Canvas.Left="318" Canvas.Top="30" FontSize="14" IsReadOnly="True"/>
+                                <TextBox Text="{Binding Name1,UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Ф.И.О"  materialDesign:TextFieldAssist.HasClearButton="True" Width="260" BorderBrush="#FF007BAB" Style="{StaticResource MaterialDesignFloatingHintTextBox}" CaretBrush="#FF007BAB" Canvas.Left="318" Canvas.Top="30" FontSize="14" IsReadOnly="True"/>
                                 <materialDesign:PackIcon Kind="Account" Canvas.Left="280" Canvas.Top="46" Height="29" Width="30" Foreground="{DynamicResource IconColor}" />
-                                <TextBox Text="{Binding Adress,UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Адрес места проживания"  materialDesign:TextFieldAssist.HasClearButton="True" Width="260" BorderBrush="#FF007BAB" Style="{StaticResource MaterialDesignFloatingHintTextBox}" CaretBrush="#FF007BAB" Canvas.Left="318" Canvas.Top="70" FontSize="14" IsReadOnly="True"/>
+                                <TextBox Text="{Binding Adress1,UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Адрес места проживания"  materialDesign:TextFieldAssist.HasClearButton="True" Width="260" BorderBrush="#FF007BAB" Style="{StaticResource MaterialDesignFloatingHintTextBox}" CaretBrush="#FF007BAB" Canvas.Left="318" Canvas.Top="70" FontSize="14" IsReadOnly="True"/>
                                 <materialDesign:PackIcon Kind="MapMarker" Canvas.Left="278" Canvas.Top="87" Height="25" Width="30" Foreground="{DynamicResource IconColor}" />
-                                <TextBox Text="{Binding Tel,UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Телефонный номер"  materialDesign:TextFieldAssist.HasClearButton="True" Width="260" BorderBrush="#FF007BAB" Style="{StaticResource MaterialDesignFloatingHintTextBox}" CaretBrush="#FF007BAB" Canvas.Left="318" Canvas.Top="114" FontSize="14" IsReadOnly="True"/>
+                                <TextBox Text="{Binding Tel1,UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Телефонный номер"  materialDesign:TextFieldAssist.HasClearButton="True" Width="260" BorderBrush="#FF007BAB" Style="{StaticResource MaterialDesignFloatingHintTextBox}" CaretBrush="#FF007BAB" Canvas.Left="318" Canvas.Top="114" FontSize="14" IsReadOnly="True"/>
                                 <materialDesign:PackIcon Kind="Telephone" Canvas.Left="281" Canvas.Top="130" Height="25" Width="30" Foreground="{DynamicResource IconColor}" />
-                                <TextBox Text="{Binding SalaryType1,UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Тип заработной платы"  materialDesign:TextFieldAssist.HasClearButton="True" Width="260" BorderBrush="#FF007BAB" Style="{StaticResource MaterialDesignFloatingHintTextBox}" CaretBrush="#FF007BAB" Canvas.Left="318" Canvas.Top="159" FontSize="14" IsReadOnly="True"/>
+                                <TextBox Text="{Binding SalaryTypeI,UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Тип заработной платы"  materialDesign:TextFieldAssist.HasClearButton="True" Width="260" BorderBrush="#FF007BAB" Style="{StaticResource MaterialDesignFloatingHintTextBox}" CaretBrush="#FF007BAB" Canvas.Left="318" Canvas.Top="159" FontSize="14" IsReadOnly="True"/>
                                 <materialDesign:PackIcon Kind="CashMultiple" Canvas.Left="281" Canvas.Top="174" Height="25" Width="30" Foreground="{DynamicResource IconColor}" />
                                 <materialDesign:PackIcon Kind="AccountSearch" Canvas.Left="688" Canvas.Top="125" Height="29" Width="30" Foreground="{DynamicResource IconColor}" />
                                 <ComboBox ItemsSource="{Binding AllDate,UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Selected,UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" BorderThickness="0,0,0,1" materialDesign:HintAssist.Hint="Искать работника" IsEditable="True" Width="334" Canvas.Left="727" Canvas.Top="120" Height="35" BorderBrush="#FF007BAB">

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdminKafe.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -39,6 +40,14 @@ namespace AdminKafe.Windows.PageMenu
                 //DataRowView dataRow = (DataRowView)dbGrid.SelectedItem;
                 //ComboBox1.Text = dbGrid.selected
             }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            object item = dbGrid.SelectedItem;
+            DateWorker.AllId = Convert.ToInt32((dbGrid.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text);
+            ComboBox1.Text = (dbGrid.SelectedCells[1].Column.GetCellContent(item) as TextBlock).Text;
+            Textbox1.Text = (dbGrid.SelectedCells[2].Column.GetCellContent(item) as TextBlock).Text;
         }
     }
 }
