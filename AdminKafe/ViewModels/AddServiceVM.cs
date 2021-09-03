@@ -67,7 +67,7 @@ namespace AdminKafe.ViewModels
         public void EditMethod(object p)
         {
             DateWorker.EditConsumption(SelectedDate.Id, Name, Summ);
-            LoadAllDate()
+            LoadAllDate();
         }
 
         public override async void LoadAllDate(string name = "")
