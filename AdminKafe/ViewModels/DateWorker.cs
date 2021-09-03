@@ -279,13 +279,26 @@ namespace AdminKafe.Models
                               {
                                   Id = product.Id,
                                   ProductName = product.Name,
-                                  CheckDate=check.DateTimeCheck.Date,
-                                  ProductUnit= product.Type,
-                                  ProductPrice=repgods.Price,
-                                  ProductCount = /*(db.Orders.Where(i => i.FoodId == recipe.FoodId).Sum(i => i.CountFood) * *//*recipe.CountPoduct*//* db.Recipes.Where(i => i.ProductId == product.Id).Sum(i => i.CountPoduct)) +" "+ recipe.Unit,*/  recipe.CountPoduct*orders.CountFood,
-                                  ProductSumm = repgods.Price * recipe.CountPoduct * orders.CountFood  
-                              })/*.AsEnumerable().GroupBy(i=>i.ProductName)*/;        
-                return result.ToList<object>();
+                                  CheckDate = check.DateTimeCheck.Date,
+                                  ProductUnit = product.Type,
+                                  ProductPrice = repgods.Price,
+                                  ProductCount = recipe.CountPoduct * orders.CountFood,
+                                  ProductSumm = repgods.Price * recipe.CountPoduct * orders.CountFood
+                              });
+
+                var result2 = (from s in result
+                               group s by new { s.Id, s.ProductName, s.CheckDate, s.ProductUnit, s.ProductPrice } into g
+                               select new
+                               {
+                                   Id = g.Key.Id,
+                                   CheckDate = g.Key.CheckDate,
+                                   ProductPrice = g.Key.ProductPrice,
+                                   ProductName = g.Key.ProductName,
+                                   ProductCount = g.Sum(i => i.ProductCount) + " " + g.Key.ProductUnit,
+                                   ProductSumm = g.Sum(i => i.ProductCount) * g.Key.ProductPrice
+                               }).Where(u => u.CheckDate <= datePosle && u.CheckDate >= dateDo && u.ProductName.Contains(name));
+                SummServices = result2.Sum(u => u.ProductSumm);
+                return result2.ToList<object>();
             }
         }
         #endregion  AddProduct and ByProduct
