@@ -100,6 +100,12 @@ namespace AdminKafe.ViewModels
             set => Set(ref _SeachAllDate, value);
         }
 
+        private List<CheckFoodName> _AllObjectDate2;
+        public List<CheckFoodName> AllObjectDate2
+        {
+            get => _AllObjectDate2;
+            set => Set(ref _AllObjectDate2, value);
+        }
         private List<object> _AllObjectDate;
         public List<object> AllObjectDate
         {

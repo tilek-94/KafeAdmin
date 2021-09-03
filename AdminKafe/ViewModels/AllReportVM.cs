@@ -19,7 +19,7 @@ namespace AdminKafe.ViewModels
             ShowResultCommand = new LambdaCommand(ShowResult, CanShowResult);
             DeleteCommand = new LambdaCommand(DeleteMethod, CanCloseApplicationExecat);
             ShowWindowCommand = new LambdaCommand(ShowWindowMethod, CanCloseApplicationExecat);
-            AllObjectDate = DateWorker.GetAll();
+            //AllObjectDate = DateWorker.GetAll();
             LoadWastedFood();
             LoadAllWaters();
             LoadAllBy();
@@ -47,34 +47,14 @@ namespace AdminKafe.ViewModels
             get => allLocation;
             set => Set(ref allLocation, value);
         }
-        private object _SelectedProperties;
-        public object SelectedProperties
+        private CheckFoodName _SelectedProperties;
+        public CheckFoodName SelectedProperties
         {
             get => _SelectedProperties;
             set
             {
                 Set(ref _SelectedProperties, value);
-                PropertyInfo property = SelectedProperties.GetType().GetProperty("Id");
-                int Id = (int)(property.GetValue(SelectedProperties, null));
-
-                PropertyInfo CheckCount = SelectedProperties.GetType().GetProperty("CheckCount");
-                NumberCheck = (int)(CheckCount.GetValue(SelectedProperties, null));
-
-                PropertyInfo CheckDate = SelectedProperties.GetType().GetProperty("CheckDate");
-                DateTimeProperties = (DateTime)(CheckDate.GetValue(SelectedProperties, null));
-
-                PropertyInfo WaiterName = SelectedProperties.GetType().GetProperty("WaiterName");
-                WaiterProperties = (string)(WaiterName.GetValue(SelectedProperties, null));
-
-                PropertyInfo Status = SelectedProperties.GetType().GetProperty("Status");
-                StatusProperties = (string)(Status.GetValue(SelectedProperties, null));
-
-                PropertyInfo TableName = SelectedProperties.GetType().GetProperty("TableName");
-                TableProperties = (string)(TableName.GetValue(SelectedProperties, null));
-
-                PropertyInfo GuestCount = SelectedProperties.GetType().GetProperty("GuestCount");
-                int GuestCount1 = (int)(GuestCount.GetValue(SelectedProperties, null));
-                ShowOreders(Id, GuestCount1);
+                ShowOreders(value.Id, value.GuestCount);
             }
         }
 
@@ -183,8 +163,8 @@ namespace AdminKafe.ViewModels
             }
         }
 
-        private List<object> _OrdersProperty;
-        public List<object> OrdersProperty
+        private List<CheckFoodClass> _OrdersProperty;
+        public List<CheckFoodClass> OrdersProperty
         {
             get => _OrdersProperty;
             set
@@ -224,7 +204,7 @@ namespace AdminKafe.ViewModels
         {
             PropertyInfo property = SelectedDateObject.GetType().GetProperty("Id");
             int Id = (int)(property.GetValue(SelectedDateObject, null));
-            MessageWindow mv = new MessageWindow("Вы уеронно хотите удалить?");
+            MessageWindow mv = new MessageWindow("Вы уверенны, что хотите удалить?");
             mv._mess += x =>
             {
                 if (x == 1)
@@ -253,7 +233,7 @@ namespace AdminKafe.ViewModels
             IsLoading = true;
             await Task.Run(() =>
             {
-                AllObjectDate = DateWorker.GetAll();
+                //AllObjectDate = DateWorker.GetAll();
                 // AllLocation = DateWorker.GetAllLocation();
             }).ContinueWith(t => IsLoading = false);
 
@@ -267,16 +247,18 @@ namespace AdminKafe.ViewModels
         {
             await Task.Run(() =>
             {
+                OrdersProperty = new List<CheckFoodClass>();
                 OrdersProperty = DateWorker.GetAllOrder(Id, goustCount);
-                SumCheck = DateWorker.SummByProduct;
-                SummService = DateWorker.SummServices;
+                SumCheck = Math.Round(DateWorker.SummByProduct,2);
+                SummService = Math.Round(DateWorker.SummServices,2);
             });
         }
         public async void LoadAllDateWithDate()
         {
             await Task.Run(() =>
             {
-                AllObjectDate = DateWorker.GetAllCkeck(DateTimeForOneDay, DateTimeForStartDay, DateTimeForEndDay, WaiterProperties);
+                AllObjectDate2 = new List<CheckFoodName>();
+                AllObjectDate2 = DateWorker.GetAllCkeck(DateTimeForOneDay, DateTimeForStartDay, DateTimeForEndDay, WaiterProperties);
             });
 
         }

@@ -1098,7 +1098,7 @@ namespace AdminKafe.Models
                 return result.ToList<object>();
             }
         }
-        public static List<object> GetAllOrder(int id, int GoustCount)
+        public static List<CheckFoodClass> GetAllOrder(int id, int GoustCount)
         {
             using (ApplicationContext db = new ApplicationContext())
             {
@@ -1107,7 +1107,7 @@ namespace AdminKafe.Models
                              join c in db.Checks on o.CheckId equals c.Id
                              join w in db.Waiters on c.WaiterId equals w.Id
                              where (o.CheckId == id)
-                             select new
+                             select new CheckFoodClass
                              {
                                  Id = o.Id,
                                  Food = f.Name,
@@ -1129,12 +1129,12 @@ namespace AdminKafe.Models
                            };
                 SummServices = Summ.Select(t => t.Summ).FirstOrDefault();
                 SummByProduct = a + SummServices;
-                return result.ToList<object>();
+                return result.ToList<CheckFoodClass>();
             }
         }
 
 
-        public static List<object> GetAll()
+/*        public static List<object> GetAll()
         {
             using (ApplicationContext db = new ApplicationContext())
             {
@@ -1142,11 +1142,13 @@ namespace AdminKafe.Models
                              join table in db.Tables on check.TableId equals table.Id
                              join waiter in db.Waiters on check.WaiterId equals waiter.Id
                              join status in db.Status on check.Status equals status.Id
+                             join loc  in db.Locations on table.LocationId equals loc.Id
                              select new
                              {
                                  Id = check.Id,
                                  CheckCount = check.CheckCount,
                                  CheckDate = check.DateTimeCheck,
+                                 TableCategoryName = loc.Name,
                                  TableName = table.Name,
                                  WaiterName = waiter.Name,
                                  Status = status.Name,
@@ -1157,7 +1159,7 @@ namespace AdminKafe.Models
 
                 return result.ToList<object>();
             }
-        }
+        }*/
 
 
         public static double countReturn(int id)
@@ -1183,7 +1185,7 @@ namespace AdminKafe.Models
         }
 
 
-        public static List<object> GetAllCkeck(DateTime DateTimeForOneDay, DateTime DateTimeForTwoDay, DateTime DateTimeForTreeDay, string WaiterName = "")
+        public static List<CheckFoodName> GetAllCkeck(DateTime DateTimeForOneDay, DateTime DateTimeForTwoDay, DateTime DateTimeForTreeDay, string WaiterName = "")
         {
             using (ApplicationContext db = new ApplicationContext())
             {
@@ -1191,13 +1193,15 @@ namespace AdminKafe.Models
                              join table in db.Tables on check.TableId equals table.Id
                              join waiter in db.Waiters on check.WaiterId equals waiter.Id
                              join status in db.Status on check.Status equals status.Id
+                             join loc in db.Locations on table.LocationId equals loc.Id
                              /*where check.DateTimeCheck.Date == DateTimeForOneDay.Date*/
-                             select new
+                             select new CheckFoodName
                              {
                                  Id = check.Id,
                                  CheckCount = check.CheckCount,
                                  CheckDate = check.DateTimeCheck,
                                  TableName = table.Name,
+                                 TableCategoryName = loc.Name,
                                  WaiterName = waiter.Name,
                                  GuestCount = check.GuestsCount,
                                  Status = status.Name,
@@ -1210,26 +1214,26 @@ namespace AdminKafe.Models
                     if (AllReport.RadioCheck == 0)
                     {
                         if (AllReport.ComboChek == 0)
-                            return result.ToList<object>();
+                            return result.ToList<CheckFoodName>();
                         if (AllReport.ComboChek == 1)
-                            return result.Where(i => i.WaiterName == WaiterName).ToList<object>();
+                            return result.Where(i => i.WaiterName == WaiterName).ToList<CheckFoodName>();
                     }
                     if (AllReport.RadioCheck == 1)
                     {
                         if (AllReport.ComboChek == 0)
-                            return result.Where(i => i.CheckDate.Date == DateTimeForOneDay.Date).ToList<object>();
+                            return result.Where(i => i.CheckDate.Date == DateTimeForOneDay.Date).ToList<CheckFoodName>();
                         if (AllReport.ComboChek == 1)
-                            return result.Where(i => i.CheckDate.Date == DateTimeForOneDay.Date && i.WaiterName == WaiterName).ToList<object>();
+                            return result.Where(i => i.CheckDate.Date == DateTimeForOneDay.Date && i.WaiterName == WaiterName).ToList<CheckFoodName>();
                     }
                     if (AllReport.RadioCheck == 2)
                     {
                         if (AllReport.ComboChek == 0)
                         {
-                            return result.Where(i => i.CheckDate.Date >= DateTimeForTwoDay.Date && i.CheckDate.Date <= DateTimeForTreeDay.Date).ToList<object>();
+                            return result.Where(i => i.CheckDate.Date >= DateTimeForTwoDay.Date && i.CheckDate.Date <= DateTimeForTreeDay.Date).ToList<CheckFoodName>();
                         }
                         if (AllReport.ComboChek == 1)
                         {
-                            return result.Where(i => i.CheckDate.Date >= DateTimeForTwoDay.Date && i.CheckDate.Date <= DateTimeForTreeDay.Date && i.WaiterName == WaiterName).ToList<object>();
+                            return result.Where(i => i.CheckDate.Date >= DateTimeForTwoDay.Date && i.CheckDate.Date <= DateTimeForTreeDay.Date && i.WaiterName == WaiterName).ToList<CheckFoodName>();
                         }
                     }
                 }
@@ -1240,16 +1244,16 @@ namespace AdminKafe.Models
                         if (AllReport.ComboChek == 0)
                         {
                             if (AllReport.RadioCheckStatus == 0)
-                                return result.ToList<object>();
+                                return result.ToList<CheckFoodName>();
                             else
-                                return result.Where(i => i.StatusID == AllReport.RadioCheckStatus).ToList<object>();
+                                return result.Where(i => i.StatusID == AllReport.RadioCheckStatus).ToList<CheckFoodName>();
                         }
                         if (AllReport.ComboChek == 1)
                         {
                             if (AllReport.RadioCheckStatus == 0)
-                                return result.Where(i => i.WaiterName == WaiterName).ToList<object>();
+                                return result.Where(i => i.WaiterName == WaiterName).ToList<CheckFoodName>();
                             else
-                                return result.Where(i => i.WaiterName == WaiterName && i.StatusID == AllReport.RadioCheckStatus).ToList<object>();
+                                return result.Where(i => i.WaiterName == WaiterName && i.StatusID == AllReport.RadioCheckStatus).ToList<CheckFoodName>();
                         }
                     }
                     if (AllReport.RadioCheck == 1)
@@ -1257,16 +1261,16 @@ namespace AdminKafe.Models
                         if (AllReport.ComboChek == 0)
                         {
                             if (AllReport.RadioCheckStatus == 0)
-                                return result.Where(i => i.CheckDate.Date == DateTimeForOneDay.Date).ToList<object>();
+                                return result.Where(i => i.CheckDate.Date == DateTimeForOneDay.Date).ToList<CheckFoodName>();
                             else
-                                return result.Where(i => i.CheckDate.Date == DateTimeForOneDay.Date && i.StatusID == AllReport.RadioCheckStatus).ToList<object>();
+                                return result.Where(i => i.CheckDate.Date == DateTimeForOneDay.Date && i.StatusID == AllReport.RadioCheckStatus).ToList<CheckFoodName>();
                         }
                         if (AllReport.ComboChek == 1)
                         {
                             if (AllReport.RadioCheckStatus == 0)
-                                return result.Where(i => i.CheckDate.Date == DateTimeForOneDay.Date && i.WaiterName == WaiterName).ToList<object>();
+                                return result.Where(i => i.CheckDate.Date == DateTimeForOneDay.Date && i.WaiterName == WaiterName).ToList<CheckFoodName>();
                             else
-                                return result.Where(i => i.CheckDate.Date == DateTimeForOneDay.Date && i.WaiterName == WaiterName && i.StatusID == AllReport.RadioCheckStatus).ToList<object>();
+                                return result.Where(i => i.CheckDate.Date == DateTimeForOneDay.Date && i.WaiterName == WaiterName && i.StatusID == AllReport.RadioCheckStatus).ToList<CheckFoodName>();
                         }
                     }
                     if (AllReport.RadioCheck == 2)
@@ -1274,20 +1278,20 @@ namespace AdminKafe.Models
                         if (AllReport.ComboChek == 0)
                         {
                             if (AllReport.RadioCheckStatus == 0)
-                                return result.Where(i => i.CheckDate.Date >= DateTimeForTwoDay.Date && i.CheckDate.Date <= DateTimeForTreeDay.Date).ToList<object>();
+                                return result.Where(i => i.CheckDate.Date >= DateTimeForTwoDay.Date && i.CheckDate.Date <= DateTimeForTreeDay.Date).ToList<CheckFoodName>();
                             else
-                                return result.Where(i => i.CheckDate.Date >= DateTimeForTwoDay.Date && i.CheckDate.Date <= DateTimeForTreeDay.Date && i.StatusID == AllReport.RadioCheckStatus).ToList<object>();
+                                return result.Where(i => i.CheckDate.Date >= DateTimeForTwoDay.Date && i.CheckDate.Date <= DateTimeForTreeDay.Date && i.StatusID == AllReport.RadioCheckStatus).ToList<CheckFoodName>();
                         }
                         if (AllReport.ComboChek == 1)
                         {
                             if (AllReport.RadioCheckStatus == 0)
-                                return result.Where(i => i.CheckDate.Date >= DateTimeForTwoDay.Date && i.CheckDate.Date <= DateTimeForTreeDay.Date).ToList<object>();
+                                return result.Where(i => i.CheckDate.Date >= DateTimeForTwoDay.Date && i.CheckDate.Date <= DateTimeForTreeDay.Date).ToList<CheckFoodName>();
                             else
-                                return result.Where(i => i.CheckDate.Date >= DateTimeForTwoDay.Date && i.CheckDate.Date <= DateTimeForTreeDay.Date && i.WaiterName == WaiterName && i.StatusID == AllReport.RadioCheckStatus).ToList<object>();
+                                return result.Where(i => i.CheckDate.Date >= DateTimeForTwoDay.Date && i.CheckDate.Date <= DateTimeForTreeDay.Date && i.WaiterName == WaiterName && i.StatusID == AllReport.RadioCheckStatus).ToList<CheckFoodName>();
                         }
                     }
                 }
-                return result.ToList<object>();
+                return result.ToList<CheckFoodName>();
 
             }
         }
