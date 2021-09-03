@@ -85,13 +85,13 @@ namespace AdminKafe.Windows.PageMenu {
         /// InitializeComponent
         /// </summary>
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "5.0.6.0")]
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "5.0.9.0")]
         public void InitializeComponent() {
             if (_contentLoaded) {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/AdminKafe;component/view/windows/pagemenu/addwaiter.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/AdminKafe;V1.0.0.0;component/view/windows/pagemenu/addwaiter.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\..\View\Windows\PageMenu\AddWaiter.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
@@ -101,7 +101,7 @@ namespace AdminKafe.Windows.PageMenu {
         }
         
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "5.0.6.0")]
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "5.0.9.0")]
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Design", "CA1033:InterfaceMethodsShouldBeCallableByChildTypes")]
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
