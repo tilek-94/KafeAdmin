@@ -204,7 +204,7 @@ namespace AdminKafe.ViewModels
         {
             PropertyInfo property = SelectedDateObject.GetType().GetProperty("Id");
             int Id = (int)(property.GetValue(SelectedDateObject, null));
-            MessageWindow mv = new MessageWindow("Вы уверенны, что хотите удалить?");
+            MessageWindow mv = new MessageWindow("Вы уверены, что хотите удалить?");
             mv._mess += x =>
             {
                 if (x == 1)
