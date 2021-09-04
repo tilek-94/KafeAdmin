@@ -136,10 +136,10 @@ namespace AdminKafe.ViewModels
         }
         public void CreateMethod(object p)
         {
-            result = "Запольните поля ";
+            result = "Заполните поля ";
             if (SelectedFood == null || CountRecept == 0 || SelectedProduct == null)
             {
-                result += "Названи блюда, ";
+                result += "Название блюда, ";
 
             }
             else
@@ -154,7 +154,7 @@ namespace AdminKafe.ViewModels
         public void DeleteMethod(object p)
         {
             result = "";
-            MessageWindow mv = new MessageWindow("Вы уеронно хотите удалить?");
+            MessageWindow mv = new MessageWindow("Вы уверены,что хотите удалить?");
             mv._mess += x =>
             {
                 if (x == 1)

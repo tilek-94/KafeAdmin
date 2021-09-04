@@ -24,9 +24,9 @@
         </Grid.RowDefinitions>
         <Border Height="4" Background="#007bab"/>
         <Canvas Grid.Row="1" Background="White">
-            <TextBox materialDesign:HintAssist.Hint="Названия кафе"  Text="{Binding Name,UpdateSourceTrigger=PropertyChanged}" materialDesign:TextFieldAssist.HasClearButton="True" Width="343" BorderBrush="#FF007BAB" Style="{StaticResource MaterialDesignFloatingHintTextBox}" CaretBrush="#FF007BAB" Canvas.Left="173" Canvas.Top="65" FontSize="14"/>
+            <TextBox materialDesign:HintAssist.Hint="Названиe кафе"  Text="{Binding Name,UpdateSourceTrigger=PropertyChanged}" materialDesign:TextFieldAssist.HasClearButton="True" Width="343" BorderBrush="#FF007BAB" Style="{StaticResource MaterialDesignFloatingHintTextBox}" CaretBrush="#FF007BAB" Canvas.Left="173" Canvas.Top="65" FontSize="14"/>
             <materialDesign:PackIcon Kind="Home" Canvas.Left="135" Canvas.Top="78" Height="29" Width="30" Foreground="{DynamicResource IconColor}" />
-            <TextBox materialDesign:HintAssist.Hint="Место раположения" Text="{Binding Adress,UpdateSourceTrigger=PropertyChanged}" materialDesign:TextFieldAssist.HasClearButton="True" Width="343" BorderBrush="#FF007BAB" Style="{StaticResource MaterialDesignFloatingHintTextBox}" CaretBrush="#FF007BAB" Canvas.Left="173" Canvas.Top="111" FontSize="14"/>
+            <TextBox materialDesign:HintAssist.Hint="Месторасположения" Text="{Binding Adress,UpdateSourceTrigger=PropertyChanged}" materialDesign:TextFieldAssist.HasClearButton="True" Width="343" BorderBrush="#FF007BAB" Style="{StaticResource MaterialDesignFloatingHintTextBox}" CaretBrush="#FF007BAB" Canvas.Left="173" Canvas.Top="111" FontSize="14"/>
             <materialDesign:PackIcon Kind="MapMarker" Canvas.Left="133" Canvas.Top="127" Height="25" Width="30" Foreground="{DynamicResource IconColor}" />
             <Button Command="{Binding UpDateCommand}" Padding="0" Background="#FF007BAB" Canvas.Left="347" Canvas.Top="276" Width="152" Height="35">
                 <StackPanel Orientation="Horizontal">
@@ -41,6 +41,7 @@
                 </StackPanel>
             </Button>
             <materialDesign:PackIcon Kind="Palette" Canvas.Left="136" Canvas.Top="195" Height="29" Width="30" Foreground="{DynamicResource IconColor}" />
+            <TextBlock Text="Фон программы" Foreground="Gray" Canvas.Left="175" Canvas.Top="175" VerticalAlignment="Center"/>
             <ComboBox                 
                 IsReadOnly="True" Text="{Binding Fon,UpdateSourceTrigger=PropertyChanged}"
                 materialDesign:HintAssist.Hint="Изменить фон" IsEditable="True" Width="343" Canvas.Left="173" Canvas.Top="199" Height="25" BorderThickness="0,0,0,1" BorderBrush="#FF007BAB">

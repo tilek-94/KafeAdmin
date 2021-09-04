@@ -84,15 +84,14 @@ namespace AdminKafe.ViewModels
             Img1 = Imgs;
         }
         string result = "";
-
         #region Consumption
        
         public void AddConsumptionMethod(object p)
         {
-            result = "Запольните поля ";
+            result = "Заполните поля ";
             if (Name =="")
             {
-                result += "Названи блюда, ";
+                result += "Название блюда, ";
 
             }
             else
@@ -106,10 +105,10 @@ namespace AdminKafe.ViewModels
         }
         public void EditConsumptionMethod(object p)
         {
-            result = "Запольните поля ";
+            result = "Заполните поля ";
             if (Name == "")
             {
-                result += "Названи блюда, ";
+                result += "Название блюда, ";
 
             }
             else
@@ -124,7 +123,7 @@ namespace AdminKafe.ViewModels
         private void DeleteConsumptionMethod(object p)
         {
             result = "";
-            MessageWindow mv = new MessageWindow("Вы уеронно хотите удалить?");
+            MessageWindow mv = new MessageWindow("Вы уверены, что хотите удалить?");
             mv._mess += x =>
             {
                 if (x == 1)
@@ -142,10 +141,10 @@ namespace AdminKafe.ViewModels
         #region Recieps
         public void AddReciepsMethod(object p)
         {
-           result = "Запольните поля ";
+           result = "Заполните поля ";
            if ( SelectedFood == null || CountRecept == 0 || SelectedProduct==null )
             {
-                result += "Названи блюда, ";
+                result += "Название блюда, ";
 
             }
             else
@@ -163,11 +162,11 @@ namespace AdminKafe.ViewModels
         public void AddFoodMethod(object p)
         {
             Image img = p as Image;
-            result = "Запольните поля ";
+            result = "Заполните поля ";
 
             if ((Name == null || Name.Replace(" ", "").Length == 0) && SelectedFood == null && Price == 0)
             {
-                result += "Названи блюда, ";
+                result += "Название блюда, ";
 
             }
             else
@@ -183,11 +182,11 @@ namespace AdminKafe.ViewModels
         }
         public void AddMenuFoodMethod(object p)
         {
-            result = "Запольните поля ";
+            result = "Заполните поля ";
 
             if ((NameMenuFood == null || NameMenuFood.Replace(" ", "").Length == 0))
             {
-                result += "Названи меню  ";
+                result += "Название меню  ";
                 OpenOkMethod(result + "!");
             }
             else 
@@ -203,7 +202,7 @@ namespace AdminKafe.ViewModels
         {
             PropertyInfo property = SelectedTable1.GetType().GetProperty("Id");
             int Id = (int)(property.GetValue(SelectedTable1, null));
-            MessageWindow mv = new MessageWindow("Вы уеронно хотите удалить?");
+            MessageWindow mv = new MessageWindow("Вы уверены, что хотите удалить?");
             mv._mess += x =>
             {
                 if (x == 1)
@@ -220,7 +219,7 @@ namespace AdminKafe.ViewModels
         #region AddProduct and ByProduct
         private void CreateReceiptGoodsMethod(object p)
         {
-            result = "Запольните поля ";
+            result = "Заполните поля ";
             int flag = 0;
             if (SelectedProduct == null)
             {
@@ -251,7 +250,7 @@ namespace AdminKafe.ViewModels
         }
         public void AddProductMethod(object p)
         {
-            result = "Запольните поля ";
+            result = "Заполните поля ";
 
             if (Name == null || Name.Replace(" ", "").Length == 0)
             {
@@ -287,7 +286,7 @@ namespace AdminKafe.ViewModels
         }
         private void EditWaiterMethod(object p)
         {
-            result = "Запольните поля ";
+            result = "Заполните поля ";
             int flag = 0;
             if (Name == null || Name.Replace(" ", "").Length == 0)
             {
@@ -337,7 +336,7 @@ namespace AdminKafe.ViewModels
         private void DeleteWaiterMethod(object p)
         {
             result = "";
-            MessageWindow mv = new MessageWindow("Вы уеронно хотите удалить?");
+            MessageWindow mv = new MessageWindow("Вы уверены, что хотите удалить?");
             mv._mess += x =>
             {
                 if (x == 1)
@@ -352,7 +351,7 @@ namespace AdminKafe.ViewModels
         }
         private void MethodCreateWaiter(object p)
         {
-            result = "Запольните поля ";
+            result = "Заполните поля ";
             int flag = 0;
             if (Name == null || Name.Replace(" ", "").Length == 0)
             {
@@ -396,7 +395,7 @@ namespace AdminKafe.ViewModels
         {
             PropertyInfo property = SelectedTable1.GetType().GetProperty("Id");
             int Id = (int)(property.GetValue(SelectedTable1, null));
-            MessageWindow mv = new MessageWindow("Вы уеронно хотите удалить?");
+            MessageWindow mv = new MessageWindow("Вы уверены, что хотите удалить?");
             mv._mess += x =>
             {
                 if (x == 1)
@@ -416,7 +415,7 @@ namespace AdminKafe.ViewModels
         }
         private void CreateLocationMethod(object p)
         {
-            result = "Запольните поля ";
+            result = "Заполните поля ";
             if (Name == null || Name.Replace(" ", "").Length == 0)
             {
                 result += "Ф.И.О, ";
@@ -433,7 +432,7 @@ namespace AdminKafe.ViewModels
         }
         private void CreateTablenMethod(object p)
         {
-            result = "Запольните поля ";
+            result = "Заполните поля ";
             int flag = 0;
             if (TableName == null || TableName.Replace(" ", "").Length == 0)
             {
@@ -458,7 +457,7 @@ namespace AdminKafe.ViewModels
         private void DeleteLocationMethod(object p)
         {
             result = "";
-            MessageWindow mv = new MessageWindow("Вы уеронно хотите удалить?");
+            MessageWindow mv = new MessageWindow("Вы уверены, что хотите удалить?");
             mv._mess += x =>
             {
                 if (x == 1)

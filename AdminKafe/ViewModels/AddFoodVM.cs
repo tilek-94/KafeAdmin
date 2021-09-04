@@ -134,11 +134,11 @@ namespace AdminKafe.ViewModels
             IsLoading = true;
               
             Image img = p as Image;
-            result = "Запольните поля ";
+            result = "Заполните поля ";
 
             if ((Name == null || Name.Replace(" ", "").Length == 0) && SelectedFood == null && Price == 0)
             {
-                result += "Названи блюда, ";
+                result += "Название блюда, ";
 
             }
             else
@@ -155,11 +155,11 @@ namespace AdminKafe.ViewModels
         }
         public void AddMenuFoodMethod(object p)
         {   
-            result = "Запольните поля ";
+            result = "Заполните поля ";
 
             if ((Name == null || Name.Replace(" ", "").Length == 0))
             {
-                result += "Названи меню  ";
+                result += "Название меню  ";
                 OpenOkMethod(result + "!");
             }
             else
@@ -177,7 +177,7 @@ namespace AdminKafe.ViewModels
             PropertyInfo property = SelectedDateObject.GetType().GetProperty("Id");
             int Id = (int)(property.GetValue(SelectedDateObject, null));
             result = "";
-            MessageWindow mv = new MessageWindow("Вы уеронно хотите удалить?");
+            MessageWindow mv = new MessageWindow("Вы уверены,что хотите удалить?");
             mv._mess += x =>
             {
                 if (x == 1)
@@ -277,7 +277,7 @@ namespace AdminKafe.ViewModels
         
         private void DeleteFoodCategori(object o)
         {
-            MessageWindow mv = new MessageWindow("Вы уеронно хотите удалить?");
+            MessageWindow mv = new MessageWindow("Вы уверены,что хотите удалить?");
             mv._mess += x =>
             {
                 if (x == 1)

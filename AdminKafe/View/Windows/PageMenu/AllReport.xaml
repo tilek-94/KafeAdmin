@@ -194,7 +194,7 @@
                             <Button Padding="0" Background="#FF007BAB" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,35,0" Width="152" Height="35">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="ClipboardText" Foreground="White" FontWeight="Bold" Width="20" Height="20" Margin="-2,0,0,0" VerticalAlignment="Center"/>
-                                    <TextBlock Text="Сохранит как" Foreground="White" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                                    <TextBlock Text="Сохранить как" Foreground="White" VerticalAlignment="Center" Margin="5,0,0,0"/>
                                 </StackPanel>
                             </Button>
                         </Grid>

@@ -27,7 +27,7 @@ namespace AdminKafe.Models
                 pr.Type = type;
                 pr.Note = note;
                 db.SaveChanges();
-                result = $"Сделанно изменение!!";
+                result = $"Успешно изменено!";
             }
             return result;
         }
@@ -77,7 +77,7 @@ namespace AdminKafe.Models
 
         public static string CreateReceiptGoods(DateTime dateTimeReceiptGoods, int count, double price, Product product)
         {
-            string result = "Имя или Пароль уже существует!!";
+            string result = "Имя или Пароль уже существует!";
             using (ApplicationContext db = new ApplicationContext())
             {
                 ReceiptGoods receiptGoods = new ReceiptGoods
@@ -91,17 +91,16 @@ namespace AdminKafe.Models
                 db.ReceiptGoods.Add(receiptGoods);
                 db.SaveChanges();
 
-                result = "Сделанно!!";
+                result = "Успешно!";
 
                 return result;
             }
-            return result;
         }
         public static string DeleteProduct(int id)
         {
             try
             {
-                string result = "Такого комната не существует!";
+                string result = "Такой комнаты не существует!";
                 using (ApplicationContext db = new ApplicationContext())
                 {
                     var Id = db.ReceiptGoods.FirstOrDefault(t => t.Id == id);
@@ -194,7 +193,7 @@ namespace AdminKafe.Models
         }
         public static string CreateProduct(string name, string type, double note = 0)
         {
-            string result = "Имя или Пароль уже существует!!";
+            string result = "Имя или Пароль уже существует!";
             using (ApplicationContext db = new ApplicationContext())
             {
                 bool checkIsExit = db.Products.Any(el => el.Name == name);
@@ -209,7 +208,7 @@ namespace AdminKafe.Models
                     db.Products.Add(product);
                     db.SaveChanges();
 
-                    result = "Сделанно!!";
+                    result = "Успешно!";
                 }
                 return result;
             }
@@ -221,7 +220,7 @@ namespace AdminKafe.Models
         {
             try
             {
-                string result = "Такого комната не существует!";
+                string result = "Такой комнаты не существует!";
                 using (ApplicationContext db = new ApplicationContext())
                 {
                     db.Products.Remove(product);
@@ -238,7 +237,7 @@ namespace AdminKafe.Models
         {
             try
             {
-                string result = "Такого комната не существует!";
+                string result = "Такой комнаты не существует!";
                 using (ApplicationContext db = new ApplicationContext())
                 {
                     ReceiptGoods rec = db.ReceiptGoods.FirstOrDefault(u => u.Id == AllId);
@@ -254,7 +253,7 @@ namespace AdminKafe.Models
         }
         public static string EditProduct(DateTime date, string massa, int count, double prise)
         {
-            string result = "Такого отдел не существует!!";
+            string result = "Такого отдела не существует!";
             using (ApplicationContext db = new ApplicationContext())
             {
                 ReceiptGoods waiter = db.ReceiptGoods.FirstOrDefault(d => d.Id == AllId);
@@ -262,7 +261,7 @@ namespace AdminKafe.Models
                 waiter.Count = count;
                 waiter.Price = prise;
                 db.SaveChanges();
-                result = $"Сделанно изменение!!";
+                result = $"Успешно изменено!";
             }
             return result;
         }
@@ -405,7 +404,7 @@ namespace AdminKafe.Models
         public static string CreateWaiter(string name, string pass, string tel, string address, string aliasName,
             double salaryType, double salaryType2, double salaryType3)
         {
-            string result = "Имя или Пароль уже существует!!";
+            string result = "Имя или Пароль уже существует!";
             using (ApplicationContext db = new ApplicationContext())
             {
                 string SalaryType = "";
@@ -442,7 +441,7 @@ namespace AdminKafe.Models
                     db.Waiters.Add(waiter);
                     db.SaveChanges();
 
-                    result = "Сделанно!!";
+                    result = "Успешно!";
                 }
                 return result;
             }
@@ -452,7 +451,7 @@ namespace AdminKafe.Models
         {
             try
             {
-                string result = "Такого отдел не существует!";
+                string result = "Такого отдела не существует!";
                 using (ApplicationContext db = new ApplicationContext())
                 {
                     db.Waiters.Remove(waiter);
@@ -469,7 +468,7 @@ namespace AdminKafe.Models
         public static string EditWaiter(Waiter oldWaiter, string name, string pass, string tel, string address, string aliasName,
             double salaryType, double salaryType2, double salaryType3)
         {
-            string result = "Такого отдел не существует!!";
+            string result = "Такого отдела не существует!!";
             using (ApplicationContext db = new ApplicationContext())
             {
                 string SalaryType = "";
@@ -499,7 +498,7 @@ namespace AdminKafe.Models
                 waiter.SalaryType = SalaryType;
                 waiter.Salary = Salary;
                 db.SaveChanges();
-                result = $"Сделанно изменение!!";
+                result = $"Успешно изменено!";
             }
             return result;
         }
@@ -558,7 +557,7 @@ namespace AdminKafe.Models
         {
             try
             {
-                string result = "Такого комната не существует!";
+                string result = "Такой комнаты не существует!";
                 using (ApplicationContext db = new ApplicationContext())
                 {
                     db.Locations.Remove(location);
@@ -574,7 +573,7 @@ namespace AdminKafe.Models
         }
         public static string CreateLocation(string name)
         {
-            string result = "Имя или Пароль уже существует!!";
+            string result = "Имя или Пароль уже существует!";
             using (ApplicationContext db = new ApplicationContext())
             {
                 bool checkIsExit = db.Locations.Any(el => el.Name == name);
@@ -598,7 +597,7 @@ namespace AdminKafe.Models
         }
         public static string CreateTable(string name, Location location)
         {
-            string result = "Имя или Пароль уже существует!!";
+            string result = "Имя или Пароль уже существует!";
             using (ApplicationContext db = new ApplicationContext())
             {
                 bool checkIsExit = db.Tables.Any(el => el.Name == name && el.Location == location);
@@ -613,7 +612,7 @@ namespace AdminKafe.Models
                     db.Tables.Add(table);
                     db.SaveChanges();
 
-                    result = "Сделанно!!";
+                    result = "Успешно!";
                 }
                 return result;
             }
@@ -624,7 +623,7 @@ namespace AdminKafe.Models
         {
             try
             {
-                string result = "Такого отдел не существует!";
+                string result = "Такого отдела не существует!";
                 using (ApplicationContext db = new ApplicationContext())
                 {
                     var tab = db.Tables.FirstOrDefault(t => t.Id == tableId);
@@ -642,26 +641,26 @@ namespace AdminKafe.Models
 
         public static string EditTabel(int IdOldTable, string name, Location location)
         {
-            string result = "Такого отдел не существует!!";
+            string result = "Такого отдела не существует!!";
             using (ApplicationContext db = new ApplicationContext())
             {
                 Table table = db.Tables.FirstOrDefault(d => d.Id == IdOldTable);
                 table.Name = name;
                 table.LocationId = location.Id;
                 db.SaveChanges();
-                result = $"Сделанно изменение!!";
+                result = $"Успешно изменено!";
             }
             return result;
         }
         public static string EditLocation(Location location,string name)
         {
-            string result = "Такого категория не существует!!";
+            string result = "Такой категории не существует!!";
             using (ApplicationContext db = new ApplicationContext())
             {
                 Location table = db.Locations.FirstOrDefault(d => d.Id == location.Id);
                 table.Name = name;
                 db.SaveChanges();
-                result = $"Сделанно изменение!!";
+                result = $"Успешно изменено!";
             }
             return result;
         }
@@ -687,7 +686,7 @@ namespace AdminKafe.Models
         }
         public static string CreateFood(string name, double price, Food food, byte[] img)
         {
-            string result = "Такого блюда уже существует!!";
+            string result = "Такое блюдо уже существует!";
             using (ApplicationContext db = new ApplicationContext())
             {
                 bool checkIsExit = db.Foods.Any(el => el.Name == name);
@@ -704,14 +703,14 @@ namespace AdminKafe.Models
                     db.Foods.Add(food1);
                     db.SaveChanges();
 
-                    result = "Сделанно!!";
+                    result = "Успешно!";
                 }
                 return result;
             }
         }
         public static string CreateMenuFood(string name, byte[] img)
         {
-            string result = "Такого блюда уже существует!!";
+            string result = "Такое блюдо уже существует!";
             using (ApplicationContext db = new ApplicationContext())
             {
                 bool checkIsExit = db.Foods.Any(el => el.Name == name);
@@ -734,7 +733,7 @@ namespace AdminKafe.Models
                     Food f = db.Foods.FirstOrDefault(t => t.Name == name);
                     f.ParentCategoryId = foodId.Id;
                     db.SaveChanges();
-                    result = "Сделанно!!";
+                    result = "Успешно!!";
                 }
             }
 
@@ -746,7 +745,7 @@ namespace AdminKafe.Models
         {
             try
             {
-                string result = "Такого отдел не существует!";
+                string result = "Такого отдела не существует!";
                 using (ApplicationContext db = new ApplicationContext())
                 {
                     var tab = db.Foods.FirstOrDefault(t => t.Id == tableId);
@@ -771,7 +770,7 @@ namespace AdminKafe.Models
                 Food food1 = db.Foods.FirstOrDefault(d => d.Id == food.Id);
                 food1.Name = name;
                 db.SaveChanges();
-                result = $"Сделанно изменение!!";
+                result = $"Успешно изменено!";
                 }
             }
             return result;
@@ -803,7 +802,7 @@ namespace AdminKafe.Models
                     Food f = db.Foods.FirstOrDefault(u=>u.Id==food.Id);
                     db.Foods.Remove(f);
                     db.SaveChanges();
-                    result = $"Сделанно изменение!!";
+                    result = $"Успешно изменено!";
                 }
             }
             return result;
@@ -946,7 +945,7 @@ namespace AdminKafe.Models
         }
         public static string CreateRecieps(Food food, Product product, double count, string unit)
         {
-            string result = "Такого блюда уже существует!!";
+            string result = "Такое блюдо уже существует!!";
             using (ApplicationContext db = new ApplicationContext())
             {
                 bool checkIsExit = db.Recipes.Any(t => t.FoodId == food.Id && t.ProductId == product.Id && t.CountPoduct == count);
@@ -970,7 +969,7 @@ namespace AdminKafe.Models
                     db.Recipes.Add(recipe);
                     db.SaveChanges();
 
-                    result = "Сделанно!!";
+                    result = "Успешно!";
                 }
                 return result;
             }
@@ -1024,7 +1023,7 @@ namespace AdminKafe.Models
         }
         public static string CreateConsumption(string name, double summ)
         {
-            string result = "Такого блюда уже существует!!";
+            string result = "Такоге блюдо уже существует!!";
             using (ApplicationContext db = new ApplicationContext())
             {
                 bool checkIsExit = db.Consumptions.Any(t => t.Name == name && t.Summ == summ);
@@ -1039,7 +1038,7 @@ namespace AdminKafe.Models
                     db.Consumptions.Add(consumption);
                     db.SaveChanges();
 
-                    result = "Сделанно!!";
+                    result = "Успешно!";
                 }
                 return result;
 
@@ -1047,7 +1046,7 @@ namespace AdminKafe.Models
         }
         public static string DeleteConsumption(Consumption consumption)
         {
-            string result = "Такого отдел не существует!";
+            string result = "Такого отдела не существует!";
             using (ApplicationContext db = new ApplicationContext())
             {
                 db.Consumptions.Remove(consumption);
@@ -1060,7 +1059,7 @@ namespace AdminKafe.Models
 
         public static string EditConsumption(int id, string name, double summ)
         {
-            string result = "Такого отдел не существует!!";
+            string result = "Такого отдела не существует!";
             using (ApplicationContext db = new ApplicationContext())
             {
 
@@ -1068,7 +1067,7 @@ namespace AdminKafe.Models
                 cons.Name = name;
                 cons.Summ = summ;
                 db.SaveChanges();
-                result = $"Сделанно изменение!!";
+                result = $"Успешно изменено!";
             }
             return result;
         }

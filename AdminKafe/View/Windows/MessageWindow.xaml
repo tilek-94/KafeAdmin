@@ -12,7 +12,7 @@
         <TextBlock x:Name="TextBlock1" Width="500" TextAlignment="Center"
                    Margin="0,30,0,0"
                    FontSize="22">
-            Сиздин сообщенияныз!
+            Ваше сообщение!
         </TextBlock>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" 
                     VerticalAlignment="Bottom" Margin="0,0,0,30"
