@@ -473,7 +473,6 @@ D:\c# Cafe\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\AdminKafe.GeneratedMSBui
 D:\c# Cafe\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\AdminKafe.AssemblyInfoInputs.cache
 D:\c# Cafe\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\AdminKafe.AssemblyInfo.cs
 D:\c# Cafe\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\AdminKafe.csproj.CoreCompileInputs.cache
-D:\c# Cafe\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\AdminKafe.csproj.CopyComplete
 D:\c# Cafe\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\AdminKafe.dll
 D:\c# Cafe\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\ref\AdminKafe.dll
 D:\c# Cafe\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\AdminKafe.pdb
