@@ -9,11 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using AdminKafe;
 using AdminKafe.View.Windows;
-using AdminKafe.View.Windows.PageMenu;
-using AdminKafe.ViewModels;
-using AdminKafe.Windows;
 using System;
 using System.Diagnostics;
 using System.Windows;

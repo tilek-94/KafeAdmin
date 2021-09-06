@@ -21,6 +21,9 @@ namespace AdminKafe.Date
         public DbSet<Consumption> Consumptions { get; set; }
         public DbSet<CafeName> CafeName { get; set; }
         public DbSet<Login> login { get; set; }
+        public DbSet<HistoryCheck> HistoryChecks { get; set; }
+        public DbSet<HistoryOrder> HistoryOrders { get; set; }
+        public DbSet<HistoryFood> HistoryFoods { get; set; }
 
         public ApplicationContext()
         {

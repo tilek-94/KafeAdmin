@@ -10,8 +10,9 @@
 //------------------------------------------------------------------------------
 
 using AdminKafe.View.Windows;
-using AdminKafe.ViewModels;
-using AdminKafe.Windows.PageMenu;
+using MaterialDesignThemes.Wpf;
+using MaterialDesignThemes.Wpf.Converters;
+using MaterialDesignThemes.Wpf.Transitions;
 using System;
 using System.Diagnostics;
 using System.Windows;
@@ -55,7 +56,7 @@ namespace AdminKafe.View.Windows.PageMenu {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/AdminKafe;V1.0.0.0;component/view/windows/pagemenu/savewindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/AdminKafe;component/view/windows/pagemenu/savewindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\..\View\Windows\PageMenu\SaveWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
