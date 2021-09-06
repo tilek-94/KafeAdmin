@@ -54,7 +54,12 @@ namespace AdminKafe.ViewModels
             set
             {
                 Set(ref _SelectedProperties, value);
-                ShowOreders(value.Id, value.GuestCount);
+                if (value!= null)
+                {
+                    ShowOreders(value.Id, value.GuestCount);
+                }
+
+
             }
         }
 

@@ -7,7 +7,6 @@ using System.Windows.Input;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using System.IO;
-using System.Drawing;
 using AdminKafe.Models;
 
 namespace AdminKafe.ViewModels
@@ -209,6 +208,9 @@ namespace AdminKafe.ViewModels
         }
 
         public ICommand CreateCommand { get; set; }
+        public ICommand SelectedEditCommand { get; set; }
+        public ICommand SelectedEdit { get; set; }
+        public ICommand ClearCommand { get; set; }
         public ICommand EditCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
         public ICommand CloseCommand { get; set; }

@@ -77,6 +77,14 @@ namespace AdminKafe.ViewModels
             get => _Pass;
             set => Set(ref _Pass, value);
         }
+
+        private string _Name1;
+        public string Name1
+        {
+            get => _Name1;
+            set => Set(ref _Name1, value);
+        }
+
         private string _Tel;
         public string Tel
         {

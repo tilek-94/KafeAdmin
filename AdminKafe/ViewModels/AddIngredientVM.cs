@@ -180,6 +180,14 @@ namespace AdminKafe.ViewModels
             SelectedEdit(Id);
         }
         int Id = 0;
+        private List<IngridParams> _AllObjectRecep;
+        public List<IngridParams> AllObjectRecep 
+        {
+            get => _AllObjectRecep;
+
+            set => Set(ref _AllObjectRecep,value);
+        }
+  
         public async void SelectedEdit(int tableId)
         {
             await Task.Run(() =>
