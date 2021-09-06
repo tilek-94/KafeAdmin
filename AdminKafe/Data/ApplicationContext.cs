@@ -11,6 +11,8 @@ namespace AdminKafe.Date
         public DbSet<Waiter> Waiters { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<Table> Tables { get; set; }
+        public DbSet<HistoryFood> HistoryFoods { get; set; }
+        public DbSet<HistoryCheck> HistoryChecks { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ReceiptGoods> ReceiptGoods { get; set; }
         public DbSet<Reciep> Recipes { get; set; }
@@ -21,9 +23,6 @@ namespace AdminKafe.Date
         public DbSet<Consumption> Consumptions { get; set; }
         public DbSet<CafeName> CafeName { get; set; }
         public DbSet<Login> login { get; set; }
-        public DbSet<HistoryCheck> HistoryChecks { get; set; }
-        public DbSet<HistoryOrder> HistoryOrders { get; set; }
-        public DbSet<HistoryFood> HistoryFoods { get; set; }
 
         public ApplicationContext()
         {
@@ -32,11 +31,11 @@ namespace AdminKafe.Date
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server=192.168.0.105;user=kafe;password=1;database=BasaKafe;",
-                 new MySqlServerVersion(new Version(5, 7, 29))
-             );
-            //optionsBuilder.UseMySql("server=localhost;user=kafe;password=1;database=BasaKafe;", 
-            //    new MySqlServerVersion(new Version(5, 7, 30)));
+            //optionsBuilder.UseMySql("server=192.168.0.108;user=kafe;password=1;database=BasaKafe;",
+            //     new MySqlServerVersion(new Version(5, 7, 29))
+            // );
+            optionsBuilder.UseMySql("server=192.168.0.105;user=kafe;password=1;database=BasaKafe;", 
+                new MySqlServerVersion(new Version(5, 7, 30)));
         }
     }
 }
