@@ -11,6 +11,9 @@ namespace AdminKafe.Windows.PageMenu
     /// </summary>
     public partial class AllReport
     {
+
+        
+
         public static int RadioCheck = 0;
         public static int ComboChek = 0;
         public static int RadioCheckStatus = 0;
@@ -19,6 +22,8 @@ namespace AdminKafe.Windows.PageMenu
         public AllReport()
         {
             InitializeComponent();
+            
+
         }
 
         private void RadioDay_Click(object sender, System.Windows.RoutedEventArgs e)
