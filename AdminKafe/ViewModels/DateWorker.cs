@@ -1306,7 +1306,7 @@ namespace AdminKafe.Models
             }
         }
 
-        public static ObservableCollection<object> GetAllWastedFood(DateTime second, DateTime first)
+        public static ObservableCollection<object> GetAllWastedFood(DateTime second, DateTime first, string searchtext="")
         {
             using (ApplicationContext db = new ApplicationContext())
             {
@@ -1321,14 +1321,14 @@ namespace AdminKafe.Models
                        hf.Gram
                     });
 
-                var result = from g in checks
+                var result = (from g in checks
                              group g by new { g.FoodName, g.Gram,g.FoodPrice } into res
                              select new
                              {
                                 FoodName = res.Key.FoodName,
                                 FoodCount = res.Sum(i=>i.FoodCount),
                                 FoodPrice = (res.Sum(i=>i.FoodCount)*res.Key.FoodPrice)
-                             };
+                             }).Where(u=>u.FoodName.Contains(searchtext));
 
                 return new ObservableCollection<object>(result);
             }

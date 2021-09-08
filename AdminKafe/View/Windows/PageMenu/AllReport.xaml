@@ -1,4 +1,4 @@
-﻿                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   <Page x:Class="AdminKafe.Windows.PageMenu.AllReport"
+﻿<Page x:Class="AdminKafe.Windows.PageMenu.AllReport"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -272,9 +272,9 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Canvas Grid.Row="0" Background="White">
-                        <DatePicker SelectedDate="{Binding FirstDate}" Width="91" FontSize="14"  materialDesign:HintAssist.Hint="Начало"  Style="{StaticResource MaterialDesignFloatingHintDatePicker}" BorderBrush="#FF007BAB" Height="43" Canvas.Left="392" Canvas.Top="11"  />
-                        <DatePicker SelectedDate="{Binding SecondDate}" Width="91" FontSize="14"  materialDesign:HintAssist.Hint="Конец"  Style="{StaticResource MaterialDesignFloatingHintDatePicker}" BorderBrush="#FF007BAB" Height="43" Canvas.Left="502" Canvas.Top="11"  />
-                        <Button Command="{Binding ShowResultCommand}" Padding="0" Background="#FF007BAB" Width="170" Height="35" Canvas.Left="648" Canvas.Top="19">
+                        <DatePicker SelectedDate="{Binding FirstDate}" Width="91" FontSize="14"  materialDesign:HintAssist.Hint="Начало"  Style="{StaticResource MaterialDesignFloatingHintDatePicker}" BorderBrush="#FF007BAB" Height="44" Canvas.Left="27" Canvas.Top="14"  />
+                        <DatePicker SelectedDate="{Binding SecondDate}" Width="91" FontSize="14"  materialDesign:HintAssist.Hint="Конец"  Style="{StaticResource MaterialDesignFloatingHintDatePicker}" BorderBrush="#FF007BAB" Height="44" Canvas.Left="137" Canvas.Top="14"  />
+                        <Button Command="{Binding ShowResultCommand}" Padding="0" Background="#FF007BAB" Width="170" Height="36" Canvas.Left="283" Canvas.Top="22">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="ArchiveSearchOutline" Foreground="White" FontWeight="Bold" Width="20" Height="20" Margin="-2,0,0,0" VerticalAlignment="Center"/>
                                 <TextBlock Text="Показать результат" Foreground="White" VerticalAlignment="Center" Margin="5,0,0,0"/>
@@ -283,10 +283,15 @@
                     </Canvas>
                     <Grid Grid.Row="1">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="40"/>
                             <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
 
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0" Background="#4C949494" >
+                            <TextBox 
+                                Text="{Binding ReportSearchText,UpdateSourceTrigger=PropertyChanged}"
+                                Style="{DynamicResource stylePass}" Height="30" Width="250" FontSize="15" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="0,0,10,0" Tag="Искать" Background="White"/>
+                        </Grid>
                         <Grid Grid.Row="1">
                             <DataGrid HorizontalAlignment="Stretch"
                                       ItemsSource="{Binding OrdersPropertyReport, UpdateSourceTrigger=PropertyChanged}"
