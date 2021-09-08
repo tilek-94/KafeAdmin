@@ -497,7 +497,6 @@ D:\c# Cafe\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\View\Windows\PageMenu\Ad
 D:\c# Cafe\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\View\Windows\PageMenu\AddStol.g.cs
 D:\c# Cafe\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\View\Windows\PageMenu\AddWaiter.g.cs
 D:\c# Cafe\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\View\Windows\PageMenu\AllReport.g.cs
-D:\c# Cafe\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\View\Windows\PageMenu\ExcelWindow.g.cs
 D:\c# Cafe\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\App.g.cs
 D:\c# Cafe\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\GeneratedInternalTypeHelper.g.cs
 D:\c# Cafe\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\AdminKafe_MarkupCompile.cache
@@ -548,7 +547,6 @@ D:\c# Cafe\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\View\Windows\PageMenu\Ad
 D:\c# Cafe\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\View\Windows\PageMenu\AddStol.baml
 D:\c# Cafe\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\View\Windows\PageMenu\AddWaiter.baml
 D:\c# Cafe\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\View\Windows\PageMenu\AllReport.baml
-D:\c# Cafe\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\View\Windows\PageMenu\ExcelWindow.baml
 D:\c# Cafe\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\AdminKafe.g.resources
 D:\c# Cafe\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\AdminKafe.GeneratedMSBuildEditorConfig.editorconfig
 D:\c# Cafe\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\AdminKafe.AssemblyInfoInputs.cache

@@ -96,8 +96,7 @@ namespace AdminKafe.Windows.PageMenu
 
         private void SaveAsButtonClick(object sender, System.Windows.RoutedEventArgs e)
         {
-            ExcelWindow excelWindow = new ExcelWindow(SaveGrid);
-            excelWindow.ShowDialog();
+            
         }
     }
 }
