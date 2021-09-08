@@ -4,10 +4,12 @@ using CV19.Infrastructure.Commands;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Data;
 
 namespace AdminKafe.ViewModels
 {
@@ -82,23 +84,21 @@ namespace AdminKafe.ViewModels
                 LoadAllDateWithDate();
             }
         }
-
-        private string _ReportSearchText;
-        public string ReportSearchText
+        private string _FilterText="";
+        public string FilterText
         {
-            get => _ReportSearchText;
-            set
+            get { return _FilterText; }
+            set 
             {
-                Set(ref _ReportSearchText, value);
-                if (_ReportSearchText != String.Empty)
-                {
-                    OrdersPropertyReport = DateWorker.GetAllWastedFood(DateTime.Now.AddDays(-1), DateTime.Now, _ReportSearchText);
-                }
-                else
-                {
-                    OrdersPropertyReport = DateWorker.GetAllWastedFood(DateTime.Now.AddDays(-1), DateTime.Now);
-                }               
+                Set(ref _FilterText, value);
+                OtdelFilterText(value);
             }
+
+        }
+        private void OtdelFilterText(string filter)
+        {
+            var result = DateWorker.GetAllWastedFood(FirstDate, SecondDate, "");
+            OrdersPropertyReport = new ObservableCollection<CoolGet>(result.Where(i=>i.FoodName.Contains(filter)));
         }
 
         private DateTime _DateTimeProperties;
@@ -197,8 +197,8 @@ namespace AdminKafe.ViewModels
             }
         }
 
-        private ObservableCollection<object> _OrdersPropertyReport;
-        public ObservableCollection<object> OrdersPropertyReport
+        private ObservableCollection<CoolGet> _OrdersPropertyReport;
+        public ObservableCollection<CoolGet> OrdersPropertyReport
         {
             get => _OrdersPropertyReport;
             set
@@ -297,7 +297,7 @@ namespace AdminKafe.ViewModels
         {
             await Task.Run(() =>
             {
-                _OrdersPropertyReport = new ObservableCollection<object>();
+                _OrdersPropertyReport = new ObservableCollection<CoolGet>();
                 OrdersPropertyReport = DateWorker.GetAllWastedFood(first, second, searchtext);
                 // AllLocation = DateWorker.GetAllLocation();
             });
@@ -306,7 +306,7 @@ namespace AdminKafe.ViewModels
         {
             await Task.Run(() =>
             {
-                _OrdersPropertyReport = new ObservableCollection<object>();
+                _OrdersPropertyReport = new ObservableCollection<CoolGet>();
                 OrdersPropertyReport = DateWorker.GetAllWastedFood(DateTime.Now.AddDays(-1), DateTime.Now,"");
                 // AllLocation = DateWorker.GetAllLocation();
             });

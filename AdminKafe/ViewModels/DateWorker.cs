@@ -1306,31 +1306,31 @@ namespace AdminKafe.Models
             }
         }
 
-        public static ObservableCollection<object> GetAllWastedFood(DateTime second, DateTime first, string searchtext="")
+        public static ObservableCollection<CoolGet> GetAllWastedFood(DateTime second, DateTime first, string searchtext="")
         {
             using (ApplicationContext db = new ApplicationContext())
             {
                 var checks = db.HistoryChecks.Where(i => i.CheckDate <= first && i.CheckDate >= second).Join(db.HistoryFoods,
                     hc => hc.Id,
                     hf => hf.CheckId,
-                    (hc, hf) => new
+                    (hc, hf) => new CoolGet
                     {
-                       hf.FoodName,
-                       hf.FoodCount,
-                       hf.FoodPrice,
-                       hf.Gram
+                      FoodName = hf.FoodName,
+                      FoodCount = hf.FoodCount,
+                      FoodPrice= hf.FoodPrice,
+                      Gram = hf.Gram
                     });
 
                 var result = (from g in checks
                              group g by new { g.FoodName, g.Gram,g.FoodPrice } into res
-                             select new
+                             select new CoolGet
                              {
                                 FoodName = res.Key.FoodName,
                                 FoodCount = res.Sum(i=>i.FoodCount),
                                 FoodPrice = (res.Sum(i=>i.FoodCount)*res.Key.FoodPrice)
                              }).Where(u=>u.FoodName.Contains(searchtext));
 
-                return new ObservableCollection<object>(result);
+                return new ObservableCollection<CoolGet>(result);
             }
         }
 

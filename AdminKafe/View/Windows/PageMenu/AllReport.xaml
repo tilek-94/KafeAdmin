@@ -289,7 +289,7 @@
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0" Background="#4C949494" >
                             <TextBox 
-                                Text="{Binding ReportSearchText,UpdateSourceTrigger=PropertyChanged}"
+                                Text="{Binding FilterText,UpdateSourceTrigger=PropertyChanged}"
                                 Style="{DynamicResource stylePass}" Height="30" Width="250" FontSize="15" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="0,0,10,0" Tag="Искать" Background="White"/>
                         </Grid>
                         <Grid Grid.Row="1">
