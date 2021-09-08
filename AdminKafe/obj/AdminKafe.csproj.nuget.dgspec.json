@@ -68,11 +68,11 @@
             },
             "Syncfusion.DataGridExcelExport.Wpf": {
               "target": "Package",
-              "version": "[19.2.0.59, )"
+              "version": "[19.2.0.60, )"
             },
             "Syncfusion.SfGrid.WPF": {
               "target": "Package",
-              "version": "[19.2.0.59, )"
+              "version": "[19.2.0.60, )"
             }
           },
           "imports": [
