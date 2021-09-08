@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using AdminKafe.View.Windows.PageMenu;
+using System.Windows.Controls;
 
 namespace AdminKafe.Windows.PageMenu
 {
@@ -91,6 +92,12 @@ namespace AdminKafe.Windows.PageMenu
             {
                 StatusTrue = 0;
             }
+        }
+
+        private void SaveAsButtonClick(object sender, System.Windows.RoutedEventArgs e)
+        {
+            ExcelWindow excelWindow = new ExcelWindow(SaveGrid);
+            excelWindow.ShowDialog();
         }
     }
 }
