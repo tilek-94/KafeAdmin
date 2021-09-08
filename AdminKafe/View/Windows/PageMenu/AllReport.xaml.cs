@@ -1,12 +1,19 @@
 ﻿using System.Windows.Controls;
+using Syncfusion.UI.Xaml.Grid.Converter;
+using Microsoft.Win32;
+using System.IO;
+using Microsoft.Office.Interop.Excel;
 
 namespace AdminKafe.Windows.PageMenu
 {
     /// <summary>
     /// Логика взаимодействия для AllReport.xaml
     /// </summary>
-    public partial class AllReport : Page
+    public partial class AllReport
     {
+
+        
+
         public static int RadioCheck = 0;
         public static int ComboChek = 0;
         public static int RadioCheckStatus = 0;
@@ -15,6 +22,8 @@ namespace AdminKafe.Windows.PageMenu
         public AllReport()
         {
             InitializeComponent();
+            
+
         }
 
         private void RadioDay_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -92,5 +101,70 @@ namespace AdminKafe.Windows.PageMenu
                 StatusTrue = 0;
             }
         }
+
+        private void BtnSave(object sender, System.Windows.RoutedEventArgs e)
+        {
+            PdfExportingOptions options = new PdfExportingOptions();
+            options.RepeatHeaders = true;
+            options.ExportFormat = true;
+            options.FitAllColumnsInOnePage = true;
+            options.ExportAllPages = true;
+            var document = SfDataGridSave.ExportToPdf(options);
+            SaveFileDialog sfd = new SaveFileDialog
+            {
+                Filter = "PDF Files(*.pdf)|*.pdf"
+            };
+            if (sfd.ShowDialog() == true)
+            {
+                using (Stream stream = sfd.OpenFile())
+                {
+                    document.Save(stream);
+                }
+            }
+            /*if (sfd.ShowDialog() == true)
+            {
+                switch (sfd.FilterIndex)
+                {
+                    case 1:
+                        PDFSave();
+                        break;
+
+                    case 2:
+                        ExelSave();
+                        break;
+                }
+            }*/
+        }
+       
+        /*private void PDFSave()
+        {
+            PdfExportingOptions options = new PdfExportingOptions();
+            options.RepeatHeaders = true;
+            options.ExportFormat = true;
+            options.FitAllColumnsInOnePage = true;
+            options.ExportAllPages = true;
+            var document = SfDataGridSave.ExportToPdf(options);
+
+            using (Stream stream = sfd.OpenFile())
+            {
+                document.Save(stream);
+            }
+        }
+        private void ExelSave()
+        {
+
+            var options = new ExcelExportingOptions();
+            options.ExportAllPages = false;
+            options.ExcelVersion = ExcelVersion.Excel2013;
+            var excelEngine = SfDataGridSave.ExportToExcel(SfDataGridSave.View, options);
+            var workBook = excelEngine.Excel.Workbooks[0];
+            using (Stream stream = sfd.OpenFile())
+            {
+                workBook.SaveAs(stream);
+                Workbook book = excelApp.Workbooks.Open("filePathHere");
+                string[] sheetsToDelete = { "s1", "s2" };
+                excelApp.DisplayAlerts = false;
+            }
+        }*/
     }
 }
