@@ -254,6 +254,101 @@
           "lib/netstandard2.1/Pomelo.EntityFrameworkCore.MySql.dll": {}
         }
       },
+      "Syncfusion.Compression.Base/19.2.0.59": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0/Syncfusion.Compression.Base.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Syncfusion.Compression.Base.dll": {}
+        }
+      },
+      "Syncfusion.Data.WPF/19.2.0.59": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0-windows/Syncfusion.Data.WPF.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0-windows/Syncfusion.Data.WPF.dll": {}
+        }
+      },
+      "Syncfusion.DataGridExcelExport.Wpf/19.2.0.59": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Data.WPF": "19.2.0.59",
+          "Syncfusion.Pdf.Wpf": "19.2.0.59",
+          "Syncfusion.SfGrid.WPF": "19.2.0.59",
+          "Syncfusion.Shared.WPF": "19.2.0.59",
+          "Syncfusion.XlsIO.Wpf": "19.2.0.59"
+        },
+        "compile": {
+          "lib/net5.0-windows/Syncfusion.SfGridConverter.WPF.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0-windows/Syncfusion.SfGridConverter.WPF.dll": {}
+        }
+      },
+      "Syncfusion.Licensing/19.2.0.59": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0/Syncfusion.Licensing.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Syncfusion.Licensing.dll": {}
+        }
+      },
+      "Syncfusion.Pdf.Wpf/19.2.0.59": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Compression.Base": "19.2.0.59",
+          "Syncfusion.Licensing": "19.2.0.59"
+        },
+        "compile": {
+          "lib/net5.0-windows/Syncfusion.Pdf.Base.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0-windows/Syncfusion.Pdf.Base.dll": {}
+        }
+      },
+      "Syncfusion.SfGrid.WPF/19.2.0.59": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Data.WPF": "19.2.0.59",
+          "Syncfusion.Licensing": "19.2.0.59",
+          "Syncfusion.Shared.WPF": "19.2.0.59"
+        },
+        "compile": {
+          "lib/net5.0-windows/Syncfusion.SfGrid.WPF.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0-windows/Syncfusion.SfGrid.WPF.dll": {}
+        }
+      },
+      "Syncfusion.Shared.WPF/19.2.0.59": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Licensing": "19.2.0.59"
+        },
+        "compile": {
+          "lib/net5.0-windows/Syncfusion.Shared.WPF.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0-windows/Syncfusion.Shared.WPF.dll": {}
+        }
+      },
+      "Syncfusion.XlsIO.Wpf/19.2.0.59": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Compression.Base": "19.2.0.59",
+          "Syncfusion.Licensing": "19.2.0.59"
+        },
+        "compile": {
+          "lib/net5.0-windows/Syncfusion.XlsIO.Base.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0-windows/Syncfusion.XlsIO.Base.dll": {}
+        }
+      },
       "System.Collections.Immutable/5.0.0": {
         "type": "package",
         "compile": {
@@ -737,6 +832,251 @@
         "pomelo.entityframeworkcore.mysql.nuspec"
       ]
     },
+    "Syncfusion.Compression.Base/19.2.0.59": {
+      "sha512": "gX1UyE8zl8c+ENXhAmcJ3lcNP3IqRD7AGPtclz8NhDI3gNzT6t8Ae0ybSTkI/wF75bMt32SHInBdNoiTTtUCHg==",
+      "type": "package",
+      "path": "syncfusion.compression.base/19.2.0.59",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net20/Syncfusion.Compression.Base.dll",
+        "lib/net20/Syncfusion.Compression.Base.xml",
+        "lib/net35/Syncfusion.Compression.Base.dll",
+        "lib/net35/Syncfusion.Compression.Base.xml",
+        "lib/net40/Syncfusion.Compression.Base.dll",
+        "lib/net40/Syncfusion.Compression.Base.xml",
+        "lib/net45/Syncfusion.Compression.Base.dll",
+        "lib/net45/Syncfusion.Compression.Base.xml",
+        "lib/net451/Syncfusion.Compression.Base.dll",
+        "lib/net451/Syncfusion.Compression.Base.xml",
+        "lib/net46/Syncfusion.Compression.Base.dll",
+        "lib/net46/Syncfusion.Compression.Base.xml",
+        "lib/net5.0/Syncfusion.Compression.Base.dll",
+        "lib/net5.0/Syncfusion.Compression.Base.xml",
+        "lib/netcoreapp3.1/Syncfusion.Compression.Base.dll",
+        "lib/netcoreapp3.1/Syncfusion.Compression.Base.xml",
+        "syncfusion.compression.base.19.2.0.59.nupkg.sha512",
+        "syncfusion.compression.base.nuspec"
+      ]
+    },
+    "Syncfusion.Data.WPF/19.2.0.59": {
+      "sha512": "FgYe7geQZAteBsiEE17lzNqEQVJWGVEtbbc57CNUFEY4lLiGXv2gkGvAlYwzGGU2gvVPXiVLe9B/E2Tdz1u/LQ==",
+      "type": "package",
+      "path": "syncfusion.data.wpf/19.2.0.59",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/Syncfusion.Data.WPF.dll",
+        "lib/net40/Syncfusion.Data.WPF.xml",
+        "lib/net45/Syncfusion.Data.WPF.dll",
+        "lib/net45/Syncfusion.Data.WPF.xml",
+        "lib/net451/Syncfusion.Data.WPF.dll",
+        "lib/net451/Syncfusion.Data.WPF.xml",
+        "lib/net46/Syncfusion.Data.WPF.dll",
+        "lib/net46/Syncfusion.Data.WPF.xml",
+        "lib/net5.0-windows/Syncfusion.Data.WPF.dll",
+        "lib/net5.0-windows/Syncfusion.Data.WPF.xml",
+        "lib/netcoreapp3.1/Syncfusion.Data.WPF.dll",
+        "lib/netcoreapp3.1/Syncfusion.Data.WPF.xml",
+        "syncfusion.data.wpf.19.2.0.59.nupkg.sha512",
+        "syncfusion.data.wpf.nuspec"
+      ]
+    },
+    "Syncfusion.DataGridExcelExport.Wpf/19.2.0.59": {
+      "sha512": "/FdMUHfKduBtQDKSPdfXF6gndZWDbmnP79RFnIEgvGCAjHwX5VodWlwr8Q51itcH62/Nsv9EsjNmzredf1Qv1g==",
+      "type": "package",
+      "path": "syncfusion.datagridexcelexport.wpf/19.2.0.59",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/Syncfusion.SfGridConverter.WPF.dll",
+        "lib/net40/Syncfusion.SfGridConverter.WPF.xml",
+        "lib/net45/Syncfusion.SfGridConverter.WPF.dll",
+        "lib/net45/Syncfusion.SfGridConverter.WPF.xml",
+        "lib/net451/Syncfusion.SfGridConverter.WPF.dll",
+        "lib/net451/Syncfusion.SfGridConverter.WPF.xml",
+        "lib/net46/Syncfusion.SfGridConverter.WPF.dll",
+        "lib/net46/Syncfusion.SfGridConverter.WPF.xml",
+        "lib/net5.0-windows/Syncfusion.SfGridConverter.WPF.dll",
+        "lib/net5.0-windows/Syncfusion.SfGridConverter.WPF.xml",
+        "lib/netcoreapp3.1/Syncfusion.SfGridConverter.WPF.dll",
+        "lib/netcoreapp3.1/Syncfusion.SfGridConverter.WPF.xml",
+        "syncfusion.datagridexcelexport.wpf.19.2.0.59.nupkg.sha512",
+        "syncfusion.datagridexcelexport.wpf.nuspec"
+      ]
+    },
+    "Syncfusion.Licensing/19.2.0.59": {
+      "sha512": "+0/w/CcemPyJvz2gXIkUZA9+tJjW43jC/Yb1q2BrA4crmUXEP8n5U4+++Ct8a3mgKF6yCj6qC0dyiHouM9AFLQ==",
+      "type": "package",
+      "path": "syncfusion.licensing/19.2.0.59",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/MonoAndroid10.0/Syncfusion.Licensing.dll",
+        "lib/MonoAndroid90/Syncfusion.Licensing.dll",
+        "lib/Xamarin.Mac/Syncfusion.Licensing.dll",
+        "lib/Xamarin.iOS10/Syncfusion.Licensing.dll",
+        "lib/net20/Syncfusion.Licensing.dll",
+        "lib/net35/Syncfusion.Licensing.dll",
+        "lib/net40/Syncfusion.Licensing.dll",
+        "lib/net45/Syncfusion.Licensing.dll",
+        "lib/net451/Syncfusion.Licensing.dll",
+        "lib/net46/Syncfusion.Licensing.dll",
+        "lib/net5.0/Syncfusion.Licensing.dll",
+        "lib/netcoreapp3.1/Syncfusion.Licensing.dll",
+        "lib/netstandard1.0/Syncfusion.Licensing.dll",
+        "lib/netstandard1.2/Syncfusion.Licensing.dll",
+        "lib/netstandard1.4/Syncfusion.Licensing.dll",
+        "lib/netstandard2.0/Syncfusion.Licensing.dll",
+        "lib/portable-win+net45+wp80+win81+wpa81/Syncfusion.Licensing.dll",
+        "lib/uap10.0/Syncfusion.Licensing.dll",
+        "syncfusion.licensing.19.2.0.59.nupkg.sha512",
+        "syncfusion.licensing.nuspec"
+      ]
+    },
+    "Syncfusion.Pdf.Wpf/19.2.0.59": {
+      "sha512": "5wpbTb48hYmj3+FclH4FVy1UY0qf5AK1DzEleU1fGK/d9ECPKHi2uITkya64Hikkz1gqAXoMBterYxQp5a6gQQ==",
+      "type": "package",
+      "path": "syncfusion.pdf.wpf/19.2.0.59",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/Syncfusion.Pdf.Base.dll",
+        "lib/net35/Syncfusion.Pdf.Base.xml",
+        "lib/net40/Syncfusion.Pdf.Base.dll",
+        "lib/net40/Syncfusion.Pdf.Base.xml",
+        "lib/net45/Syncfusion.Pdf.Base.dll",
+        "lib/net45/Syncfusion.Pdf.Base.xml",
+        "lib/net451/Syncfusion.Pdf.Base.dll",
+        "lib/net451/Syncfusion.Pdf.Base.xml",
+        "lib/net46/Syncfusion.Pdf.Base.dll",
+        "lib/net46/Syncfusion.Pdf.Base.xml",
+        "lib/net5.0-windows/Syncfusion.Pdf.Base.dll",
+        "lib/net5.0-windows/Syncfusion.Pdf.Base.xml",
+        "lib/netcoreapp3.1/Syncfusion.Pdf.Base.dll",
+        "lib/netcoreapp3.1/Syncfusion.Pdf.Base.xml",
+        "syncfusion.pdf.wpf.19.2.0.59.nupkg.sha512",
+        "syncfusion.pdf.wpf.nuspec"
+      ]
+    },
+    "Syncfusion.SfGrid.WPF/19.2.0.59": {
+      "sha512": "5fAdJW/NruzGLf20BY9tzIQ4lF/V7SOGVjQAiAtmW9VFDNxMP+wxChcn6GBJ9I2TEUcZL0W81+3GTHMBy1vtHA==",
+      "type": "package",
+      "path": "syncfusion.sfgrid.wpf/19.2.0.59",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/Design/Syncfusion.SfGrid.WPF.DesignTools.dll",
+        "lib/net40/Design/Syncfusion.SfGrid.WPF.Expression.Design.dll",
+        "lib/net40/Design/Syncfusion.SfGrid.WPF.VisualStudio.Design.dll",
+        "lib/net40/Syncfusion.SfGrid.WPF.dll",
+        "lib/net40/Syncfusion.SfGrid.WPF.xml",
+        "lib/net45/Design/Syncfusion.SfGrid.WPF.DesignTools.dll",
+        "lib/net45/Design/Syncfusion.SfGrid.WPF.Expression.Design.dll",
+        "lib/net45/Design/Syncfusion.SfGrid.WPF.VisualStudio.Design.dll",
+        "lib/net45/Syncfusion.SfGrid.WPF.dll",
+        "lib/net45/Syncfusion.SfGrid.WPF.xml",
+        "lib/net451/Design/Syncfusion.SfGrid.WPF.DesignTools.dll",
+        "lib/net451/Design/Syncfusion.SfGrid.WPF.Expression.Design.dll",
+        "lib/net451/Design/Syncfusion.SfGrid.WPF.VisualStudio.Design.dll",
+        "lib/net451/Syncfusion.SfGrid.WPF.dll",
+        "lib/net451/Syncfusion.SfGrid.WPF.xml",
+        "lib/net46/Design/Syncfusion.SfGrid.WPF.DesignTools.dll",
+        "lib/net46/Design/Syncfusion.SfGrid.WPF.Expression.Design.dll",
+        "lib/net46/Design/Syncfusion.SfGrid.WPF.VisualStudio.Design.dll",
+        "lib/net46/Syncfusion.SfGrid.WPF.dll",
+        "lib/net46/Syncfusion.SfGrid.WPF.xml",
+        "lib/net5.0-windows/Design/Syncfusion.SfGrid.WPF.DesignTools.dll",
+        "lib/net5.0-windows/Syncfusion.SfGrid.WPF.dll",
+        "lib/net5.0-windows/Syncfusion.SfGrid.WPF.xml",
+        "lib/netcoreapp3.1/Design/Syncfusion.SfGrid.WPF.DesignTools.dll",
+        "lib/netcoreapp3.1/Syncfusion.SfGrid.WPF.dll",
+        "lib/netcoreapp3.1/Syncfusion.SfGrid.WPF.xml",
+        "syncfusion.sfgrid.wpf.19.2.0.59.nupkg.sha512",
+        "syncfusion.sfgrid.wpf.nuspec",
+        "tools/VisualStudioToolsManifest.xml"
+      ]
+    },
+    "Syncfusion.Shared.WPF/19.2.0.59": {
+      "sha512": "dVadDizDhJdjifdNCOt0/2OHCa3Hror4PvgtkSL1Sc1PPXV3vCgzN2hWaPYS4oLNPcrh1NMEG8RiXlgmT+pMlQ==",
+      "type": "package",
+      "path": "syncfusion.shared.wpf/19.2.0.59",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/Design/Syncfusion.Design.Wpf.dll",
+        "lib/net35/Design/Syncfusion.Shared.WPF.DesignTools.dll",
+        "lib/net35/Design/Syncfusion.Shared.Wpf.Expression.Design.dll",
+        "lib/net35/Design/Syncfusion.Shared.Wpf.VisualStudio.Design.dll",
+        "lib/net35/Design/Syncfusion.Shared.Wpf.dll.Design.dll",
+        "lib/net35/Syncfusion.Shared.WPF.dll",
+        "lib/net35/Syncfusion.Shared.WPF.xml",
+        "lib/net40/Design/Syncfusion.Design.Wpf.dll",
+        "lib/net40/Design/Syncfusion.Shared.WPF.DesignTools.dll",
+        "lib/net40/Design/Syncfusion.Shared.Wpf.Expression.Design.dll",
+        "lib/net40/Design/Syncfusion.Shared.Wpf.VisualStudio.Design.dll",
+        "lib/net40/Design/Syncfusion.Shared.Wpf.dll.Design.dll",
+        "lib/net40/Syncfusion.Shared.WPF.dll",
+        "lib/net40/Syncfusion.Shared.WPF.xml",
+        "lib/net45/Design/Syncfusion.Design.Wpf.dll",
+        "lib/net45/Design/Syncfusion.Shared.WPF.DesignTools.dll",
+        "lib/net45/Design/Syncfusion.Shared.Wpf.Expression.Design.dll",
+        "lib/net45/Design/Syncfusion.Shared.Wpf.VisualStudio.Design.dll",
+        "lib/net45/Design/Syncfusion.Shared.Wpf.dll.Design.dll",
+        "lib/net45/Syncfusion.Shared.WPF.dll",
+        "lib/net45/Syncfusion.Shared.WPF.xml",
+        "lib/net451/Design/Syncfusion.Design.Wpf.dll",
+        "lib/net451/Design/Syncfusion.Shared.WPF.DesignTools.dll",
+        "lib/net451/Design/Syncfusion.Shared.Wpf.Expression.Design.dll",
+        "lib/net451/Design/Syncfusion.Shared.Wpf.VisualStudio.Design.dll",
+        "lib/net451/Design/Syncfusion.Shared.Wpf.dll.Design.dll",
+        "lib/net451/Syncfusion.Shared.WPF.dll",
+        "lib/net451/Syncfusion.Shared.WPF.xml",
+        "lib/net46/Design/Syncfusion.Design.Wpf.dll",
+        "lib/net46/Design/Syncfusion.Shared.WPF.DesignTools.dll",
+        "lib/net46/Design/Syncfusion.Shared.Wpf.Expression.Design.dll",
+        "lib/net46/Design/Syncfusion.Shared.Wpf.VisualStudio.Design.dll",
+        "lib/net46/Design/Syncfusion.Shared.Wpf.dll.Design.dll",
+        "lib/net46/Syncfusion.Shared.WPF.dll",
+        "lib/net46/Syncfusion.Shared.WPF.xml",
+        "lib/net5.0-windows/Design/Syncfusion.Shared.WPF.DesignTools.dll",
+        "lib/net5.0-windows/Syncfusion.Shared.WPF.dll",
+        "lib/net5.0-windows/Syncfusion.Shared.WPF.xml",
+        "lib/netcoreapp3.1/Design/Syncfusion.Shared.WPF.DesignTools.dll",
+        "lib/netcoreapp3.1/Syncfusion.Shared.WPF.dll",
+        "lib/netcoreapp3.1/Syncfusion.Shared.WPF.xml",
+        "syncfusion.shared.wpf.19.2.0.59.nupkg.sha512",
+        "syncfusion.shared.wpf.nuspec",
+        "tools/VisualStudioToolsManifest.xml"
+      ]
+    },
+    "Syncfusion.XlsIO.Wpf/19.2.0.59": {
+      "sha512": "Nqvf+W7jC/a2R9pDkjALo7Mfz+Z6RRajrUJj1zcmFL2x0alOYwbQXXf364MvIZ4sx7fbYbjrtFr/2J8ugj+HGQ==",
+      "type": "package",
+      "path": "syncfusion.xlsio.wpf/19.2.0.59",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/Syncfusion.XlsIO.Base.dll",
+        "lib/net35/Syncfusion.XlsIO.Base.xml",
+        "lib/net40/Syncfusion.XlsIO.Base.dll",
+        "lib/net40/Syncfusion.XlsIO.Base.xml",
+        "lib/net45/Syncfusion.XlsIO.Base.dll",
+        "lib/net45/Syncfusion.XlsIO.Base.xml",
+        "lib/net451/Syncfusion.XlsIO.Base.dll",
+        "lib/net451/Syncfusion.XlsIO.Base.xml",
+        "lib/net46/Syncfusion.XlsIO.Base.dll",
+        "lib/net46/Syncfusion.XlsIO.Base.xml",
+        "lib/net5.0-windows/Syncfusion.XlsIO.Base.dll",
+        "lib/net5.0-windows/Syncfusion.XlsIO.Base.xml",
+        "lib/netcoreapp3.1/Syncfusion.XlsIO.Base.dll",
+        "lib/netcoreapp3.1/Syncfusion.XlsIO.Base.xml",
+        "syncfusion.xlsio.wpf.19.2.0.59.nupkg.sha512",
+        "syncfusion.xlsio.wpf.nuspec"
+      ]
+    },
     "System.Collections.Immutable/5.0.0": {
       "sha512": "FXkLXiK0sVVewcso0imKQoOxjoPAj42R8HtjjbSjVPAzwDfzoyoznWxgA3c38LDbN9SJux1xXoXYAhz98j7r2g==",
       "type": "package",
@@ -930,7 +1270,9 @@
       "LazZiya.ImageResize >= 4.1.0",
       "MaterialDesignColors >= 2.0.1",
       "MaterialDesignThemes >= 4.1.0",
-      "Pomelo.EntityFrameworkCore.MySql >= 5.0.1"
+      "Pomelo.EntityFrameworkCore.MySql >= 5.0.1",
+      "Syncfusion.DataGridExcelExport.Wpf >= 19.2.0.59",
+      "Syncfusion.SfGrid.WPF >= 19.2.0.59"
     ]
   },
   "packageFolders": {
@@ -999,6 +1341,14 @@
           "Pomelo.EntityFrameworkCore.MySql": {
             "target": "Package",
             "version": "[5.0.1, )"
+          },
+          "Syncfusion.DataGridExcelExport.Wpf": {
+            "target": "Package",
+            "version": "[19.2.0.59, )"
+          },
+          "Syncfusion.SfGrid.WPF": {
+            "target": "Package",
+            "version": "[19.2.0.59, )"
           }
         },
         "imports": [
