@@ -46,7 +46,6 @@ Background="#007bab" Height="Auto" Width="229" HorizontalAlignment="Left"
     Margin="10,110,0,41">
                 <TextBlock Text="Закрыть" Foreground="White"/>
             </Button>
-            <TextBlock  MouseDown="TextBlock_MouseDown" Text="Создать пользователя" Height="20" Width="173" VerticalAlignment="Center" FontSize="15" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="#FF007BAB"/>
             <TextBlock MouseDown="TextBlock_MouseDown_2" Text="Изменить пароль" Height="20" Width="130" VerticalAlignment="Center" FontSize="15" HorizontalAlignment="Right" Margin="100,0" Foreground="#FF007BAB"/>
         </Grid>
     </Grid>

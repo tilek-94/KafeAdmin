@@ -1,4 +1,5 @@
 ﻿using AdminKafe.Date;
+using AdminKafe.View.Windows.PageMenu;
 using AdminKafe.Windows.PageMenu;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,8 @@ namespace AdminKafe.Windows
     public partial class GlavWindow : Window
     {
         AddKafeName addKafeName;
+        AddNewLogin addNewLogin;
+        LoginWindow loginWindow;
         public string status = "";
         List<ListViewItem> list = new List<ListViewItem>();
 
@@ -162,6 +165,19 @@ namespace AdminKafe.Windows
         {
             addKafeName = new AddKafeName();
             addKafeName.ShowDialog();
+        }
+
+        private void ListViewItem_PreviewMouseLeftButtonUp_7(object sender, MouseButtonEventArgs e)
+        {
+            addNewLogin = new AddNewLogin();
+            addNewLogin.ShowDialog();
+        }
+
+        private void ListViewItem_PreviewMouseLeftButtonUp_8(object sender, MouseButtonEventArgs e)
+        {            
+            loginWindow = new LoginWindow();
+            loginWindow.Show(); 
+            this.Close();
         }
     }
 }

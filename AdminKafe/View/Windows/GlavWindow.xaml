@@ -120,6 +120,18 @@
                                         <TextBlock Text="Все отчеты" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF3F3F3F"/>
                                     </StackPanel>
                                 </ListViewItem>
+                                <ListViewItem Visibility="Collapsed" x:Name="List8" PreviewMouseLeftButtonUp="ListViewItem_PreviewMouseLeftButtonUp_7">
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
+                                        <materialDesign:PackIcon Kind="AccountKey" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3,0,15,0" Height="40" Width="40" Foreground="#FF736D6D"/>
+                                        <TextBlock Text="Создание пользователя" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF3F3F3F"/>
+                                    </StackPanel>
+                                </ListViewItem>
+                                <ListViewItem Visibility="Visible" x:Name="List9" PreviewMouseLeftButtonUp="ListViewItem_PreviewMouseLeftButtonUp_8">
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
+                                        <materialDesign:PackIcon Kind="ShieldKey" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3,0,15,0" Height="40" Width="40" Foreground="#FF736D6D"/>
+                                        <TextBlock Text="Блокировать" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF3F3F3F"/>
+                                    </StackPanel>
+                                </ListViewItem>
                             </ListView>
                         </Grid>
                     </Grid>

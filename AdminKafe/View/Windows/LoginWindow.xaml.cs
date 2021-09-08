@@ -46,7 +46,7 @@ namespace AdminKafe.Windows
             }
             else
             {
-                MessageBox.Show("Текстик поляны толтурунуз!");
+                MessageBox.Show("Заполните текстовое поле!");
             }
         }
 
@@ -54,7 +54,7 @@ namespace AdminKafe.Windows
         {
             using (ApplicationContext connetc = new ApplicationContext())
             {
-                string show = "Неверный парол или логин";
+                string show = "Неверный парол или логин!";
                 bool b = connetc.login.Any(y => y.Name == login && y.Password == password);
                 if (b)
                 {
@@ -68,17 +68,10 @@ namespace AdminKafe.Windows
             }
         }
 
-        private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
+        private void TextBlock_MouseDown_2(object sender, MouseButtonEventArgs e)
         {
             AddNewPassword pass = new AddNewPassword();
             pass.Show();
-            this.Close();
-        }
-
-        private void TextBlock_MouseDown_2(object sender, MouseButtonEventArgs e)
-        {
-            AddNewLogin log = new AddNewLogin();
-            log.Show();
             this.Close();
         }
     }

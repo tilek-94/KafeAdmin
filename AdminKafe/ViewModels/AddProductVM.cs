@@ -15,6 +15,7 @@ namespace AdminKafe.ViewModels
     {
         public ICommand DeleteSklad { get; set; }
         public ICommand EditPR { get; set; }
+        public ICommand LoadAllDateProductList { get; set; }
         public AddProductVM()
         {
             DeleteSklad=new LambdaCommand(DeleteMethodSklad, CanCloseApplicationExecat);
@@ -26,6 +27,7 @@ namespace AdminKafe.ViewModels
             BackPage = new LambdaCommand(BackPagePageMethod, CanCloseApplicationExecat);
             ShowOtchet = new LambdaCommand(SortDateSklad, CanCloseApplicationExecat);
             EditCommand = new LambdaCommand(EditMethod, CanCloseApplicationExecat);
+            LoadAllDateProductList = new LambdaCommand(AllProcessedItogMetod, CanCloseApplicationExecat);
             LoadAllDateMenu();
             LoadAllDateProduct();
             LoadCountDate();
