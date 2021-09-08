@@ -19,15 +19,99 @@ namespace AdminKafe.ViewModels
         {
             CreateCommand = new LambdaCommand(CreateMethod, CanCloseApplicationExecat);
             ShowResultCommand = new LambdaCommand(ShowResult, CanShowResult);
+            ViewDohodCommand = new LambdaCommand(DohodShow, CanShowResult);
             DeleteCommand = new LambdaCommand(DeleteMethod, CanCloseApplicationExecat);
             ShowWindowCommand = new LambdaCommand(ShowWindowMethod, CanCloseApplicationExecat);
             //AllObjectDate = DateWorker.GetAll();
             LoadWastedFood();
             LoadAllWaters();
             LoadAllBy();
+            LoadDohodList();
+        }
+
+        private void DohodShow(object o) 
+        {
+            DohodList = new ObservableCollection<DohodClass>();
+            DohodList = DateWorker.GetAllDohod(SelectedFirstDate,SelectedSecondDate);
+            ReturnPricces(DateWorker.GetPP(SelectedFirstDate, SelectedSecondDate));
+
+        }
+        private async void LoadDohodList()
+        {
+            await Task.Run(() =>
+            {
+                DohodList = new ObservableCollection<DohodClass>();
+                DohodList = DateWorker.GetAllDohod(DateTime.Now.Date, DateTime.Now);
+                // AllLocation = DateWorker.GetAllLocation();
+                ReturnPricces(DateWorker.GetPP(DateTime.Now.Date, DateTime.Now));
+            });
+        }
+
+        private void ReturnPricces((double pt,double pp,double ar,double cp) p)
+        {
+            PriblText = p.pt;
+            ProductPrice = p.pp;
+            AllRashod = p.ar;
+            ChistPrib = p.cp;
+        }
+
+        private DateTime _SelectedOneDay = DateTime.Now.Date;
+        public DateTime SelectedOneDay
+        {
+            get { return _SelectedOneDay; }
+            set 
+            { 
+                Set(ref _SelectedOneDay, value);
+                SelectedFirstDate = value;
+                SelectedSecondDate = value;
+            }
+        }
+        private DateTime _SelectedFirstDate = DateTime.Now.Date;
+        public DateTime SelectedFirstDate
+        {
+            get { return _SelectedFirstDate; }
+            set { Set(ref _SelectedFirstDate, value); }
+        }
+        private DateTime _SelectedSecondDate = DateTime.Now.Date;
+        public DateTime SelectedSecondDate
+        {
+            get { return _SelectedSecondDate; }
+            set { Set(ref _SelectedSecondDate, value); }
+        }
+
+        private double _PriblText=0;
+        public double PriblText
+        {
+            get { return _PriblText; }
+            set { Set(ref _PriblText, value); }
+        }
+        private double _ProductPrice=0;
+        public double ProductPrice
+        {
+            get { return _ProductPrice; }
+            set { Set(ref _ProductPrice, value); }
+        }
+        private double _AllRashod=0;
+        public double AllRashod
+        {
+            get { return _AllRashod; }
+            set { Set(ref _AllRashod, value); }
+        }
+        private double _ChistPrib=0;
+        public double ChistPrib
+        {
+            get { return _ChistPrib; }
+            set { Set(ref _ChistPrib, value); }
         }
 
         #region WaiterProperties
+
+        private ObservableCollection<DohodClass> _DohodList;
+        public ObservableCollection<DohodClass> DohodList
+        {
+            get { return _DohodList; }
+            set { Set(ref _DohodList, value); }
+        }
 
         private DateTime _FirstDate = DateTime.Now.Date;
         public DateTime FirstDate
@@ -56,7 +140,7 @@ namespace AdminKafe.ViewModels
             set
             {
                 Set(ref _SelectedProperties, value);
-                if (value!= null)
+                if (value != null)
                 {
                     ShowOreders(value.Id, value.GuestCount);
                 }
@@ -84,11 +168,11 @@ namespace AdminKafe.ViewModels
                 LoadAllDateWithDate();
             }
         }
-        private string _FilterText="";
+        private string _FilterText = "";
         public string FilterText
         {
             get { return _FilterText; }
-            set 
+            set
             {
                 Set(ref _FilterText, value);
                 OtdelFilterText(value);
@@ -98,7 +182,7 @@ namespace AdminKafe.ViewModels
         private void OtdelFilterText(string filter)
         {
             var result = DateWorker.GetAllWastedFood(FirstDate, SecondDate, "");
-            OrdersPropertyReport = new ObservableCollection<CoolGet>(result.Where(i=>i.FoodName.Contains(filter)));
+            OrdersPropertyReport = new ObservableCollection<CoolGet>(result.Where(i => i.FoodName.Contains(filter)));
         }
 
         private DateTime _DateTimeProperties;
@@ -211,7 +295,7 @@ namespace AdminKafe.ViewModels
         #region ShowResultRegion
         public void ShowResult(object p)
         {
-            LoadWastedFood(FirstDate, SecondDate,"");
+            LoadWastedFood(FirstDate, SecondDate, "");
         }
         public bool CanShowResult(object p)
         {
@@ -272,8 +356,8 @@ namespace AdminKafe.ViewModels
             {
                 OrdersProperty = new List<CheckFoodClass>();
                 OrdersProperty = DateWorker.GetAllOrder(Id, goustCount);
-                SumCheck = Math.Round(DateWorker.SummByProduct,2);
-                SummService = Math.Round(DateWorker.SummServices,2);
+                SumCheck = Math.Round(DateWorker.SummByProduct, 2);
+                SummService = Math.Round(DateWorker.SummServices, 2);
             });
         }
         public async void LoadAllDateWithDate()
@@ -293,7 +377,7 @@ namespace AdminKafe.ViewModels
                 // AllLocation = DateWorker.GetAllLocation();
             });
         }
-        public async void LoadWastedFood(DateTime first, DateTime second,string searchtext="")
+        public async void LoadWastedFood(DateTime first, DateTime second, string searchtext = "")
         {
             await Task.Run(() =>
             {
@@ -307,7 +391,7 @@ namespace AdminKafe.ViewModels
             await Task.Run(() =>
             {
                 _OrdersPropertyReport = new ObservableCollection<CoolGet>();
-                OrdersPropertyReport = DateWorker.GetAllWastedFood(DateTime.Now.AddDays(-1), DateTime.Now,"");
+                OrdersPropertyReport = DateWorker.GetAllWastedFood(DateTime.Now.AddDays(-1), DateTime.Now, "");
                 // AllLocation = DateWorker.GetAllLocation();
             });
         }

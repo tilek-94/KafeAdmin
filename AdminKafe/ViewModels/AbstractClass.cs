@@ -211,6 +211,7 @@ namespace AdminKafe.ViewModels
         public ICommand SelectedEditCommand { get; set; }
         public ICommand SelectedEdit { get; set; }
         public ICommand ClearCommand { get; set; }
+        public ICommand ViewDohodCommand { get; set; }
         public ICommand EditCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
         public ICommand CloseCommand { get; set; }

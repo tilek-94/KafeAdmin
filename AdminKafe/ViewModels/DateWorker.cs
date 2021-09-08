@@ -21,7 +21,7 @@ namespace AdminKafe.Models
         {
             string result;
             using (ApplicationContext db = new ApplicationContext())
-            {    
+            {
                 Product pr = db.Products.FirstOrDefault(d => d.Id == AllId);
                 pr.Name = name;
                 pr.Type = type;
@@ -278,12 +278,12 @@ namespace AdminKafe.Models
                               {
                                   Id = product.Id,
                                   ProductName = product.Name,
-                                  CheckDate=check.DateTimeCheck.Date,
-                                  ProductUnit= product.Type,
-                                  ProductPrice=repgods.Price,
-                                  ProductCount = /*(db.Orders.Where(i => i.FoodId == recipe.FoodId).Sum(i => i.CountFood) * *//*recipe.CountPoduct*//* db.Recipes.Where(i => i.ProductId == product.Id).Sum(i => i.CountPoduct)) +" "+ recipe.Unit,*/  recipe.CountPoduct*orders.CountFood,
-                                  ProductSumm = repgods.Price * recipe.CountPoduct * orders.CountFood  
-                              })/*.AsEnumerable().GroupBy(i=>i.ProductName)*/;        
+                                  CheckDate = check.DateTimeCheck.Date,
+                                  ProductUnit = product.Type,
+                                  ProductPrice = repgods.Price,
+                                  ProductCount = /*(db.Orders.Where(i => i.FoodId == recipe.FoodId).Sum(i => i.CountFood) * *//*recipe.CountPoduct*//* db.Recipes.Where(i => i.ProductId == product.Id).Sum(i => i.CountPoduct)) +" "+ recipe.Unit,*/  recipe.CountPoduct * orders.CountFood,
+                                  ProductSumm = repgods.Price * recipe.CountPoduct * orders.CountFood
+                              })/*.AsEnumerable().GroupBy(i=>i.ProductName)*/;
                 return result.ToList<object>();
             }
         }
@@ -541,7 +541,7 @@ namespace AdminKafe.Models
                                   Id = table.Id,
                                   CatName = location.Name,
                                   TableName = table.Name
-                              }).Where(u => u.TableName.Contains(searchtext) || u.CatName.Contains(searchtext)).Select(u=>u).ToList();
+                              }).Where(u => u.TableName.Contains(searchtext) || u.CatName.Contains(searchtext)).Select(u => u).ToList();
                 return result.ToList<object>();
             }
         }
@@ -652,7 +652,7 @@ namespace AdminKafe.Models
             }
             return result;
         }
-        public static string EditLocation(Location location,string name)
+        public static string EditLocation(Location location, string name)
         {
             string result = "Такой категории не существует!!";
             using (ApplicationContext db = new ApplicationContext())
@@ -720,7 +720,7 @@ namespace AdminKafe.Models
                     {
                         Name = name,
                         Price = 0,
-                        Image=img,
+                        Image = img,
                         ParentCategoryId = 0,
                         isCook = 0
                     };
@@ -767,10 +767,10 @@ namespace AdminKafe.Models
             {
                 if (food != null)
                 {
-                Food food1 = db.Foods.FirstOrDefault(d => d.Id == food.Id);
-                food1.Name = name;
-                db.SaveChanges();
-                result = $"Успешно изменено!";
+                    Food food1 = db.Foods.FirstOrDefault(d => d.Id == food.Id);
+                    food1.Name = name;
+                    db.SaveChanges();
+                    result = $"Успешно изменено!";
                 }
             }
             return result;
@@ -799,7 +799,7 @@ namespace AdminKafe.Models
             {
                 if (food != null)
                 {
-                    Food f = db.Foods.FirstOrDefault(u=>u.Id==food.Id);
+                    Food f = db.Foods.FirstOrDefault(u => u.Id == food.Id);
                     db.Foods.Remove(f);
                     db.SaveChanges();
                     result = $"Успешно изменено!";
@@ -1077,7 +1077,6 @@ namespace AdminKafe.Models
         #region GetAllCheck
         public static List<object> GetAllByFood()
         {
-
             using (ApplicationContext db = new ApplicationContext())
             {
                 int CounId = 0;
@@ -1096,6 +1095,152 @@ namespace AdminKafe.Models
 
                 return result.ToList<object>();
             }
+        }
+
+
+        public static (double, double, double, double) GetPP(DateTime start, DateTime end)
+        {
+            double pt = 0, pp = 0, ar = 0, cp = 0;
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                var consump = db.Consumptions.Select(i => i);
+                double countdays = 1;
+                if (end.Date != start.Date) countdays = (end - start).TotalDays;
+                foreach (var item in consump)
+                {
+                    ar += (item.Summ * countdays);
+                }
+                var rs = db.HistoryChecks.Where(i => i.CheckDate.Date >= start.Date && i.CheckDate.Date <= end.Date);
+                foreach (var item in rs)
+                {
+                    pt += returnPrice(item);
+                }
+                ar += (ReturnWaiters(start, end)).CostMoney;
+                pp += (DoubleReturne(start, end)).CostMoney;
+                cp = pt - ar - pp;
+            }
+            return (pt, pp, ar, cp);
+        }
+
+        private static double returnPrice(HistoryCheck item)
+        { 
+            using ApplicationContext db = new ApplicationContext();
+            double result = 0;
+            var fod = db.HistoryFoods.Where(i=>i.CheckId == item.Id);
+            foreach (var ite in fod)
+            {
+                result += (ite.FoodPrice * ite.FoodCount);
+            }
+            return result;
+        }
+        public static ObservableCollection<DohodClass> GetAllDohod(DateTime start, DateTime end)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                var result = new ObservableCollection<DohodClass>();
+                var consump = db.Consumptions.Select(i => i);
+                double countdays = 1;
+                if (end.Date != start.Date) countdays = (end - start).TotalDays;
+                foreach (var item in consump)
+                {
+                    result.Add(new DohodClass { Name = item.Name, CostMoney = (item.Summ * countdays) });
+                }
+                result.Add(ReturnWaiters(start, end));
+                result.Add(DoubleReturne(start, end));
+                return new ObservableCollection<DohodClass>(result);
+            }
+        }
+
+        private static DohodClass ReturnWaiters(DateTime start, DateTime end)
+        {
+            var result = new DohodClass
+            {
+                Name = "Официант",
+                CostMoney = 0
+            };
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                var historychecks = db.HistoryChecks.Where(i => i.SalaryType != "Salary" && i.CheckDate.Date >= start.Date && i.CheckDate.Date <= end.Date).Select(i => i);
+                foreach (var item in historychecks)
+                {
+                    if (item.SalaryType == "Percent")
+                    {
+                        result.CostMoney += ReturnSalary(item);
+                    }
+                    else
+                    {
+                        result.CostMoney += (item.Salary * item.GuestCount);
+                    }
+                }
+
+                var salaryMoney = from hc in db.HistoryChecks.Where(i => i.SalaryType == "Salary" && i.CheckDate.Date >= start.Date && i.CheckDate.Date <= end.Date)
+                                  group hc by new { hc.WaiterName, hc.Salary } into g
+                                  select new
+                                  {
+                                      Name = g.Key.WaiterName,
+                                      Price = g.Key.Salary
+                                  };
+                foreach (var item in salaryMoney)
+                {
+
+                    result.CostMoney += item.Price / 30;
+                }
+            }
+            return result;
+        }
+        public static DohodClass DoubleReturne(DateTime dateDo, DateTime datePosle)
+        {
+            var resull = new DohodClass
+            {
+                Name = "Продукты",
+                CostMoney = 0
+            };
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                var result = (from recipe in db.Recipes
+                              join product in db.Products on recipe.ProductId equals product.Id
+                              join repgods in db.ReceiptGoods on recipe.ProductId equals repgods.ProductId
+                              join orders in db.Orders on recipe.FoodId equals orders.FoodId
+                              join check in db.Checks on orders.CheckId equals check.Id
+                              select new
+                              {
+                                  Id = product.Id,
+                                  ProductName = product.Name,
+                                  CheckDate = check.DateTimeCheck,
+                                  ProductUnit = product.Type,
+                                  ProductPrice = repgods.Price,
+                                  ProductCount = recipe.CountPoduct * orders.CountFood,
+                                  ProductSumm = repgods.Price * recipe.CountPoduct * orders.CountFood
+                              }).Where(u => u.CheckDate.Date >= dateDo.Date && u.CheckDate.Date <= datePosle.Date);
+
+                var result2 = (from s in result
+                               group s by new { s.Id, s.ProductName, s.ProductUnit, s.ProductPrice, } into g
+                               select new
+                               {
+                                   Id = g.Key.Id,
+                                   ProductPrice = g.Key.ProductPrice,
+                                   ProductName = g.Key.ProductName,
+                                   CheckDate = dateDo.Date + " - " + datePosle.Date,
+                                   ProductCount = g.Sum(i => i.ProductCount) + " " + g.Key.ProductUnit,
+                                   ProductSumm = g.Sum(i => i.ProductCount) * g.Key.ProductPrice
+                               });
+                resull.CostMoney = result2.Sum(p => p.ProductSumm);
+                return resull;
+            }
+        }
+        private static double ReturnSalary(HistoryCheck id)
+        {
+            double returnedDouble = 0.0;
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                var result = db.HistoryFoods.Where(i => i.CheckId == id.Id).Select(i => i);
+                foreach (var item in result)
+                {
+                    returnedDouble += (item.FoodCount * item.FoodPrice);
+                }
+
+            }
+            return (returnedDouble * id.Salary / 100);
         }
         public static List<CheckFoodClass> GetAllOrder(int id, int GoustCount)
         {
@@ -1133,32 +1278,32 @@ namespace AdminKafe.Models
         }
 
 
-/*        public static List<object> GetAll()
-        {
-            using (ApplicationContext db = new ApplicationContext())
-            {
-                var result = from check in db.Checks
-                             join table in db.Tables on check.TableId equals table.Id
-                             join waiter in db.Waiters on check.WaiterId equals waiter.Id
-                             join status in db.Status on check.Status equals status.Id
-                             join loc  in db.Locations on table.LocationId equals loc.Id
-                             select new
-                             {
-                                 Id = check.Id,
-                                 CheckCount = check.CheckCount,
-                                 CheckDate = check.DateTimeCheck,
-                                 TableCategoryName = loc.Name,
-                                 TableName = table.Name,
-                                 WaiterName = waiter.Name,
-                                 Status = status.Name,
-                                 GuestCount = check.GuestsCount
+        /*        public static List<object> GetAll()
+                {
+                    using (ApplicationContext db = new ApplicationContext())
+                    {
+                        var result = from check in db.Checks
+                                     join table in db.Tables on check.TableId equals table.Id
+                                     join waiter in db.Waiters on check.WaiterId equals waiter.Id
+                                     join status in db.Status on check.Status equals status.Id
+                                     join loc  in db.Locations on table.LocationId equals loc.Id
+                                     select new
+                                     {
+                                         Id = check.Id,
+                                         CheckCount = check.CheckCount,
+                                         CheckDate = check.DateTimeCheck,
+                                         TableCategoryName = loc.Name,
+                                         TableName = table.Name,
+                                         WaiterName = waiter.Name,
+                                         Status = status.Name,
+                                         GuestCount = check.GuestsCount
 
-                             };
+                                     };
 
 
-                return result.ToList<object>();
-            }
-        }*/
+                        return result.ToList<object>();
+                    }
+                }*/
 
 
         public static double countReturn(int id)
@@ -1306,7 +1451,7 @@ namespace AdminKafe.Models
             }
         }
 
-        public static ObservableCollection<CoolGet> GetAllWastedFood(DateTime second, DateTime first, string searchtext="")
+        public static ObservableCollection<CoolGet> GetAllWastedFood(DateTime second, DateTime first, string searchtext = "")
         {
             using (ApplicationContext db = new ApplicationContext())
             {
@@ -1315,20 +1460,20 @@ namespace AdminKafe.Models
                     hf => hf.CheckId,
                     (hc, hf) => new CoolGet
                     {
-                      FoodName = hf.FoodName,
-                      FoodCount = hf.FoodCount,
-                      FoodPrice= hf.FoodPrice,
-                      Gram = hf.Gram
+                        FoodName = hf.FoodName,
+                        FoodCount = hf.FoodCount,
+                        FoodPrice = hf.FoodPrice,
+                        Gram = hf.Gram
                     });
 
                 var result = (from g in checks
-                             group g by new { g.FoodName, g.Gram,g.FoodPrice } into res
-                             select new CoolGet
-                             {
-                                FoodName = res.Key.FoodName,
-                                FoodCount = res.Sum(i=>i.FoodCount),
-                                FoodPrice = (res.Sum(i=>i.FoodCount)*res.Key.FoodPrice)
-                             }).Where(u=>u.FoodName.Contains(searchtext));
+                              group g by new { g.FoodName, g.Gram, g.FoodPrice } into res
+                              select new CoolGet
+                              {
+                                  FoodName = res.Key.FoodName,
+                                  FoodCount = res.Sum(i => i.FoodCount),
+                                  FoodPrice = (res.Sum(i => i.FoodCount) * res.Key.FoodPrice)
+                              }).Where(u => u.FoodName.Contains(searchtext));
 
                 return new ObservableCollection<CoolGet>(result);
             }
