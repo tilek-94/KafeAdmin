@@ -1129,7 +1129,7 @@ namespace AdminKafe.Models
             var fod = db.HistoryFoods.Where(i=>i.CheckId == item.Id);
             foreach (var ite in fod)
             {
-                result += (ite.FoodPrice * ite.FoodCount);
+                result += (ite.Price * ite.Count);
             }
             return result;
         }
@@ -1156,7 +1156,7 @@ namespace AdminKafe.Models
             var result = new DohodClass
             {
                 Name = "Официант",
-                CostMoney = 0
+                CostMoney = 0.0
             };
             using (ApplicationContext db = new ApplicationContext())
             {
@@ -1169,7 +1169,7 @@ namespace AdminKafe.Models
                     }
                     else
                     {
-                        result.CostMoney += (item.Salary * item.GuestCount);
+                        result.CostMoney += item.Salary * item.GuestCount;
                     }
                 }
 
@@ -1236,7 +1236,7 @@ namespace AdminKafe.Models
                 var result = db.HistoryFoods.Where(i => i.CheckId == id.Id).Select(i => i);
                 foreach (var item in result)
                 {
-                    returnedDouble += (item.FoodCount * item.FoodPrice);
+                    returnedDouble += (item.Count * item.Price);
                 }
 
             }
@@ -1460,9 +1460,9 @@ namespace AdminKafe.Models
                     hf => hf.CheckId,
                     (hc, hf) => new CoolGet
                     {
-                        FoodName = hf.FoodName,
-                        FoodCount = hf.FoodCount,
-                        FoodPrice = hf.FoodPrice,
+                        FoodName = hf.Name,
+                        FoodCount = hf.Count,
+                        FoodPrice = hf.Price,
                         Gram = hf.Gram
                     });
 
