@@ -169,7 +169,7 @@ namespace AdminKafe.Windows {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/AdminKafe;component/view/windows/glavwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/AdminKafe;V1.0.0.0;component/view/windows/glavwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\View\Windows\GlavWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
