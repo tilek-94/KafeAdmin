@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "lgNZt6gBlTUrncIbSGm0dj4aZIVAcKP2bte4XslJuVD4ymeYDWhXcQ9+mn/FCq3ZIjvsksa6nmMUtILaACyJ0g==",
+  "dgSpecHash": "tz1kRkXBJz5XT2TnKerfl97Xjcp8eAUVUxdnCYB+rhrFfxeTVDE7PQgZUmCjbw7l45VvxOdfdNQxm3IUhcIqQQ==",
   "success": true,
-  "projectFilePath": "D:\\Project\\KK\\New\\KafeAdmin\\AdminKafe\\AdminKafe.csproj",
+  "projectFilePath": "D:\\c# Cafe\\KafeAdmin\\AdminKafe\\AdminKafe.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\fontawesome.wpf\\4.7.0.9\\fontawesome.wpf.4.7.0.9.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\lazziya.imageresize\\4.1.0\\lazziya.imageresize.4.1.0.nupkg.sha512",

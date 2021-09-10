@@ -221,7 +221,7 @@ namespace AdminKafe.ViewModels
         }
         public void CreateMethod(object p)
         {
-            result = "Запольните поля ";
+            result = "Заполните поля ";
             int flag = 0;
             if (SelectedProduct == null)
             {
@@ -255,7 +255,7 @@ namespace AdminKafe.ViewModels
         }
         public void AddMenuMethod(object p)
         {
-            result = "Запольните поля: ";
+            result = "Заполните поля: ";
 
             if (Name == null || Name.Replace(" ", "").Length == 0)
             {
@@ -279,7 +279,7 @@ namespace AdminKafe.ViewModels
         public void DeleteMethod(object p)
         {
             result = "";
-            MessageWindow mv = new MessageWindow("Вы уеронно хотите удалить?");
+            MessageWindow mv = new MessageWindow("Вы уверены,что хотите удалить?");
             mv._mess += x =>
             {
                 if (x == 1)
@@ -294,7 +294,7 @@ namespace AdminKafe.ViewModels
         public void DeleteMethodSklad(object p)
         {
             result = "";
-            MessageWindow mv = new MessageWindow("Вы уеронно хотите удалить?");
+            MessageWindow mv = new MessageWindow("Вы уверены,что хотите удалить?");
             mv._mess += x =>
             {
                 if (x == 1)

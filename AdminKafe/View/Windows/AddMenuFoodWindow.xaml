@@ -49,7 +49,7 @@
                         Padding="0" Background="#FF007BAB" Canvas.Left="41" Canvas.Top="163" Width="193" Height="26">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="ImagePlus" Foreground="White" FontWeight="Bold" Width="20" Height="20" Margin="-2,0,0,0" VerticalAlignment="Center"/>
-                        <TextBlock Text="Добвить фото" Foreground="White" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="13"/>
+                        <TextBlock Text="Добавить фото" Foreground="White" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="13"/>
                     </StackPanel>
                 </Button>
                 <Button  Margin="0,5,0,0"
@@ -62,7 +62,7 @@
                 </Button>
             </StackPanel>
             <StackPanel VerticalAlignment="Center" Margin="30,0,0,0">
-                <TextBox materialDesign:HintAssist.Hint="Введите названия менью" Background="White" HorizontalAlignment="Left"
+                <TextBox materialDesign:HintAssist.Hint="Введите названия меню" Background="White" HorizontalAlignment="Left"
                      BorderThickness="0,0,0,2" 
                     Height="40" Width="357"
                      Text="{Binding Name}"
@@ -96,7 +96,7 @@ Background="#007bab" Width="100" HorizontalAlignment="Left"
                    AutoGenerateColumns="False" RowHeight="60">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="№" Binding="{Binding Path=Id}" Width="50" />
-                <DataGridTextColumn Binding="{Binding Path=Name}" Header="Название категория" />
+                <DataGridTextColumn Binding="{Binding Path=Name}" Header="Название категории" />
                 <DataGridTemplateColumn Header="Картинка блюда" Width="100" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

@@ -33,7 +33,7 @@
         </Button>
         <Canvas Grid.Row="1" Background="White">
             <TextBox x:Name="Element1" Text="{Binding CategoryName}" 
-                materialDesign:HintAssist.Hint="Введите название категория"  materialDesign:TextFieldAssist.HasClearButton="True" Width="384" BorderBrush="#FF007BAB" Style="{StaticResource MaterialDesignFloatingHintTextBox}" CaretBrush="#FF007BAB" Canvas.Left="118" Canvas.Top="17" FontSize="14"/>
+                materialDesign:HintAssist.Hint="Введите название категории"  materialDesign:TextFieldAssist.HasClearButton="True" Width="384" BorderBrush="#FF007BAB" Style="{StaticResource MaterialDesignFloatingHintTextBox}" CaretBrush="#FF007BAB" Canvas.Left="118" Canvas.Top="17" FontSize="14"/>
             <materialDesign:PackIcon Kind="Animation" Canvas.Left="80" Canvas.Top="33" Height="25" Width="30" Foreground="{DynamicResource IconColor}" />
             <Button Command="{Binding CreatMenuCommand,UpdateSourceTrigger=PropertyChanged}"
                 Padding="0" Background="#FF007BAB" Canvas.Left="350" Canvas.Top="82" Width="152" Height="36">
@@ -45,7 +45,7 @@
             <Button Padding="0"  Command="{Binding EditLocation}" Background="#FF007BAB" Canvas.Left="189" Canvas.Top="82" Width="152" Height="36">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="LeadPencil" Foreground="White" FontWeight="Bold" Width="20" Height="20" Margin="-2,0,0,0" VerticalAlignment="Center"/>
-                    <TextBlock Text="Изменит" Foreground="White" VerticalAlignment="Center" Margin="1,0,0,0"/>
+                    <TextBlock Text="Изменить" Foreground="White" VerticalAlignment="Center" Margin="1,0,0,0"/>
                 </StackPanel>
             </Button>
 
@@ -57,7 +57,7 @@
                    AutoGenerateColumns="False" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="№" Binding="{Binding Path=Id}" Width="50" />
-                <DataGridTextColumn Binding="{Binding Path=Name}" Header="Название категория"/>
+                <DataGridTextColumn Binding="{Binding Path=Name}" Header="Название категории"/>
                 <DataGridTemplateColumn Header="Изменить" Width="100" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

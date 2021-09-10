@@ -77,6 +77,14 @@ namespace AdminKafe.ViewModels
             get => _Pass;
             set => Set(ref _Pass, value);
         }
+
+        private string _Name1;
+        public string Name1
+        {
+            get => _Name1;
+            set => Set(ref _Name1, value);
+        }
+
         private string _Tel;
         public string Tel
         {
@@ -164,7 +172,7 @@ namespace AdminKafe.ViewModels
 
         public void CreateMethod(object p)
         {
-            result = "Запольните поля ";
+            result = "Заполните поля ";
             int flag = 0;
             if (Name == null || Name.Replace(" ", "").Length == 0)
             {
@@ -208,7 +216,7 @@ namespace AdminKafe.ViewModels
         public void DeleteMethod(object p)
         {
             result = "";
-            MessageWindow mv = new MessageWindow("Вы уеронно хотите удалить?");
+            MessageWindow mv = new MessageWindow("Вы уверенны,что хотите удалить?");
             mv._mess += x =>
             {
                 if (x == 1)

@@ -43,13 +43,13 @@
                             <Button Click="Button_Click_1" Padding="0" Background="#FF007BAB" Canvas.Left="916" Canvas.Top="255" Width="152" Height="35">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="Delete" Foreground="White" FontWeight="Bold" Width="20" Height="20" Margin="-2,0,0,0" VerticalAlignment="Center"/>
-                                    <TextBlock Text="Очистит" Foreground="White" VerticalAlignment="Center" Margin="1,0,0,0"/>
+                                    <TextBlock Text="Очистить" Foreground="White" VerticalAlignment="Center" Margin="1,0,0,0"/>
                                 </StackPanel>
                             </Button>
                             <Button Padding="0"  Command="{Binding EditCommand,UpdateSourceTrigger=PropertyChanged}" Background="#FF007BAB" Canvas.Left="759" Canvas.Top="255" Width="152" Height="35">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="LeadPencil" Foreground="White" FontWeight="Bold" Width="20" Height="20" Margin="-2,0,0,0" VerticalAlignment="Center"/>
-                                    <TextBlock Text="Изменит" Foreground="White" VerticalAlignment="Center" Margin="1,0,0,0"/>
+                                    <TextBlock Text="Изменить" Foreground="White" VerticalAlignment="Center" Margin="1,0,0,0"/>
                                 </StackPanel>
                             </Button>
                             <Button Command="{Binding CreateCommand}" Padding="0" Background="#FF007BAB" Canvas.Left="602" Canvas.Top="255" Width="152" Height="35">
@@ -73,7 +73,7 @@
                             <TextBox 
                                 x:Name="Element3" IsReadOnly="True"
                                 Text="{Binding SelectedText,UpdateSourceTrigger=PropertyChanged}"
-                                materialDesign:HintAssist.Hint="Вид единица"  materialDesign:TextFieldAssist.HasClearButton="True" Width="283" BorderBrush="#FF007BAB" Style="{StaticResource MaterialDesignFloatingHintTextBox}" CaretBrush="#FF007BAB" Canvas.Left="318" Canvas.Top="99" FontSize="14"/>
+                                materialDesign:HintAssist.Hint="Вид единицы"  materialDesign:TextFieldAssist.HasClearButton="True" Width="283" BorderBrush="#FF007BAB" Style="{StaticResource MaterialDesignFloatingHintTextBox}" CaretBrush="#FF007BAB" Canvas.Left="318" Canvas.Top="99" FontSize="14"/>
                             <Button Click="Button_Click_2" Width="30" Height="30" Padding="0" Background="#FF007BAB" Canvas.Left="617" Canvas.Top="27">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="Add" Foreground="White" FontWeight="Bold" Width="20" Height="20" Margin="-2,0,0,0" VerticalAlignment="Center"/>

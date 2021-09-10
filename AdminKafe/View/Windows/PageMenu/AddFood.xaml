@@ -29,7 +29,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-           
+
             <Grid Grid.Row="2" Panel.ZIndex="1">
                 <Grid.Style>
                     <Style TargetType="Grid">
@@ -50,7 +50,7 @@
                     <fa:ImageAwesome Icon="Spinner" Foreground="#FF007BAB" 
                                  Spin="True"  Height="50"  
                                  SpinDuration="1" />
-                <TextBlock Grid.Row="1"
+                    <TextBlock Grid.Row="1"
                            Foreground="#FF007BAB"
                            FontSize="20"
                            HorizontalAlignment="Center"  Margin="10,10,0,0" Text="Загрузка..."/>
@@ -58,7 +58,7 @@
             </Grid>
 
             <Grid Grid.Row="0">
-              
+
                 <Canvas>
                     <Image x:Name="imgBox"
                         
@@ -90,13 +90,13 @@
                     <Button Command="{Binding ClearCommand}" Padding="0" Background="#FF007BAB" Canvas.Left="918" Canvas.Top="186" Width="152" Height="34">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Delete" Foreground="White" FontWeight="Bold" Width="20" Height="20" Margin="-2,0,0,0" VerticalAlignment="Center"/>
-                            <TextBlock Text="Очистит" Foreground="White" VerticalAlignment="Center" Margin="1,0,0,0"/>
+                            <TextBlock Text="Очистить" Foreground="White" VerticalAlignment="Center" Margin="1,0,0,0"/>
                         </StackPanel>
                     </Button>
                     <Button  Command="{Binding EditMethodselect}"  Padding="0" Background="#FF007BAB" Canvas.Left="761" Canvas.Top="186" Width="152" Height="34">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="LeadPencil" Foreground="White" FontWeight="Bold" Width="20" Height="20" Margin="-2,0,0,0" VerticalAlignment="Center"/>
-                            <TextBlock Text="Изменит" Foreground="White" VerticalAlignment="Center" Margin="1,0,0,0"/>
+                            <TextBlock Text="Изменить" Foreground="White" VerticalAlignment="Center" Margin="1,0,0,0"/>
                         </StackPanel>
                     </Button>
                     <Button Command="{Binding CreateCommand}"
@@ -137,9 +137,13 @@
                 </Canvas>
             </Grid>
             <Grid Grid.Row="1" Background="#4C949494" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="31*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
                 <TextBox
                     Text="{Binding SearcheFood,UpdateSourceTrigger=PropertyChanged}"
-                    Style="{DynamicResource stylePass}" Height="30" Width="250" FontSize="15" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="0,0,10,0" Tag="Искать" Background="White" Cursor="IBeam"/>
+                    Style="{DynamicResource stylePass}" Height="30" Width="250" FontSize="15" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="820,5,0,5" Tag="Искать" Background="White" Cursor="IBeam" Grid.ColumnSpan="2"/>
             </Grid>
             <Grid Grid.Row="2">
                 <DataGrid 

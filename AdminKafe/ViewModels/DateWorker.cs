@@ -21,13 +21,13 @@ namespace AdminKafe.Models
         {
             string result;
             using (ApplicationContext db = new ApplicationContext())
-            {    
+            {
                 Product pr = db.Products.FirstOrDefault(d => d.Id == AllId);
                 pr.Name = name;
                 pr.Type = type;
                 pr.Note = note;
                 db.SaveChanges();
-                result = $"Сделанно изменение!!";
+                result = $"Успешно изменено!";
             }
             return result;
         }
@@ -77,7 +77,7 @@ namespace AdminKafe.Models
 
         public static string CreateReceiptGoods(DateTime dateTimeReceiptGoods, int count, double price, Product product)
         {
-            string result = "Имя или Пароль уже существует!!";
+            string result = "Имя или Пароль уже существует!";
             using (ApplicationContext db = new ApplicationContext())
             {
                 ReceiptGoods receiptGoods = new ReceiptGoods
@@ -91,17 +91,16 @@ namespace AdminKafe.Models
                 db.ReceiptGoods.Add(receiptGoods);
                 db.SaveChanges();
 
-                result = "Сделанно!!";
+                result = "Успешно!";
 
                 return result;
             }
-            return result;
         }
         public static string DeleteProduct(int id)
         {
             try
             {
-                string result = "Такого комната не существует!";
+                string result = "Такой комнаты не существует!";
                 using (ApplicationContext db = new ApplicationContext())
                 {
                     var Id = db.ReceiptGoods.FirstOrDefault(t => t.Id == id);
@@ -194,7 +193,7 @@ namespace AdminKafe.Models
         }
         public static string CreateProduct(string name, string type, double note = 0)
         {
-            string result = "Имя или Пароль уже существует!!";
+            string result = "Имя или Пароль уже существует!";
             using (ApplicationContext db = new ApplicationContext())
             {
                 bool checkIsExit = db.Products.Any(el => el.Name == name);
@@ -209,7 +208,7 @@ namespace AdminKafe.Models
                     db.Products.Add(product);
                     db.SaveChanges();
 
-                    result = "Сделанно!!";
+                    result = "Успешно!";
                 }
                 return result;
             }
@@ -221,7 +220,7 @@ namespace AdminKafe.Models
         {
             try
             {
-                string result = "Такого комната не существует!";
+                string result = "Такой комнаты не существует!";
                 using (ApplicationContext db = new ApplicationContext())
                 {
                     db.Products.Remove(product);
@@ -238,7 +237,7 @@ namespace AdminKafe.Models
         {
             try
             {
-                string result = "Такого комната не существует!";
+                string result = "Такой комнаты не существует!";
                 using (ApplicationContext db = new ApplicationContext())
                 {
                     ReceiptGoods rec = db.ReceiptGoods.FirstOrDefault(u => u.Id == AllId);
@@ -254,7 +253,7 @@ namespace AdminKafe.Models
         }
         public static string EditProduct(DateTime date, string massa, int count, double prise)
         {
-            string result = "Такого отдел не существует!!";
+            string result = "Такого отдела не существует!";
             using (ApplicationContext db = new ApplicationContext())
             {
                 ReceiptGoods waiter = db.ReceiptGoods.FirstOrDefault(d => d.Id == AllId);
@@ -262,7 +261,7 @@ namespace AdminKafe.Models
                 waiter.Count = count;
                 waiter.Price = prise;
                 db.SaveChanges();
-                result = $"Сделанно изменение!!";
+                result = $"Успешно изменено!";
             }
             return result;
         }
@@ -418,7 +417,7 @@ namespace AdminKafe.Models
         public static string CreateWaiter(string name, string pass, string tel, string address, string aliasName,
             double salaryType, double salaryType2, double salaryType3)
         {
-            string result = "Имя или Пароль уже существует!!";
+            string result = "Имя или Пароль уже существует!";
             using (ApplicationContext db = new ApplicationContext())
             {
                 string SalaryType = "";
@@ -455,7 +454,7 @@ namespace AdminKafe.Models
                     db.Waiters.Add(waiter);
                     db.SaveChanges();
 
-                    result = "Сделанно!!";
+                    result = "Успешно!";
                 }
                 return result;
             }
@@ -465,7 +464,7 @@ namespace AdminKafe.Models
         {
             try
             {
-                string result = "Такого отдел не существует!";
+                string result = "Такого отдела не существует!";
                 using (ApplicationContext db = new ApplicationContext())
                 {
                     db.Waiters.Remove(waiter);
@@ -482,7 +481,7 @@ namespace AdminKafe.Models
         public static string EditWaiter(Waiter oldWaiter, string name, string pass, string tel, string address, string aliasName,
             double salaryType, double salaryType2, double salaryType3)
         {
-            string result = "Такого отдел не существует!!";
+            string result = "Такого отдела не существует!!";
             using (ApplicationContext db = new ApplicationContext())
             {
                 string SalaryType = "";
@@ -512,7 +511,7 @@ namespace AdminKafe.Models
                 waiter.SalaryType = SalaryType;
                 waiter.Salary = Salary;
                 db.SaveChanges();
-                result = $"Сделанно изменение!!";
+                result = $"Успешно изменено!";
             }
             return result;
         }
@@ -555,7 +554,7 @@ namespace AdminKafe.Models
                                   Id = table.Id,
                                   CatName = location.Name,
                                   TableName = table.Name
-                              }).Where(u => u.TableName.Contains(searchtext) || u.CatName.Contains(searchtext)).Select(u=>u).ToList();
+                              }).Where(u => u.TableName.Contains(searchtext) || u.CatName.Contains(searchtext)).Select(u => u).ToList();
                 return result.ToList<object>();
             }
         }
@@ -571,7 +570,7 @@ namespace AdminKafe.Models
         {
             try
             {
-                string result = "Такого комната не существует!";
+                string result = "Такой комнаты не существует!";
                 using (ApplicationContext db = new ApplicationContext())
                 {
                     db.Locations.Remove(location);
@@ -587,7 +586,7 @@ namespace AdminKafe.Models
         }
         public static string CreateLocation(string name)
         {
-            string result = "Имя или Пароль уже существует!!";
+            string result = "Имя или Пароль уже существует!";
             using (ApplicationContext db = new ApplicationContext())
             {
                 bool checkIsExit = db.Locations.Any(el => el.Name == name);
@@ -611,7 +610,7 @@ namespace AdminKafe.Models
         }
         public static string CreateTable(string name, Location location)
         {
-            string result = "Имя или Пароль уже существует!!";
+            string result = "Имя или Пароль уже существует!";
             using (ApplicationContext db = new ApplicationContext())
             {
                 bool checkIsExit = db.Tables.Any(el => el.Name == name && el.Location == location);
@@ -626,7 +625,7 @@ namespace AdminKafe.Models
                     db.Tables.Add(table);
                     db.SaveChanges();
 
-                    result = "Сделанно!!";
+                    result = "Успешно!";
                 }
                 return result;
             }
@@ -637,7 +636,7 @@ namespace AdminKafe.Models
         {
             try
             {
-                string result = "Такого отдел не существует!";
+                string result = "Такого отдела не существует!";
                 using (ApplicationContext db = new ApplicationContext())
                 {
                     var tab = db.Tables.FirstOrDefault(t => t.Id == tableId);
@@ -655,26 +654,26 @@ namespace AdminKafe.Models
 
         public static string EditTabel(int IdOldTable, string name, Location location)
         {
-            string result = "Такого отдел не существует!!";
+            string result = "Такого отдела не существует!!";
             using (ApplicationContext db = new ApplicationContext())
             {
                 Table table = db.Tables.FirstOrDefault(d => d.Id == IdOldTable);
                 table.Name = name;
                 table.LocationId = location.Id;
                 db.SaveChanges();
-                result = $"Сделанно изменение!!";
+                result = $"Успешно изменено!";
             }
             return result;
         }
-        public static string EditLocation(Location location,string name)
+        public static string EditLocation(Location location, string name)
         {
-            string result = "Такого категория не существует!!";
+            string result = "Такой категории не существует!!";
             using (ApplicationContext db = new ApplicationContext())
             {
                 Location table = db.Locations.FirstOrDefault(d => d.Id == location.Id);
                 table.Name = name;
                 db.SaveChanges();
-                result = $"Сделанно изменение!!";
+                result = $"Успешно изменено!";
             }
             return result;
         }
@@ -700,7 +699,7 @@ namespace AdminKafe.Models
         }
         public static string CreateFood(string name, double price, Food food, byte[] img)
         {
-            string result = "Такого блюда уже существует!!";
+            string result = "Такое блюдо уже существует!";
             using (ApplicationContext db = new ApplicationContext())
             {
                 bool checkIsExit = db.Foods.Any(el => el.Name == name);
@@ -717,14 +716,14 @@ namespace AdminKafe.Models
                     db.Foods.Add(food1);
                     db.SaveChanges();
 
-                    result = "Сделанно!!";
+                    result = "Успешно!";
                 }
                 return result;
             }
         }
         public static string CreateMenuFood(string name, byte[] img)
         {
-            string result = "Такого блюда уже существует!!";
+            string result = "Такое блюдо уже существует!";
             using (ApplicationContext db = new ApplicationContext())
             {
                 bool checkIsExit = db.Foods.Any(el => el.Name == name);
@@ -734,7 +733,7 @@ namespace AdminKafe.Models
                     {
                         Name = name,
                         Price = 0,
-                        Image=img,
+                        Image = img,
                         ParentCategoryId = 0,
                         isCook = 0
                     };
@@ -747,7 +746,7 @@ namespace AdminKafe.Models
                     Food f = db.Foods.FirstOrDefault(t => t.Name == name);
                     f.ParentCategoryId = foodId.Id;
                     db.SaveChanges();
-                    result = "Сделанно!!";
+                    result = "Успешно!!";
                 }
             }
 
@@ -759,7 +758,7 @@ namespace AdminKafe.Models
         {
             try
             {
-                string result = "Такого отдел не существует!";
+                string result = "Такого отдела не существует!";
                 using (ApplicationContext db = new ApplicationContext())
                 {
                     var tab = db.Foods.FirstOrDefault(t => t.Id == tableId);
@@ -781,10 +780,10 @@ namespace AdminKafe.Models
             {
                 if (food != null)
                 {
-                Food food1 = db.Foods.FirstOrDefault(d => d.Id == food.Id);
-                food1.Name = name;
-                db.SaveChanges();
-                result = $"Сделанно изменение!!";
+                    Food food1 = db.Foods.FirstOrDefault(d => d.Id == food.Id);
+                    food1.Name = name;
+                    db.SaveChanges();
+                    result = $"Успешно изменено!";
                 }
             }
             return result;
@@ -813,10 +812,10 @@ namespace AdminKafe.Models
             {
                 if (food != null)
                 {
-                    Food f = db.Foods.FirstOrDefault(u=>u.Id==food.Id);
+                    Food f = db.Foods.FirstOrDefault(u => u.Id == food.Id);
                     db.Foods.Remove(f);
                     db.SaveChanges();
-                    result = $"Сделанно изменение!!";
+                    result = $"Успешно изменено!";
                 }
             }
             return result;
@@ -959,7 +958,7 @@ namespace AdminKafe.Models
         }
         public static string CreateRecieps(Food food, Product product, double count, string unit)
         {
-            string result = "Такого блюда уже существует!!";
+            string result = "Такое блюдо уже существует!!";
             using (ApplicationContext db = new ApplicationContext())
             {
                 bool checkIsExit = db.Recipes.Any(t => t.FoodId == food.Id && t.ProductId == product.Id && t.CountPoduct == count);
@@ -983,7 +982,7 @@ namespace AdminKafe.Models
                     db.Recipes.Add(recipe);
                     db.SaveChanges();
 
-                    result = "Сделанно!!";
+                    result = "Успешно!";
                 }
                 return result;
             }
@@ -1037,7 +1036,7 @@ namespace AdminKafe.Models
         }
         public static string CreateConsumption(string name, double summ)
         {
-            string result = "Такого блюда уже существует!!";
+            string result = "Такоге блюдо уже существует!!";
             using (ApplicationContext db = new ApplicationContext())
             {
                 bool checkIsExit = db.Consumptions.Any(t => t.Name == name && t.Summ == summ);
@@ -1052,7 +1051,7 @@ namespace AdminKafe.Models
                     db.Consumptions.Add(consumption);
                     db.SaveChanges();
 
-                    result = "Сделанно!!";
+                    result = "Успешно!";
                 }
                 return result;
 
@@ -1060,7 +1059,7 @@ namespace AdminKafe.Models
         }
         public static string DeleteConsumption(Consumption consumption)
         {
-            string result = "Такого отдел не существует!";
+            string result = "Такого отдела не существует!";
             using (ApplicationContext db = new ApplicationContext())
             {
                 db.Consumptions.Remove(consumption);
@@ -1073,7 +1072,7 @@ namespace AdminKafe.Models
 
         public static string EditConsumption(int id, string name, double summ)
         {
-            string result = "Такого отдел не существует!!";
+            string result = "Такого отдела не существует!";
             using (ApplicationContext db = new ApplicationContext())
             {
 
@@ -1081,7 +1080,7 @@ namespace AdminKafe.Models
                 cons.Name = name;
                 cons.Summ = summ;
                 db.SaveChanges();
-                result = $"Сделанно изменение!!";
+                result = $"Успешно изменено!";
             }
             return result;
         }
@@ -1091,7 +1090,6 @@ namespace AdminKafe.Models
         #region GetAllCheck
         public static List<object> GetAllByFood()
         {
-
             using (ApplicationContext db = new ApplicationContext())
             {
                 int CounId = 0;
@@ -1111,7 +1109,153 @@ namespace AdminKafe.Models
                 return result.ToList<object>();
             }
         }
-        public static List<object> GetAllOrder(int id, int GoustCount)
+
+
+        public static (double, double, double, double) GetPP(DateTime start, DateTime end)
+        {
+            double pt = 0, pp = 0, ar = 0, cp = 0;
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                var consump = db.Consumptions.Select(i => i);
+                double countdays = 1;
+                if (end.Date != start.Date) countdays = (end - start).TotalDays;
+                foreach (var item in consump)
+                {
+                    ar += (item.Summ * countdays);
+                }
+                var rs = db.HistoryChecks.Where(i => i.CheckDate.Date >= start.Date && i.CheckDate.Date <= end.Date);
+                foreach (var item in rs)
+                {
+                    pt += returnPrice(item);
+                }
+                ar += (ReturnWaiters(start, end)).CostMoney;
+                pp += (DoubleReturne(start, end)).CostMoney;
+                cp = pt - ar - pp;
+            }
+            return (pt, pp, ar, cp);
+        }
+
+        private static double returnPrice(HistoryCheck item)
+        { 
+            using ApplicationContext db = new ApplicationContext();
+            double result = 0;
+            var fod = db.HistoryFoods.Where(i=>i.CheckId == item.Id);
+            foreach (var ite in fod)
+            {
+                result += (ite.Price * ite.Count);
+            }
+            return result;
+        }
+        public static ObservableCollection<DohodClass> GetAllDohod(DateTime start, DateTime end)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                var result = new ObservableCollection<DohodClass>();
+                var consump = db.Consumptions.Select(i => i);
+                double countdays = 1;
+                if (end.Date != start.Date) countdays = (end - start).TotalDays;
+                foreach (var item in consump)
+                {
+                    result.Add(new DohodClass { Name = item.Name, CostMoney = (item.Summ * countdays) });
+                }
+                result.Add(ReturnWaiters(start, end));
+                result.Add(DoubleReturne(start, end));
+                return new ObservableCollection<DohodClass>(result);
+            }
+        }
+
+        private static DohodClass ReturnWaiters(DateTime start, DateTime end)
+        {
+            var result = new DohodClass
+            {
+                Name = "Официант",
+                CostMoney = 0.0
+            };
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                var historychecks = db.HistoryChecks.Where(i => i.SalaryType != "Salary" && i.CheckDate.Date >= start.Date && i.CheckDate.Date <= end.Date).Select(i => i);
+                foreach (var item in historychecks)
+                {
+                    if (item.SalaryType == "Percent")
+                    {
+                        result.CostMoney += ReturnSalary(item);
+                    }
+                    else
+                    {
+                        result.CostMoney += item.Salary * item.GuestCount;
+                    }
+                }
+
+                var salaryMoney = from hc in db.HistoryChecks.Where(i => i.SalaryType == "Salary" && i.CheckDate.Date >= start.Date && i.CheckDate.Date <= end.Date)
+                                  group hc by new { hc.WaiterName, hc.Salary } into g
+                                  select new
+                                  {
+                                      Name = g.Key.WaiterName,
+                                      Price = g.Key.Salary
+                                  };
+                foreach (var item in salaryMoney)
+                {
+
+                    result.CostMoney += item.Price / 30;
+                }
+            }
+            return result;
+        }
+        public static DohodClass DoubleReturne(DateTime dateDo, DateTime datePosle)
+        {
+            var resull = new DohodClass
+            {
+                Name = "Продукты",
+                CostMoney = 0
+            };
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                var result = (from recipe in db.Recipes
+                              join product in db.Products on recipe.ProductId equals product.Id
+                              join repgods in db.ReceiptGoods on recipe.ProductId equals repgods.ProductId
+                              join orders in db.Orders on recipe.FoodId equals orders.FoodId
+                              join check in db.Checks on orders.CheckId equals check.Id
+                              select new
+                              {
+                                  Id = product.Id,
+                                  ProductName = product.Name,
+                                  CheckDate = check.DateTimeCheck,
+                                  ProductUnit = product.Type,
+                                  ProductPrice = repgods.Price,
+                                  ProductCount = recipe.CountPoduct * orders.CountFood,
+                                  ProductSumm = repgods.Price * recipe.CountPoduct * orders.CountFood
+                              }).Where(u => u.CheckDate.Date >= dateDo.Date && u.CheckDate.Date <= datePosle.Date);
+
+                var result2 = (from s in result
+                               group s by new { s.Id, s.ProductName, s.ProductUnit, s.ProductPrice, } into g
+                               select new
+                               {
+                                   Id = g.Key.Id,
+                                   ProductPrice = g.Key.ProductPrice,
+                                   ProductName = g.Key.ProductName,
+                                   CheckDate = dateDo.Date + " - " + datePosle.Date,
+                                   ProductCount = g.Sum(i => i.ProductCount) + " " + g.Key.ProductUnit,
+                                   ProductSumm = g.Sum(i => i.ProductCount) * g.Key.ProductPrice
+                               });
+                resull.CostMoney = result2.Sum(p => p.ProductSumm);
+                return resull;
+            }
+        }
+        private static double ReturnSalary(HistoryCheck id)
+        {
+            double returnedDouble = 0.0;
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                var result = db.HistoryFoods.Where(i => i.CheckId == id.Id).Select(i => i);
+                foreach (var item in result)
+                {
+                    returnedDouble += (item.Count * item.Price);
+                }
+
+            }
+            return (returnedDouble * id.Salary / 100);
+        }
+        public static List<CheckFoodClass> GetAllOrder(int id, int GoustCount)
         {
             using (ApplicationContext db = new ApplicationContext())
             {
@@ -1120,7 +1264,7 @@ namespace AdminKafe.Models
                              join c in db.Checks on o.CheckId equals c.Id
                              join w in db.Waiters on c.WaiterId equals w.Id
                              where (o.CheckId == id)
-                             select new
+                             select new CheckFoodClass
                              {
                                  Id = o.Id,
                                  Food = f.Name,
@@ -1142,35 +1286,37 @@ namespace AdminKafe.Models
                            };
                 SummServices = Summ.Select(t => t.Summ).FirstOrDefault();
                 SummByProduct = a + SummServices;
-                return result.ToList<object>();
+                return result.ToList<CheckFoodClass>();
             }
         }
 
 
-        public static List<object> GetAll()
-        {
-            using (ApplicationContext db = new ApplicationContext())
-            {
-                var result = from check in db.Checks
-                             join table in db.Tables on check.TableId equals table.Id
-                             join waiter in db.Waiters on check.WaiterId equals waiter.Id
-                             join status in db.Status on check.Status equals status.Id
-                             select new
-                             {
-                                 Id = check.Id,
-                                 CheckCount = check.CheckCount,
-                                 CheckDate = check.DateTimeCheck,
-                                 TableName = table.Name,
-                                 WaiterName = waiter.Name,
-                                 Status = status.Name,
-                                 GuestCount = check.GuestsCount
+        /*        public static List<object> GetAll()
+                {
+                    using (ApplicationContext db = new ApplicationContext())
+                    {
+                        var result = from check in db.Checks
+                                     join table in db.Tables on check.TableId equals table.Id
+                                     join waiter in db.Waiters on check.WaiterId equals waiter.Id
+                                     join status in db.Status on check.Status equals status.Id
+                                     join loc  in db.Locations on table.LocationId equals loc.Id
+                                     select new
+                                     {
+                                         Id = check.Id,
+                                         CheckCount = check.CheckCount,
+                                         CheckDate = check.DateTimeCheck,
+                                         TableCategoryName = loc.Name,
+                                         TableName = table.Name,
+                                         WaiterName = waiter.Name,
+                                         Status = status.Name,
+                                         GuestCount = check.GuestsCount
 
-                             };
+                                     };
 
 
-                return result.ToList<object>();
-            }
-        }
+                        return result.ToList<object>();
+                    }
+                }*/
 
 
         public static double countReturn(int id)
@@ -1196,7 +1342,7 @@ namespace AdminKafe.Models
         }
 
 
-        public static List<object> GetAllCkeck(DateTime DateTimeForOneDay, DateTime DateTimeForTwoDay, DateTime DateTimeForTreeDay, string WaiterName = "")
+        public static List<CheckFoodName> GetAllCkeck(DateTime DateTimeForOneDay, DateTime DateTimeForTwoDay, DateTime DateTimeForTreeDay, string WaiterName = "")
         {
             using (ApplicationContext db = new ApplicationContext())
             {
@@ -1204,13 +1350,15 @@ namespace AdminKafe.Models
                              join table in db.Tables on check.TableId equals table.Id
                              join waiter in db.Waiters on check.WaiterId equals waiter.Id
                              join status in db.Status on check.Status equals status.Id
+                             join loc in db.Locations on table.LocationId equals loc.Id
                              /*where check.DateTimeCheck.Date == DateTimeForOneDay.Date*/
-                             select new
+                             select new CheckFoodName
                              {
                                  Id = check.Id,
                                  CheckCount = check.CheckCount,
                                  CheckDate = check.DateTimeCheck,
                                  TableName = table.Name,
+                                 TableCategoryName = loc.Name,
                                  WaiterName = waiter.Name,
                                  GuestCount = check.GuestsCount,
                                  Status = status.Name,
@@ -1223,26 +1371,26 @@ namespace AdminKafe.Models
                     if (AllReport.RadioCheck == 0)
                     {
                         if (AllReport.ComboChek == 0)
-                            return result.ToList<object>();
+                            return result.ToList<CheckFoodName>();
                         if (AllReport.ComboChek == 1)
-                            return result.Where(i => i.WaiterName == WaiterName).ToList<object>();
+                            return result.Where(i => i.WaiterName == WaiterName).ToList<CheckFoodName>();
                     }
                     if (AllReport.RadioCheck == 1)
                     {
                         if (AllReport.ComboChek == 0)
-                            return result.Where(i => i.CheckDate.Date == DateTimeForOneDay.Date).ToList<object>();
+                            return result.Where(i => i.CheckDate.Date == DateTimeForOneDay.Date).ToList<CheckFoodName>();
                         if (AllReport.ComboChek == 1)
-                            return result.Where(i => i.CheckDate.Date == DateTimeForOneDay.Date && i.WaiterName == WaiterName).ToList<object>();
+                            return result.Where(i => i.CheckDate.Date == DateTimeForOneDay.Date && i.WaiterName == WaiterName).ToList<CheckFoodName>();
                     }
                     if (AllReport.RadioCheck == 2)
                     {
                         if (AllReport.ComboChek == 0)
                         {
-                            return result.Where(i => i.CheckDate.Date >= DateTimeForTwoDay.Date && i.CheckDate.Date <= DateTimeForTreeDay.Date).ToList<object>();
+                            return result.Where(i => i.CheckDate.Date >= DateTimeForTwoDay.Date && i.CheckDate.Date <= DateTimeForTreeDay.Date).ToList<CheckFoodName>();
                         }
                         if (AllReport.ComboChek == 1)
                         {
-                            return result.Where(i => i.CheckDate.Date >= DateTimeForTwoDay.Date && i.CheckDate.Date <= DateTimeForTreeDay.Date && i.WaiterName == WaiterName).ToList<object>();
+                            return result.Where(i => i.CheckDate.Date >= DateTimeForTwoDay.Date && i.CheckDate.Date <= DateTimeForTreeDay.Date && i.WaiterName == WaiterName).ToList<CheckFoodName>();
                         }
                     }
                 }
@@ -1253,16 +1401,16 @@ namespace AdminKafe.Models
                         if (AllReport.ComboChek == 0)
                         {
                             if (AllReport.RadioCheckStatus == 0)
-                                return result.ToList<object>();
+                                return result.ToList<CheckFoodName>();
                             else
-                                return result.Where(i => i.StatusID == AllReport.RadioCheckStatus).ToList<object>();
+                                return result.Where(i => i.StatusID == AllReport.RadioCheckStatus).ToList<CheckFoodName>();
                         }
                         if (AllReport.ComboChek == 1)
                         {
                             if (AllReport.RadioCheckStatus == 0)
-                                return result.Where(i => i.WaiterName == WaiterName).ToList<object>();
+                                return result.Where(i => i.WaiterName == WaiterName).ToList<CheckFoodName>();
                             else
-                                return result.Where(i => i.WaiterName == WaiterName && i.StatusID == AllReport.RadioCheckStatus).ToList<object>();
+                                return result.Where(i => i.WaiterName == WaiterName && i.StatusID == AllReport.RadioCheckStatus).ToList<CheckFoodName>();
                         }
                     }
                     if (AllReport.RadioCheck == 1)
@@ -1270,16 +1418,16 @@ namespace AdminKafe.Models
                         if (AllReport.ComboChek == 0)
                         {
                             if (AllReport.RadioCheckStatus == 0)
-                                return result.Where(i => i.CheckDate.Date == DateTimeForOneDay.Date).ToList<object>();
+                                return result.Where(i => i.CheckDate.Date == DateTimeForOneDay.Date).ToList<CheckFoodName>();
                             else
-                                return result.Where(i => i.CheckDate.Date == DateTimeForOneDay.Date && i.StatusID == AllReport.RadioCheckStatus).ToList<object>();
+                                return result.Where(i => i.CheckDate.Date == DateTimeForOneDay.Date && i.StatusID == AllReport.RadioCheckStatus).ToList<CheckFoodName>();
                         }
                         if (AllReport.ComboChek == 1)
                         {
                             if (AllReport.RadioCheckStatus == 0)
-                                return result.Where(i => i.CheckDate.Date == DateTimeForOneDay.Date && i.WaiterName == WaiterName).ToList<object>();
+                                return result.Where(i => i.CheckDate.Date == DateTimeForOneDay.Date && i.WaiterName == WaiterName).ToList<CheckFoodName>();
                             else
-                                return result.Where(i => i.CheckDate.Date == DateTimeForOneDay.Date && i.WaiterName == WaiterName && i.StatusID == AllReport.RadioCheckStatus).ToList<object>();
+                                return result.Where(i => i.CheckDate.Date == DateTimeForOneDay.Date && i.WaiterName == WaiterName && i.StatusID == AllReport.RadioCheckStatus).ToList<CheckFoodName>();
                         }
                     }
                     if (AllReport.RadioCheck == 2)
@@ -1287,20 +1435,20 @@ namespace AdminKafe.Models
                         if (AllReport.ComboChek == 0)
                         {
                             if (AllReport.RadioCheckStatus == 0)
-                                return result.Where(i => i.CheckDate.Date >= DateTimeForTwoDay.Date && i.CheckDate.Date <= DateTimeForTreeDay.Date).ToList<object>();
+                                return result.Where(i => i.CheckDate.Date >= DateTimeForTwoDay.Date && i.CheckDate.Date <= DateTimeForTreeDay.Date).ToList<CheckFoodName>();
                             else
-                                return result.Where(i => i.CheckDate.Date >= DateTimeForTwoDay.Date && i.CheckDate.Date <= DateTimeForTreeDay.Date && i.StatusID == AllReport.RadioCheckStatus).ToList<object>();
+                                return result.Where(i => i.CheckDate.Date >= DateTimeForTwoDay.Date && i.CheckDate.Date <= DateTimeForTreeDay.Date && i.StatusID == AllReport.RadioCheckStatus).ToList<CheckFoodName>();
                         }
                         if (AllReport.ComboChek == 1)
                         {
                             if (AllReport.RadioCheckStatus == 0)
-                                return result.Where(i => i.CheckDate.Date >= DateTimeForTwoDay.Date && i.CheckDate.Date <= DateTimeForTreeDay.Date).ToList<object>();
+                                return result.Where(i => i.CheckDate.Date >= DateTimeForTwoDay.Date && i.CheckDate.Date <= DateTimeForTreeDay.Date).ToList<CheckFoodName>();
                             else
-                                return result.Where(i => i.CheckDate.Date >= DateTimeForTwoDay.Date && i.CheckDate.Date <= DateTimeForTreeDay.Date && i.WaiterName == WaiterName && i.StatusID == AllReport.RadioCheckStatus).ToList<object>();
+                                return result.Where(i => i.CheckDate.Date >= DateTimeForTwoDay.Date && i.CheckDate.Date <= DateTimeForTreeDay.Date && i.WaiterName == WaiterName && i.StatusID == AllReport.RadioCheckStatus).ToList<CheckFoodName>();
                         }
                     }
                 }
-                return result.ToList<object>();
+                return result.ToList<CheckFoodName>();
 
             }
         }
@@ -1316,31 +1464,31 @@ namespace AdminKafe.Models
             }
         }
 
-        public static ObservableCollection<object> GetAllWastedFood(DateTime second, DateTime first)
+        public static ObservableCollection<CoolGet> GetAllWastedFood(DateTime second, DateTime first, string searchtext = "")
         {
             using (ApplicationContext db = new ApplicationContext())
             {
                 var checks = db.HistoryChecks.Where(i => i.CheckDate <= first && i.CheckDate >= second).Join(db.HistoryFoods,
                     hc => hc.Id,
                     hf => hf.CheckId,
-                    (hc, hf) => new
+                    (hc, hf) => new CoolGet
                     {
-                       hf.FoodName,
-                       hf.FoodCount,
-                       hf.FoodPrice,
-                       hf.Gram
+                        FoodName = hf.Name,
+                        FoodCount = hf.Count,
+                        FoodPrice = hf.Price,
+                        Gram = hf.Gram
                     });
 
-                var result = from g in checks
-                             group g by new { g.FoodName, g.Gram,g.FoodPrice } into res
-                             select new
-                             {
-                                FoodName = res.Key.FoodName,
-                                FoodCount = res.Sum(i=>i.FoodCount),
-                                FoodPrice = (res.Sum(i=>i.FoodCount)*res.Key.FoodPrice)
-                             };
+                var result = (from g in checks
+                              group g by new { g.FoodName, g.Gram, g.FoodPrice } into res
+                              select new CoolGet
+                              {
+                                  FoodName = res.Key.FoodName,
+                                  FoodCount = res.Sum(i => i.FoodCount),
+                                  FoodPrice = (res.Sum(i => i.FoodCount) * res.Key.FoodPrice)
+                              }).Where(u => u.FoodName.Contains(searchtext));
 
-                return new ObservableCollection<object>(result);
+                return new ObservableCollection<CoolGet>(result);
             }
         }
 

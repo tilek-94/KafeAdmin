@@ -83,7 +83,7 @@ namespace AdminKafe.ViewModels
 
         public void CreateMethod(object p)
         {
-            result = "Запольните поля ";
+            result = "Заполните поля ";
             int flag = 0;
             if (TableName == null || TableName.Replace(" ", "").Length == 0)
             {
@@ -110,7 +110,7 @@ namespace AdminKafe.ViewModels
         {
             PropertyInfo property = SelectedDateObject.GetType().GetProperty("Id");
             int Id = (int)(property.GetValue(SelectedDateObject, null));
-            MessageWindow mv = new MessageWindow("Вы уеронно хотите удалить?");
+            MessageWindow mv = new MessageWindow("Вы уверены, что хотите удалить?");
             mv._mess += x =>
             {
                 if (x == 1)
@@ -148,7 +148,7 @@ namespace AdminKafe.ViewModels
         {
             if (CategoryName==String.Empty)
             {
-                MessageWindowOk wm = new MessageWindowOk("Запольните поля");
+                MessageWindowOk wm = new MessageWindowOk("Заполните поля");
                 wm.ShowDialog();
             }
             else
@@ -162,7 +162,7 @@ namespace AdminKafe.ViewModels
         }
         private void DeleteTableCategoryMetod(object o)
         {
-            MessageWindow mv = new MessageWindow("Вы уеронно хотите удалить?");
+            MessageWindow mv = new MessageWindow("Вы уверены,что хотите удалить?");
             mv._mess += x =>
             {
                 if (x == 1)
@@ -179,7 +179,7 @@ namespace AdminKafe.ViewModels
         {
             if (CategoryName == String.Empty)
             {
-                MessageWindowOk wm = new MessageWindowOk("Запольните поля");
+                MessageWindowOk wm = new MessageWindowOk("Заполните поля");
                 wm.ShowDialog();
             }
             else

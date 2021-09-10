@@ -7,8 +7,6 @@ using System.Windows.Input;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using System.IO;
-using System.Drawing;
-using Image = System.Windows.Controls.Image;
 using AdminKafe.Models;
 
 namespace AdminKafe.ViewModels
@@ -52,12 +50,6 @@ namespace AdminKafe.ViewModels
             get => _Name;
             set => Set(ref _Name, value);
         }
-        private string _Name1;
-        public string Name1
-        {
-            get => _Name1;
-            set => Set(ref _Name1, value);
-        }
         private int _Count;
         public int Count
         {
@@ -100,18 +92,17 @@ namespace AdminKafe.ViewModels
             set => Set(ref _SeachAllDate, value);
         }
 
+        private List<CheckFoodName> _AllObjectDate2;
+        public List<CheckFoodName> AllObjectDate2
+        {
+            get => _AllObjectDate2;
+            set => Set(ref _AllObjectDate2, value);
+        }
         private List<object> _AllObjectDate;
         public List<object> AllObjectDate
         {
             get => _AllObjectDate;
             set => Set(ref _AllObjectDate, value);
-        }
-
-        private List<IngridParams> _AllObjectRecep;
-        public List<IngridParams> AllObjectRecep
-        {
-            get => _AllObjectRecep;
-            set => Set(ref _AllObjectRecep, value);
         }
 
         private object _ObjectDate;
@@ -216,8 +207,11 @@ namespace AdminKafe.ViewModels
             }
         }
 
+        public ICommand CreateCommand { get; set; }
+        public ICommand SelectedEditCommand { get; set; }
+        public ICommand SelectedEdit { get; set; }
         public ICommand ClearCommand { get; set; }
-        public ICommand CreateCommand{ get; set; }
+        public ICommand ViewDohodCommand { get; set; }
         public ICommand EditCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
         public ICommand CloseCommand { get; set; }
@@ -228,8 +222,7 @@ namespace AdminKafe.ViewModels
         public ICommand BackPage { get; set; }
         public ICommand ImgSourceCommand { get; set; }
         public ICommand ShowOtchet { get; set; }
-        public ICommand SelectedEditCommand { get; set; }
-        public ICommand SelectedEdit { get; set; }
+
         public bool CanCloseApplicationExecat(object p) => true;
         public void OpenOkCancelMethod(string s)
         {
