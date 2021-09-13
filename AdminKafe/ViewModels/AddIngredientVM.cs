@@ -118,15 +118,26 @@ namespace AdminKafe.ViewModels
             await Task.Run(() => {
                 using (ApplicationContext db = new ApplicationContext())
                 {
+                    string res="";
                     AllObjectRecep = DateWorker.GetAllRecipe();
-                    AllObjectRecep = AllObjectRecep.Where(t => t.FoodName.Contains(name)).ToList();
-
+                    if (name!=null)
+                    {
+                        AllObjectRecep = AllObjectRecep.Where(t => t.FoodName.Contains(name)).ToList();
+                    }
                 }
                 //AllObjectDate = DateWorker.SearchAllIngridient(result);
                 
             });
         }
         private void ClearMethod(object obj)
+        {
+            SelectedTextFood = null;
+            SelectedTextProduct = null;
+            SelectedTextGram = null;
+            CountRecept = 0;
+            SearcheIngridient = null;
+        }
+        private void ClearMetod()
         {
             SelectedTextFood = null;
             SelectedTextProduct = null;
@@ -144,9 +155,12 @@ namespace AdminKafe.ViewModels
             }
             else
             {
-                result = DateWorker.CreateRecieps(SelectedFood, SelectedProduct, CountRecept, Unit);
+                result = DateWorker.CreateRecieps(SelectedFood, SelectedProduct, CountRecept, SelectedTextGram);
                 CountRecept = 0;
-
+                SelectedFood = null;
+                SelectedProduct = null;
+                SelectedTextGram = "";
+                LoadAllDate();
             }
             OpenOkMethod(result + "!");
         }
@@ -159,7 +173,10 @@ namespace AdminKafe.ViewModels
             {
                 if (x == 1)
                 {
-                    //result = DateWorker.DeleteWaiter(SelectedDate);
+                    PropertyInfo property = SelectedDateObject.GetType().GetProperty("Id");
+                    int Id = (int)(property.GetValue(SelectedDateObject, null));
+                    result = DateWorker.DeleteRecipeTable(Id);
+                    ClearMetod();
                     LoadAllDate();
                 }
             };
@@ -167,10 +184,25 @@ namespace AdminKafe.ViewModels
         }
 
         public void EditMethod(object p)
-        {
-            result = DateWorker.EditRecieps(Id, SelectedTextFood, SelectedTextProduct, SelectedTextGram, CountRecept);
-
-            LoadAllDate();
+        {         
+            if (Id != 0 && SelectedTextGram !="" && SelectedTextFood != "" && SelectedTextProduct !="" && CountRecept != 0)
+            {
+                result = DateWorker.EditRecieps(Id, SelectedTextFood, SelectedTextProduct, SelectedTextGram, CountRecept);
+                LoadAllDate();           
+                MessageWindowOk wm = new MessageWindowOk(result);
+                wm.ShowDialog();
+                LoadAllDate();
+                SelectedTextProduct = "";
+                SelectedTextGram = "";
+                CountRecept = 0;
+                Id = 0;
+                SelectedTextFood = "";
+            }
+            else
+            {
+                MessageWindowOk wm = new MessageWindowOk("Выберите ингредиент!");
+                wm.ShowDialog();
+            }
         }
 
         public void SelectedEditMethod(object p)
@@ -188,7 +220,7 @@ namespace AdminKafe.ViewModels
             set => Set(ref _AllObjectRecep,value);
         }
   
-        public async void SelectedEdit(int tableId)
+        public new async void SelectedEdit(int tableId)
         {
             await Task.Run(() =>
             {
@@ -224,7 +256,7 @@ namespace AdminKafe.ViewModels
             IsLoading = true;
             await Task.Run(() =>
             {
-                //AllObjectDate = DateWorker.GetAllResiep(name);
+                AllObjectDate = DateWorker.GetAllResiep(name);
                 AllObjectRecep = DateWorker.GetAllRecipe();
             }).ContinueWith(t => IsLoading = false); 
 

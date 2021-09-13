@@ -375,10 +375,17 @@ namespace AdminKafe.ViewModels
         }
         private void EditProduct(object o)
         {
-            result = DateWorker.EditProduct(Name, SelectedComboboxText,Note);
-            OpenOkMethod(result + "!");
-            LoadAllDate();
-            LoadAllDateMenu();
+            if (Name != "" && SelectedComboboxText != "" && Note != 0 && DateWorker.AllId != 0)
+            {
+                result = DateWorker.EditProduct(Name, SelectedComboboxText, Note);
+                OpenOkMethod(result + "!");
+                LoadAllDate();
+                LoadAllDateMenu();
+            }
+            else
+            {
+                OpenOkMethod("Выберите продукт!");
+            }    
         }
     }
 }

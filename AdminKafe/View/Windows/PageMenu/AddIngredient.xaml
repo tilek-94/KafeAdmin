@@ -34,27 +34,27 @@
                     <TextBox 
                         Text="{Binding CountRecept, UpdateSourceTrigger=PropertyChanged}"
                         materialDesign:HintAssist.Hint="Сколько штук,гр,литр"  materialDesign:TextFieldAssist.HasClearButton="True" Width="260" BorderBrush="#FF007BAB" Style="{StaticResource MaterialDesignFloatingHintTextBox}" CaretBrush="#FF007BAB" Canvas.Left="317" Canvas.Top="140" FontSize="14" />
-                    <materialDesign:PackIcon Kind="Numeric10BoxMultiple" Canvas.Left="280" Canvas.Top="153" Height="25" Width="30" Foreground="{DynamicResource IconColor}" />
+                    <materialDesign:PackIcon Kind="Numeric10BoxMultiple" Canvas.Left="280" Canvas.Top="153" Height="25" Width="30" Foreground="{DynamicResource IconColor}"/>
                     <ComboBox Text="{Binding SelectedTextGram,UpdateSourceTrigger=PropertyChanged}"
-                              ItemsSource="{Binding Unit}" IsEnabled="{Binding Path=IsChecked, ElementName=RadioTarif}" materialDesign:HintAssist.Hint="Тарифи"  IsEditable="True" Canvas.Left="317" Canvas.Top="111" FontSize="14" Width="260" BorderBrush="#FF007BAB" Background="White" Foreground="Black" Style="{x:Null}" BorderThickness="0,0,0,2" Height="27">
+                              ItemsSource="{Binding Unit}" materialDesign:HintAssist.Hint="Виды единицы"  IsEditable="True" Canvas.Left="317" Canvas.Top="111" FontSize="14" Width="260" BorderBrush="#FF007BAB"  Background="White" Height="27">
                         <ComboBoxItem Content="кило грамм" />
                         <ComboBoxItem Content="грамм" />
                         <ComboBoxItem Content="литр" />
                         <ComboBoxItem Content="штук" />
                     </ComboBox>
-                    <Button Command="{Binding ClearCommand}" Padding="0" Background="#FF007BAB" Canvas.Left="918" Canvas.Top="216" Width="152" Height="35">
+                    <Button Command="{Binding ClearCommand,UpdateSourceTrigger=PropertyChanged}" Padding="0" Background="#FF007BAB" Canvas.Left="918" Canvas.Top="216" Width="152" Height="35">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Delete" Foreground="White" FontWeight="Bold" Width="20" Height="20" Margin="-2,0,0,0" VerticalAlignment="Center"/>
                             <TextBlock Text="Очистить" Foreground="White" VerticalAlignment="Center" Margin="1,0,0,0"/>
                         </StackPanel>
                     </Button>
-                    <Button Command="{Binding EditCommand}" Padding="0" Background="#FF007BAB" Canvas.Left="761" Canvas.Top="216" Width="152" Height="35">
+                    <Button Command="{Binding EditCommand,UpdateSourceTrigger=PropertyChanged}" Padding="0" Background="#FF007BAB" Canvas.Left="761" Canvas.Top="216" Width="152" Height="35">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="LeadPencil" Foreground="White" FontWeight="Bold" Width="20" Height="20" Margin="-2,0,0,0" VerticalAlignment="Center"/>
                             <TextBlock Text="Изменить" Foreground="White" VerticalAlignment="Center" Margin="1,0,0,0"/>
                         </StackPanel>
                     </Button>
-                    <Button Command="{Binding CreateCommand}" Padding="0" Background="#FF007BAB" Canvas.Left="604" Canvas.Top="216" Width="152" Height="35">
+                    <Button Command="{Binding CreateCommand,UpdateSourceTrigger=PropertyChanged}" Padding="0" Background="#FF007BAB" Canvas.Left="604" Canvas.Top="216" Width="152" Height="35">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="ContentSaveSettings" Foreground="White" FontWeight="Bold" Width="20" Height="20" Margin="-2,0,0,0" VerticalAlignment="Center"/>
                             <TextBlock Text="Сохранить" Foreground="White" VerticalAlignment="Center" Margin="1,0,0,0"/>
@@ -133,7 +133,9 @@
                         <DataGridTemplateColumn Header="Удалить" Width="100" >
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Background="{x:Null}" Width="100"  BorderThickness="0,0,0,0" Cursor="Hand">
+                                    <Button Command="{Binding Path=DataContext.DeleteCommand,       
+                 RelativeSource= {RelativeSource FindAncestor,
+                 AncestorType={x:Type DataGrid}}}" Background="{x:Null}" Width="100"  HorizontalAlignment="Center" BorderThickness="0,0,0,0" Cursor="Hand">
                                         <materialDesign:PackIcon Kind="Delete" Width="20" Foreground="#FF007BAB"/>
                                     </Button>
                                 </DataTemplate>

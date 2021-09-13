@@ -6,9 +6,9 @@
         xmlns:qq="clr-namespace:AdminKafe.ViewModels"
         xmlns:local="clr-namespace:AdminKafe.View.Windows.PageMenu"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
-        mc:Ignorable="d"
-            Title="Login" Height="330" Width="650" Background="{x:Null}"  WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen">
-    
+        mc:Ignorable="d" 
+            Title="Login" Height="320" Width="750" Background="{x:Null}"  Topmost="True" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen">
+
 
     <Grid Background="White" Margin="3,5,10,10">
         <Grid.Effect>
@@ -27,26 +27,27 @@
             <TextBox x:Name="Password2" materialDesign:HintAssist.Hint="Подвердите пароль" materialDesign:TextFieldAssist.HasClearButton="True" Width="286" BorderBrush="#FF007BAB" Style="{StaticResource MaterialDesignFloatingHintTextBox}" CaretBrush="#FF007BAB" Canvas.Left="133" Canvas.Top="154" FontSize="14"/>
             <materialDesign:PackIcon Kind="Password" Canvas.Left="95" Canvas.Top="166" Height="28" Width="30" Foreground="{DynamicResource IconColor}" />
 
-            <Button Click="Save" Padding="0" Background="#FF007BAB" Canvas.Left="260" Canvas.Top="250" Width="152" Height="34" Cursor="Hand">
+            <Button Click="Save" Padding="0" Background="#FF007BAB" Canvas.Left="102" Canvas.Top="230" Width="152" Height="34" Cursor="Hand">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="ContentSaveSettings" Foreground="White" FontWeight="Bold" Width="20" Height="20" Margin="-2,0,0,0" VerticalAlignment="Center"/>
                     <TextBlock Text="Сохранить" Foreground="White" VerticalAlignment="Center" Margin="1,0,0,0"/>
                 </StackPanel>
             </Button>
-            <Button Click="Button_Click" Padding="0" Background="#FF007BAB" Canvas.Left="425" Canvas.Top="250" Width="152" Height="34">
+            <Button Click="Button_Click" Padding="0" Background="#FF007BAB" Canvas.Left="267" Canvas.Top="230" Width="152" Height="34">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Undo" Foreground="White" FontWeight="Bold" Width="20" Height="20" Margin="-2,0,0,0" VerticalAlignment="Center"/>
                     <TextBlock Text="Закрыть окно" Foreground="White" VerticalAlignment="Center" Margin="10,0,0,0"/>
                 </StackPanel>
             </Button>
-
-            <CheckBox x:Name="CheckBox1" Content="1 раздел" Canvas.Left="472" Canvas.Top="26"/>
-            <CheckBox x:Name="CheckBox2" Content="2 раздел" Canvas.Left="472" Canvas.Top="56"/>
-            <CheckBox x:Name="CheckBox3" Content="3 раздел" Canvas.Left="472" Canvas.Top="86"/>
-            <CheckBox x:Name="CheckBox4" Content="4 раздел" Canvas.Left="472" Canvas.Top="116"/>
-            <CheckBox x:Name="CheckBox5" Content="5 раздел" Canvas.Left="472" Canvas.Top="146"/>
-            <CheckBox x:Name="CheckBox6" Content="6 раздел" Canvas.Left="472" Canvas.Top="176"/>
-            <CheckBox x:Name="CheckBox7" Content="7 раздел" Canvas.Left="472" Canvas.Top="206"/>
+            <TextBlock Text="Выберите раздел для доступа ползователя" FontStretch="Medium" Foreground="#FF007BAB" FontSize="14" Canvas.Left="448" Canvas.Top="11"/>
+            <CheckBox x:Name="CheckBox1" Content="1.Раздел официант" Canvas.Left="427" Canvas.Top="41"/>
+            <CheckBox x:Name="CheckBox2" Content="2.Раздел добавить стол" Canvas.Left="427" Canvas.Top="71"/>
+            <CheckBox x:Name="CheckBox3" Content="3.Раздел товар" Canvas.Left="427" Canvas.Top="101"/>
+            <CheckBox x:Name="CheckBox4" Content="4.Раздел создать рецепт" Canvas.Left="427" Canvas.Top="131"/>
+            <CheckBox x:Name="CheckBox5" Content="5.Раздел добавить блюда" Canvas.Left="427" Canvas.Top="161"/>
+            <CheckBox x:Name="CheckBox6" Content="6.Раздел добавить расходы" Canvas.Left="427" Canvas.Top="191"/>
+            <CheckBox x:Name="CheckBox7" Content="7.Раздел все отчеты" Canvas.Left="427" Canvas.Top="221"/>
+            <CheckBox x:Name="CheckBox8" Content="8.Раздел создание пользователя" Canvas.Left="427" Canvas.Top="249"/>
         </Canvas>
     </Grid>
 </Window>

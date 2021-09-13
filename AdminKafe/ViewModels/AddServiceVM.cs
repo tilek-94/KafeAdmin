@@ -42,8 +42,7 @@ namespace AdminKafe.ViewModels
             else
             {
                 result = DateWorker.CreateConsumption(Name, Summ);
-                Name = string.Empty;
-                Summ = 0;
+                ClearMetod();
                 LoadAllDate();
             }
             OpenOkMethod(result + "!");
@@ -59,6 +58,7 @@ namespace AdminKafe.ViewModels
                 {
                    result = DateWorker.DeleteConsumption(SelectedDate);
                     LoadAllDate();
+                    ClearMetod();
                 }
             };
             mv.ShowDialog();
@@ -66,10 +66,26 @@ namespace AdminKafe.ViewModels
 
         public void EditMethod(object p)
         {
-            DateWorker.EditConsumption(SelectedDate.Id, Name, Summ);
-            LoadAllDate();
+            if (SelectedDate!=null && Name !=String.Empty)
+            {
+                result = DateWorker.EditConsumption(SelectedDate.Id, Name, Summ);
+                MessageWindowOk wm = new MessageWindowOk(result);
+                wm.ShowDialog();
+                LoadAllDate();
+                ClearMetod();
+            }
+            else
+            {
+                MessageWindowOk wm = new MessageWindowOk("Выберите услуги");
+                wm.ShowDialog();
+            }
         }
-
+        private void ClearMetod()
+        {
+            SelectedDate = null;
+            Name = "";
+            Summ = 0;
+        }
         public override async void LoadAllDate(string name = "")
         {
             IsLoading = true;

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "YFsXikOgfFKBt5BPO08u0IwBFYIVdQ2A4yGFcMJgohq1N2SbpFFSMPVoufpM+oHGmHXBhjYBVTrSs2G4bRs9kw==",
+  "dgSpecHash": "XybHjbIZpkFCimnlq+y0kGvvPtmBDp+09srHSKULE8mklTMWA2J51Iie+R3haGXe1+Ug33AYA8gYDdRr4m79Qw==",
   "success": true,
   "projectFilePath": "D:\\Project\\KK\\New1\\KafeAdmin\\AdminKafe\\AdminKafe.csproj",
   "expectedPackageFiles": [
@@ -25,6 +25,14 @@
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\mysqlconnector\\1.3.10\\mysqlconnector.1.3.10.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\5.0.1\\pomelo.entityframeworkcore.mysql.5.0.1.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\syncfusion.compression.base\\19.2.0.60\\syncfusion.compression.base.19.2.0.60.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\syncfusion.data.wpf\\19.2.0.60\\syncfusion.data.wpf.19.2.0.60.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\syncfusion.datagridexcelexport.wpf\\19.2.0.60\\syncfusion.datagridexcelexport.wpf.19.2.0.60.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\syncfusion.licensing\\19.2.0.60\\syncfusion.licensing.19.2.0.60.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\syncfusion.pdf.wpf\\19.2.0.60\\syncfusion.pdf.wpf.19.2.0.60.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\syncfusion.sfgrid.wpf\\19.2.0.60\\syncfusion.sfgrid.wpf.19.2.0.60.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\syncfusion.shared.wpf\\19.2.0.60\\syncfusion.shared.wpf.19.2.0.60.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\syncfusion.xlsio.wpf\\19.2.0.60\\syncfusion.xlsio.wpf.19.2.0.60.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\system.collections.immutable\\5.0.0\\system.collections.immutable.5.0.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\system.diagnostics.diagnosticsource\\5.0.1\\system.diagnostics.diagnosticsource.5.0.1.nupkg.sha512",

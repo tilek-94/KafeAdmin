@@ -22,12 +22,15 @@ namespace AdminKafe.ViewModels
             ViewDohodCommand = new LambdaCommand(DohodShow, CanShowResult);
             DeleteCommand = new LambdaCommand(DeleteMethod, CanCloseApplicationExecat);
             ShowWindowCommand = new LambdaCommand(ShowWindowMethod, CanCloseApplicationExecat);
+            AllUpDate = new LambdaCommand(AllUpDateCLick, CanCloseApplicationExecat);
             //AllObjectDate = DateWorker.GetAll();
             LoadWastedFood();
             LoadAllWaters();
             LoadAllBy();
             LoadDohodList();
         }
+
+       
 
         private void DohodShow(object o) 
         {
@@ -335,6 +338,12 @@ namespace AdminKafe.ViewModels
             }).ContinueWith(t => IsLoading = false);
 
         }
+
+        private void AllUpDateCLick(object obj)
+        {
+            LoadAllDateWithDate();
+        }
+
         public override async void LoadAllDate(string name = "")
         {
             IsLoading = true;

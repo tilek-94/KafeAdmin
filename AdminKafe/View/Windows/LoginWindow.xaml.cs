@@ -1,4 +1,6 @@
-﻿using AdminKafe.Date;
+﻿
+using AdminKafe.Date;
+using AdminKafe.Models;
 using AdminKafe.View.Windows;
 using AdminKafe.View.Windows.PageMenu;
 using System.Linq;
@@ -12,8 +14,11 @@ namespace AdminKafe.Windows
     /// </summary>
     public partial class LoginWindow : Window
     {
-        public static string stat = "";
+        public static int stat = 0;
         GlavWindow main;
+        AddNewPassword pass;
+        MessageWindowOk messageWindowOk;
+        Login login1;
         public LoginWindow()
         {
             InitializeComponent();
@@ -40,39 +45,63 @@ namespace AdminKafe.Windows
         {
 
             if (Name.Text != "" && Password.Password != "")
-            {
-                Sign_in(Name.Text, Password.Password);
-                this.Close();
+            {                
+                if (Sign_in(Name.Text, Password.Password))
+                {
+                    this.Close();
+                }
             }
             else
             {
-                MessageBox.Show("Заполните текстовое поле!");
+                messageWindowOk = new MessageWindowOk("Заполните текстовое поле!");
+                messageWindowOk.ShowDialog();
             }
         }
 
-        public void Sign_in(string login, string password)
+        public bool Sign_in(string login, string password)
         {
+            bool result = false;
             using (ApplicationContext connetc = new ApplicationContext())
             {
                 string show = "Неверный парол или логин!";
                 bool b = connetc.login.Any(y => y.Name == login && y.Password == password);
                 if (b)
                 {
-                    stat = Name.Text;
+                    login1 = connetc.login.FirstOrDefault(y => y.Name == login && y.Password == password);
+                    stat = login1.Id;
                     main.Showmain();
+                    result = true;
                 }
                 else
                 {
-                    MessageBox.Show(show);
+                    messageWindowOk = new MessageWindowOk(show);
+                    messageWindowOk.ShowDialog();
                 }
             }
+            return result;
         }
 
         private void TextBlock_MouseDown_2(object sender, MouseButtonEventArgs e)
         {
-            AddNewPassword pass = new AddNewPassword();
-            pass.Show();
-            this.Close();
+            if (Name.Text != "" && Password.Password != "")
+            {
+                if (Sign_in(Name.Text, Password.Password))
+                {
+                    pass = new AddNewPassword(login1);
+                    pass.Show();
+                    this.Close();
+                }
+                else
+                {
+                    messageWindowOk = new MessageWindowOk("Логин паролунузду туура жазыныз!");
+                    messageWindowOk.ShowDialog();
+                }
+            }
+            else
+            {
+                messageWindowOk = new MessageWindowOk("Кечиресиз биринчи логин паролунузду жазыныз!");
+                messageWindowOk.ShowDialog();
+            }
         }
     }
 }

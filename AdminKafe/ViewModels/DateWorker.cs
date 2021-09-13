@@ -791,7 +791,7 @@ namespace AdminKafe.Models
 
         public static string Edit(int IdFood, string Name, double Price, Food foody, int cook, byte[] img)
         {
-            string result = "";
+            string result = "Успешно изменено!";
             using (ApplicationContext connetc = new ApplicationContext())
             {
 
@@ -982,14 +982,14 @@ namespace AdminKafe.Models
                     db.Recipes.Add(recipe);
                     db.SaveChanges();
 
-                    result = "Успешно!";
+                    result = "Успешно сохранено!";
                 }
                 return result;
             }
         }
         public static string EditRecieps(int ID, string SelectedTextFood, string SelectedTextProduct, string SelectedTextGram, double CountRecept)
         {
-            string result = "";
+            string result = "Успешно изменено!";
             using (ApplicationContext db = new ApplicationContext())
             {
                 var res = db.Recipes.Where(t => t.Id == ID).Select(t => new
@@ -1012,8 +1012,20 @@ namespace AdminKafe.Models
                 db.SaveChanges();
                 return result;
             }
-        }
 
+        }
+        public static string DeleteRecipeTable(int Id)
+        {
+            
+            string result = "Такого ингредиент не существует!";
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                var reciep1 = db.Recipes.FirstOrDefault(u=>u.Id==Id); 
+                db.Recipes.Remove(reciep1);
+                db.SaveChanges();
+            }
+            return result;
+        }
         /*public static List<IngridParams> SearchAllIngridient(string Name)
         {
             using (ApplicationContext db = new ApplicationContext())

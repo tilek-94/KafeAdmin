@@ -222,6 +222,7 @@ namespace AdminKafe.ViewModels
         public ICommand BackPage { get; set; }
         public ICommand ImgSourceCommand { get; set; }
         public ICommand ShowOtchet { get; set; }
+        public ICommand AllUpDate { get; set; }
 
         public bool CanCloseApplicationExecat(object p) => true;
         public void OpenOkCancelMethod(string s)

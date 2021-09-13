@@ -184,6 +184,7 @@ namespace AdminKafe.ViewModels
                 {
                     result = DateWorker.DeleteFood(Id);
                     LoadAllDate();
+                    ClearMetod();
                 }
             };
             mv.ShowDialog();
@@ -245,17 +246,32 @@ namespace AdminKafe.ViewModels
 
         public void EditMethodselect(object p)
         {
-            if (SelectedIsCook == "Делается")
-                result = DateWorker.Edit(Id, Name, Price, SelectedFood, 0, ImgSourse);
-            else if (SelectedIsCook == "Грамм")
-                result = DateWorker.Edit(Id, Name, Price, SelectedFood, 2, ImgSourse);
+            if (SelectedFood != null)
+            {
+                if (SelectedIsCook == "Делается")
+                    result = DateWorker.Edit(Id, Name, Price, SelectedFood, 0, ImgSourse);
+                else if (SelectedIsCook == "Грамм")
+                    result = DateWorker.Edit(Id, Name, Price, SelectedFood, 2, ImgSourse);
+                else
+                    result = DateWorker.Edit(Id, Name, Price, SelectedFood, 1, ImgSourse);
+                MessageWindowOk wm = new MessageWindowOk(result);
+                wm.ShowDialog();
+                LoadAllDate();
+                SelectedFood = null;
+                ClearMetod();
+            }
             else
-                result = DateWorker.Edit(Id, Name, Price, SelectedFood, 1, ImgSourse);
-            Name = string.Empty;
-            Price = 0.0;
+            {
+                MessageWindowOk wm = new MessageWindowOk("Выберите блюда");
+                wm.ShowDialog();
+            }     
+        }
+        private void ClearMetod()
+        {
+            Name = "";
+            Price = 0;
             ImgSourse = null;
-
-            LoadAllDate();
+            IsCok = "";
         }
         private void ClearMethod(object obj)
         {

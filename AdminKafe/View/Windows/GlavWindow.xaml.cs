@@ -25,7 +25,7 @@ namespace AdminKafe.Windows
         AddKafeName addKafeName;
         AddNewLogin addNewLogin;
         LoginWindow loginWindow;
-        public string status = "";
+        public string status;
         List<ListViewItem> list = new List<ListViewItem>();
 
         public GlavWindow()
@@ -38,6 +38,7 @@ namespace AdminKafe.Windows
             list.Add(List5);
             list.Add(List6);
             list.Add(List7);
+            list.Add(List8);
             blurEffect.Radius = 10;
             this.MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
             this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
@@ -59,18 +60,18 @@ namespace AdminKafe.Windows
             }
         }
 
-        public string Show_Date(string login)
+        public string Show_Date(int login)
         {
             using (ApplicationContext connetc = new ApplicationContext())
             {
                 string show = "Неверный Логин";
-                if (connetc.login.Where(y => y.Name == login).Count() == 0)
+                if (connetc.login.Where(y => y.Id == login).Count() == 0)
                 {
                     return show;
                 }
                 else
                 {
-                    return connetc.login.Where(a => a.Name == login).Select(s => s.Status).OrderBy(i => i).FirstOrDefault();
+                    return connetc.login.Where(a => a.Id == login).Select(s => s.Status).OrderBy(i => i).FirstOrDefault();
 
                 }
             }

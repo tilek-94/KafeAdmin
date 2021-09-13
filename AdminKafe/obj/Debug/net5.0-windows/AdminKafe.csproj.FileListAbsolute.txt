@@ -586,7 +586,6 @@ D:\Project\KK\New1\KafeAdmin\AdminKafe\bin\Debug\net5.0-windows\Microsoft.Extens
 D:\Project\KK\New1\KafeAdmin\AdminKafe\bin\Debug\net5.0-windows\MySqlConnector.dll
 D:\Project\KK\New1\KafeAdmin\AdminKafe\bin\Debug\net5.0-windows\Pomelo.EntityFrameworkCore.MySql.dll
 D:\Project\KK\New1\KafeAdmin\AdminKafe\bin\Debug\net5.0-windows\System.Diagnostics.DiagnosticSource.dll
-D:\Project\KK\New1\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\AdminKafe.csproj.AssemblyReference.cache
 D:\Project\KK\New1\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\Interop.Microsoft.Office.Interop.Excel.dll
 D:\Project\KK\New1\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\Interop.Microsoft.Office.Interop.Word.dll
 D:\Project\KK\New1\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\AdminKafe.csproj.ResolveComReference.cache
@@ -636,3 +635,12 @@ D:\Project\KK\New1\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\AdminKafe.Assemb
 D:\Project\KK\New1\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\AdminKafe.csproj.CoreCompileInputs.cache
 D:\Project\KK\New1\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\AdminKafe.csproj.CopyComplete
 D:\Project\KK\New1\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\AdminKafe.genruntimeconfig.cache
+D:\Project\KK\New1\KafeAdmin\AdminKafe\obj\Debug\net5.0-windows\AdminKafe.csproj.AssemblyReference.cache
+D:\Project\KK\New1\KafeAdmin\AdminKafe\bin\Debug\net5.0-windows\Syncfusion.Compression.Base.dll
+D:\Project\KK\New1\KafeAdmin\AdminKafe\bin\Debug\net5.0-windows\Syncfusion.Data.WPF.dll
+D:\Project\KK\New1\KafeAdmin\AdminKafe\bin\Debug\net5.0-windows\Syncfusion.SfGridConverter.WPF.dll
+D:\Project\KK\New1\KafeAdmin\AdminKafe\bin\Debug\net5.0-windows\Syncfusion.Licensing.dll
+D:\Project\KK\New1\KafeAdmin\AdminKafe\bin\Debug\net5.0-windows\Syncfusion.Pdf.Base.dll
+D:\Project\KK\New1\KafeAdmin\AdminKafe\bin\Debug\net5.0-windows\Syncfusion.SfGrid.WPF.dll
+D:\Project\KK\New1\KafeAdmin\AdminKafe\bin\Debug\net5.0-windows\Syncfusion.Shared.WPF.dll
+D:\Project\KK\New1\KafeAdmin\AdminKafe\bin\Debug\net5.0-windows\Syncfusion.XlsIO.Base.dll

@@ -116,6 +116,7 @@ namespace AdminKafe.ViewModels
                 if (x == 1)
                 {
                     result = DateWorker.DeleteTable(Id);
+                    TableName = "";
                     LoadAllDate();
                 }
             };
@@ -209,7 +210,7 @@ namespace AdminKafe.ViewModels
             //}
             //else
             //{
-                if (SelectedLocation != null)
+                if (SelectedLocation != null && DateWorker.AllId!=0)
                 {
                     result = DateWorker.EditTabel(DateWorker.AllId, TableName, SelectedLocation);
                     MessageWindowOk wm = new MessageWindowOk(result);

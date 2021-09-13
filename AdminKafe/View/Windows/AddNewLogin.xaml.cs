@@ -1,6 +1,7 @@
 ﻿using AdminKafe.Date;
 using AdminKafe.Models;
 using AdminKafe.Windows;
+using System;
 using System.Windows;
 
 namespace AdminKafe.View.Windows.PageMenu
@@ -10,8 +11,8 @@ namespace AdminKafe.View.Windows.PageMenu
     /// </summary>
     public partial class AddNewLogin : Window
     {
-        public static string Statuse;
-
+        public static string Statuse=String.Empty;
+        MessageWindowOk MessageWindowOk;
 
         public AddNewLogin()
         {
@@ -21,53 +22,75 @@ namespace AdminKafe.View.Windows.PageMenu
         private void checkCheck()
         {
             CheckboxC();
-                if(Statuse.Length == 0)
-                {
-                MessageBox.Show("Выберите Разделы!!!");
-                }
         }
 
         private void CreateMethod()
         {
-
             checkCheck();
-            if (Name.Text != "" && Password.Text != "" && Password2.Text != "")
+            if (Statuse != "")
             {
-                if (Password.Text == Password2.Text)
-                {
-                    AddDate(Name.Text, Password.Text, Statuse);
-                    Name.Text = string.Empty;
-                    Password.Text = string.Empty;
-                    Password2.Text = string.Empty;
-                }
-                else
-                {
-                    MessageBox.Show("Текстик поляны толтурунуз!");
-                }
-
+                AddDate(Name.Text, Password.Text, Password2.Text, Statuse);
             }
             else
             {
-                MessageBox.Show("Текстик поляны толтурунуз!");
+                AddDate(Name.Text, Password.Text, Password2.Text, "Null");
             }
         }
 
-        public static string AddDate(string Name, string Passwor, string Status)
+        public string AddDate(string name, string password, string password2, string Status)
         {
             using (ApplicationContext connetc = new ApplicationContext())
             {
-                Login logins = new Login
+                if (name != "" && password != "" && password2 != "")
                 {
-                    Name = Name,
-                    Password = Passwor,
-                    Status = Status,
-                };
-                connetc.login.Add(logins);
-                connetc.SaveChanges();
-                return "Успешно Добавлено";
+                    if (password == password2)
+                    {
+                        if (Statuse != String.Empty)
+                        {
+                            Login logins = new Login
+                            {
+                                Name = name,
+                                Password = password,
+                                Status = Status,
+                            };
+                            connetc.login.Add(logins);
+                            connetc.SaveChanges();
+                            MessageWindowOk = new MessageWindowOk("Ийгиликтуу сакталды!");
+                            MessageWindowOk.ShowDialog();
+                            Clear();
+
+                        }
+                        else
+                        {
+                            Message("Выберите Разделы!!!");
+                        }
+                    }
+                    else
+                    {
+                        MessageWindowOk = new MessageWindowOk("Пароль бири бирине туура келбей жата!");
+                        MessageWindowOk.ShowDialog();
+                    }
+                }
+                else
+                {
+                    MessageWindowOk = new MessageWindowOk("Баардык жолчолорду толтурунуз!");
+                    MessageWindowOk.ShowDialog();
+                }
+                return "";
             }
         }
-
+        private void Clear()
+        {
+            Name.Text = "";
+            Password.Text = "";
+            Password2.Text = "";
+            Statuse = "";
+        }
+        private void Message(string mess)
+        {
+            MessageWindowOk = new MessageWindowOk(mess);
+            MessageWindowOk.ShowDialog(); ;
+        }
         public void CheckboxC()
         {
 
@@ -99,6 +122,10 @@ namespace AdminKafe.View.Windows.PageMenu
             {
                 Statuse += "6";
             }
+            if (CheckBox8.IsChecked == true)
+            {
+                Statuse += "7";
+            }
         }
 
         private void Save(object sender, RoutedEventArgs e)
@@ -108,8 +135,6 @@ namespace AdminKafe.View.Windows.PageMenu
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            LoginWindow log = new LoginWindow();
-            log.Show();
             this.Close();
         }
     }

@@ -1,4 +1,8 @@
 ﻿using AdminKafe.View.Windows.PageMenu;
+using Microsoft.Win32;
+using Syncfusion.UI.Xaml.Grid.Converter;
+using System;
+using System.IO;
 using System.Windows.Controls;
 
 namespace AdminKafe.Windows.PageMenu
@@ -96,7 +100,23 @@ namespace AdminKafe.Windows.PageMenu
 
         private void SaveAsButtonClick(object sender, System.Windows.RoutedEventArgs e)
         {
-            
+            PdfExportingOptions options = new PdfExportingOptions();
+            options.RepeatHeaders = true;
+            options.ExportFormat = true;
+            options.FitAllColumnsInOnePage = true;
+            options.ExportAllPages = true;
+            var document = SfDataGridSave.ExportToPdf(options);
+            SaveFileDialog sfd = new SaveFileDialog
+            {
+                Filter = "PDF Files(*.pdf)|*.pdf"
+            };
+            if (sfd.ShowDialog() == true)
+            {
+                using (Stream stream = sfd.OpenFile())
+                {
+                    document.Save(stream);
+                }
+            }
         }
     }
 }

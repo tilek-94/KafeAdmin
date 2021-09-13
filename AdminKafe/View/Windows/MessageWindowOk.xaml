@@ -8,7 +8,7 @@
         mc:Ignorable="d" Loaded="Window_Loaded"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
-        Title="MessageWindow" Height="170" Width="600">
+        Title="MessageWindow" Height="170" Width="600" Topmost="True">
     <Grid>
         
         <TextBlock x:Name="TextBlock1" Width="600" TextAlignment="Center"

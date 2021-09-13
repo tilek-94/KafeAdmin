@@ -4,9 +4,11 @@ using CV19.Infrastructure.Commands;
 using KafeProject.ViewModels.Base;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace AdminKafe.ViewModels
@@ -37,7 +39,18 @@ namespace AdminKafe.ViewModels
             get => fon;
             set => Set(ref fon, value);
         }
-
+        private string printer2;
+        public string Printer2
+        {
+            get => printer2;
+            set => Set(ref printer2, value);
+        }
+        private string printer1;
+        public string Printer1
+        {
+            get => printer1;
+            set => Set(ref printer1, value);
+        }
         public override void LoadAllDate(string name = "")
         {
             using (ApplicationContext db = new ApplicationContext())
@@ -53,6 +66,16 @@ namespace AdminKafe.ViewModels
                 {
                     Fon = item.Value;
                 }
+                Options result2 = (Options)db.Options.FirstOrDefault(u => u.Key == "Printer-1");
+                if (result2 != null)
+                {
+                    printer1 = result2.Value;
+                }
+                var result3 = db.Options.FirstOrDefault(u => u.Key == "Printer-2");
+                if (result3 != null)
+                {
+                    printer2 = result3.Value;
+                }
             }
 
         }
@@ -67,6 +90,14 @@ namespace AdminKafe.ViewModels
 
                 Options options = db.Options.FirstOrDefault(d => d.Key == "FonValue");
                 options.Value = Fon;
+                db.SaveChanges();
+
+                Options options1 = db.Options.FirstOrDefault(d => d.Key == "Printer-1");
+                options1.Value = Printer1;
+                db.SaveChanges();
+
+                Options options2 = db.Options.FirstOrDefault(d => d.Key == "Printer-2");
+                options2.Value = Printer2;
                 db.SaveChanges();
                 OpenOkMethod("Успешно сохранено");
             }

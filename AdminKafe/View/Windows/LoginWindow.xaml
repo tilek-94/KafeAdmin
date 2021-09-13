@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AdminKafe.Windows"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
         mc:Ignorable="d"
-        Title="Login" Height="350" Width="700" Background="{x:Null}"  WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen">
+        Title="Login" Height="350" Width="700" Background="{x:Null}" Topmost="True" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen">
     <Grid Background="White" Margin="3,5,10,10">
         <Grid.Effect>
             <DropShadowEffect BlurRadius="10" Direction="270" Opacity="0.5" ShadowDepth="0"/>
