@@ -14,9 +14,6 @@ namespace AdminKafe.Models
         public string address { get; set; }
         public string SalaryType { get; set; }
         public double Salary { get; set; }
-        
-
-
-
+        public int Status { get; set; }
     }
 }

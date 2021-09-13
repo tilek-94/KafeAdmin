@@ -328,7 +328,7 @@
                                 <DataGridTextColumn Header="№" Width="50" Binding="{Binding Path=Id}"/>
                                 <DataGridTextColumn Header="Имя продукта" Binding="{Binding Path=Name}"/>
                                 <DataGridTextColumn Header="Дата" Binding="{Binding Path=DateTimeReceiptGoods, StringFormat=dd-MM-yyyy}"/>
-                                <DataGridTextColumn Header="Вид единица" Binding="{Binding Path=Type}"/>
+                                <!--<DataGridTextColumn Header="Вид единица" Binding="{Binding Path=Type}"/>-->
                                 <DataGridTextColumn Header="Количество товаров" Binding="{Binding Path=Count1}"/>
                                 <DataGridTextColumn Header="Цена" Binding="{Binding Path=Price}"/>
                                 <DataGridTextColumn Header="Сумма" Binding="{Binding Path=Sum}"/>

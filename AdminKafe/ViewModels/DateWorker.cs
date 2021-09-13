@@ -307,7 +307,7 @@ namespace AdminKafe.Models
         {
             using (ApplicationContext db = new ApplicationContext())
             {
-                var result = db.Waiters.Where(t => t.Name.Contains(name)).OrderByDescending(t => t.Id).ToList();
+                var result = db.Waiters.Where(t => t.Name.Contains(name) && t.Status==0).OrderByDescending(t => t.Id).ToList();
                 return result;
             }
         }
@@ -315,7 +315,7 @@ namespace AdminKafe.Models
         {
             using (ApplicationContext db = new ApplicationContext())
             {
-                var result = db.Waiters.ToList();
+                var result = db.Waiters.Where(t => t.Status == 0).ToList();
                 return result;
             }
         }
@@ -464,12 +464,12 @@ namespace AdminKafe.Models
         {
             try
             {
-                string result = "Такого отдела не существует!";
+                string result = "Такого официанта нет!";
                 using (ApplicationContext db = new ApplicationContext())
                 {
-                    db.Waiters.Remove(waiter);
+                    Waiter waiter1 = db.Waiters.FirstOrDefault(u => u.Id == waiter.Id);
+                    waiter1.Status = 1;
                     db.SaveChanges();
-
                 }
                 return result;
             }
@@ -1488,18 +1488,20 @@ namespace AdminKafe.Models
                         FoodName = hf.Name,
                         FoodCount = hf.Count,
                         FoodPrice = hf.Price,
+                        Price = hf.Price,
                         Gram = hf.Gram
                     });
 
                 var result = (from g in checks
-                              group g by new { g.FoodName, g.Gram, g.FoodPrice } into res
+                              group g by new { g.FoodName, g.Gram, g.FoodPrice,g.Price} into res
                               select new CoolGet
                               {
                                   FoodName = res.Key.FoodName,
                                   FoodCount = res.Sum(i => i.FoodCount),
+                                  Price=res.Key.Price,
                                   FoodPrice = (res.Sum(i => i.FoodCount) * res.Key.FoodPrice)
                               }).Where(u => u.FoodName.Contains(searchtext));
-
+                SummByProduct = result.Sum(u=>u.FoodPrice);
                 return new ObservableCollection<CoolGet>(result);
             }
         }

@@ -31,6 +31,7 @@ namespace AdminKafe.Windows
         public GlavWindow()
         {
             InitializeComponent();
+            ShowPage(new AddWaiter());
             list.Add(List1);
             list.Add(List2);
             list.Add(List3);

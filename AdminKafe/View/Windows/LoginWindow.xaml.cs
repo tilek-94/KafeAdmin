@@ -23,6 +23,7 @@ namespace AdminKafe.Windows
         {
             InitializeComponent();
             main = new GlavWindow();
+            main.IsEnabled = false;
             main.Show();
         }
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -69,6 +70,7 @@ namespace AdminKafe.Windows
                 {
                     login1 = connetc.login.FirstOrDefault(y => y.Name == login && y.Password == password);
                     stat = login1.Id;
+                    main.IsEnabled = true;
                     main.Showmain();
                     result = true;
                 }

@@ -136,6 +136,12 @@ namespace AdminKafe.ViewModels
             get => allLocation;
             set => Set(ref allLocation, value);
         }
+        private double pribylItog=0;
+        public double PribylItog
+        {
+            get => pribylItog;
+            set => Set(ref pribylItog, value);
+        }
         private CheckFoodName _SelectedProperties;
         public CheckFoodName SelectedProperties
         {
@@ -392,6 +398,7 @@ namespace AdminKafe.ViewModels
             {
                 _OrdersPropertyReport = new ObservableCollection<CoolGet>();
                 OrdersPropertyReport = DateWorker.GetAllWastedFood(first, second, searchtext);
+                PribylItog = DateWorker.SummByProduct;
                 // AllLocation = DateWorker.GetAllLocation();
             });
         }
@@ -401,6 +408,7 @@ namespace AdminKafe.ViewModels
             {
                 _OrdersPropertyReport = new ObservableCollection<CoolGet>();
                 OrdersPropertyReport = DateWorker.GetAllWastedFood(DateTime.Now.AddDays(-1), DateTime.Now, "");
+                PribylItog = DateWorker.SummByProduct;
                 // AllLocation = DateWorker.GetAllLocation();
             });
         }

@@ -7,6 +7,6 @@
         public int Count { get; set; }
         public int CheckId { get; set; }
         public double Price { get; set; }
-        public double Gram { get; set; }
+        public int Gram { get; set; }
     }
 }

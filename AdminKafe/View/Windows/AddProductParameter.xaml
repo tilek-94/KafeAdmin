@@ -43,7 +43,7 @@
                 </StackPanel>
             </Button>
             <materialDesign:PackIcon Kind="WeightKilogram" Canvas.Left="79" Canvas.Top="75" Height="25" Width="30" Foreground="{DynamicResource IconColor}" />
-            <ComboBox x:Name="Element2" Text="{Binding SelectedComboboxText, UpdateSourceTrigger=PropertyChanged}"
+            <ComboBox x:Name="Element2" Text="{Binding SelectedComboboxText, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"
                 BorderThickness="0,0,0,1" materialDesign:HintAssist.Hint="Найти" IsEditable="True" Width="380" Canvas.Left="117" Canvas.Top="73" Height="29" FontSize="15" BorderBrush="#FF007BAB">
                 <ComboBoxItem Content="кг." />
                 <ComboBoxItem Content="л." />

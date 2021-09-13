@@ -134,10 +134,10 @@
                                                                    ValueBinding="{Binding Path=CheckCount}" />
                                         <syncfusion:GridTextColumn HeaderText="Дата" TextAlignment="Center"
                                                                    ValueBinding="{Binding Path=CheckDate, StringFormat=dd-MM-yyyy hh:mm}" />
-                                        <syncfusion:GridTextColumn HeaderText="Стол" Width="70" TextAlignment="Center"
-                                                                   ValueBinding="{Binding Path=TableName }" />
                                         <syncfusion:GridTextColumn HeaderText="Зал" Width="90" TextAlignment="Center"
                                                                    ValueBinding="{Binding Path=TableCategoryName }" />
+                                        <syncfusion:GridTextColumn HeaderText="Стол" Width="70" TextAlignment="Center"
+                                                                   ValueBinding="{Binding Path=TableName }" />
                                         <syncfusion:GridTextColumn HeaderText="Кол-во" Width="60" TextAlignment="Center"
                                                                    ValueBinding="{Binding Path=GuestCount }" />
                                         <syncfusion:GridTextColumn HeaderText="Официант" Width="120" TextAlignment="Center" 
@@ -287,7 +287,7 @@
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Binding="{Binding Name}" Header="Наименование" />
                                     <DataGridTextColumn Binding="{Binding CostMoney}" Header="Деньги потратить"/>
-                                    <DataGridTextColumn Binding="{Binding DayRe}" Header="Рассчитано на сколько дней"/>
+                                    <!--<DataGridTextColumn Binding="{Binding DayRe}" Header="Рассчитано на сколько дней"/>-->
                                 </DataGrid.Columns>
                             </DataGrid>
                         </Grid>
@@ -317,6 +317,10 @@
 
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0" Background="#4C949494" >
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0">
+                                <TextBlock Text="Итог:  " FontSize="20" FontWeight="Bold"  />
+                                <TextBlock Text="{Binding PribylItog,UpdateSourceTrigger=PropertyChanged}" FontSize="20" FontWeight="Medium"/>
+                            </StackPanel>
                             <TextBox 
                                 Text="{Binding FilterText,UpdateSourceTrigger=PropertyChanged}"
                                 Style="{DynamicResource stylePass}" Height="30" Width="250" FontSize="15" VerticalContentAlignment="Center" HorizontalAlignment="Right" Margin="0,0,10,0" Tag="Искать" Background="White"/>
@@ -328,9 +332,9 @@
                    AutoGenerateColumns="False" >
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Binding="{Binding Path=FoodName }" Header="Наименование" />
-                                    <DataGridTextColumn Binding="{Binding Path=FoodPrice }" Header="Сколько потрачено"/>
+                                    <DataGridTextColumn Binding="{Binding Path=Price }" Header="Сколько потрачено"/>
                                     <DataGridTextColumn Binding="{Binding Path=FoodCount}" Header="Количество"/>
-                                    <DataGridTextColumn Binding="{Binding Path=Sum}" Header="Рассчитано на сколько дней"/>
+                                    <DataGridTextColumn Binding="{Binding Path=FoodPrice}" Header="Рассчитано на сколько дней"/>
                                 </DataGrid.Columns>
                             </DataGrid>
                         </Grid>
